@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+    <link rel="stylesheet" href="./assets/css/datatables.css" />
+    <link rel="stylesheet" href="./assets/css/bootstrap.css" />
+  </head>
+  <body>
+    <div class="main-login p-3">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-6">
+            <div class="login-container">
+              <div class="logo text-center">
+                <a href="./index.html">
+                  <img src="./assets/images/logo-dark.svg" height="54px" class="mb-3" alt="" />
+                </a>
+              </div>
+              <form action="">
+                <h4 class="form-title">Create Account as Medical Professional</h4>
+                <div class="row gy-xl-5 gy-4">
+                  <div class="col-12">
+                    <div class="form-group mb-0">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Full Name"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group mb-0">
+                      <input
+                        type="email"
+                        class="form-control"
+                        placeholder="Email"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group mb-0">
+                      <input
+                        type="password"
+                        class="form-control"
+                        placeholder="Password"
+                        id="password"
+                      />
+                      <button type="button" class="btn btn-light viewPassword">
+                        <span class="material-symbols material-symbols-rounded"
+                          >visibility</span
+                        >
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group mb-0">
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="confirmPassword"
+                        placeholder="Confirm Password"
+                      />
+                      <button type="button" class="btn btn-light viewPassword">
+                        <span class="material-symbols material-symbols-rounded"
+                          >visibility</span
+                        >
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <button class="btn btn-primary btn-lg fw-bold d-block w-100">
+                      Sign Up
+                    </button>
+                  </div>
+                  <div class="col-12 mt-3">
+                    <button class="btn btn-outline-primary btn-lg fw-bold d-block w-100">
+                      Sign Up With Google
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <div class="already-account h5 fw-bold text-center mt-3">
+                Already have an account? <a href="./login.html" class="text-decoration-none">Login</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6 d-md-block d-none">
+            <div class="h-100">
+              <img
+                src="./assets/images/login.png"
+                class="login-img img-fluid"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./assets/js/all.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script>
+      $(".viewPassword").click(function () {
+        var inputPassword = $(this).siblings("input");
+        if (inputPassword.type === "password") {
+          inputPassword.type = "text"
+        } else {
+          inputPassword.type = "password"
+        }
+      });
+    </script>
+  </body>
+</html>

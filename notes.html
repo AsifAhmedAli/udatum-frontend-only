@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes</title>
+    <link rel="stylesheet" href="./assets/css/datatables.css" />
+    <link rel="stylesheet" href="./assets/css/bootstrap.css" />
+  </head>
+  <style>
+    @page {
+      size: 21cm 29.7cm;
+      margin: 30mm 45mm 30mm 45mm;
+      /* change the margins as you want them to be. */
+    }
+  </style>
+  <body>
+    <div class="notes">
+      <div class="container">
+        <div class="text-center header pt-4">
+          <a href="./index.html" class="d-block">
+            <img
+              src="./assets/images/logo-dark.svg"
+              height="48px"
+              class="logo"
+              alt=""
+            />
+          </a>
+          <div class="float-end">
+            <p class="date mb-0">26/12/12</p>
+          </div>
+        </div>
+        <div class="note-box">
+          <h5 class="title text-center">Notes for Haseeb Ahmed</h5>
+          <div class="note">
+            <p class="text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+              vulputate libero et velit interdum, ac aliquet odio mattis.
+            </p>
+            <p class="date-note">5th March 2022</p>
+          </div>
+          <div class="note">
+            <p class="text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+              vulputate libero et velit interdum, ac aliquet odio mattis.
+            </p>
+            <p class="date-note">5th March 2022</p>
+          </div>
+          <div class="note">
+            <p class="text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+              vulputate libero et velit interdum, ac aliquet odio mattis.
+            </p>
+            <p class="date-note">5th March 2022</p>
+          </div>
+          <div class="note">
+            <p class="text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+              vulputate libero et velit interdum, ac aliquet odio mattis.
+            </p>
+            <p class="date-note">5th March 2022</p>
+          </div>
+          <div class="note">
+            <p class="text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+              vulputate libero et velit interdum, ac aliquet odio mattis.
+            </p>
+            <p class="date-note">5th March 2022</p>
+          </div>
+          <div class="note">
+            <p class="text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+              vulputate libero et velit interdum, ac aliquet odio mattis.
+            </p>
+            <p class="date-note">5th March 2022</p>
+          </div>
+          <div class="note">
+            <p class="text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+              vulputate libero et velit interdum, ac aliquet odio mattis.
+            </p>
+            <p class="date-note">5th March 2022</p>
+          </div>
+        </div>
+        <div class="text-center footer pb-4">
+          <div class="float-start">
+            <p class="page text-start mb-0">26/12/12</p>
+          </div>
+          <button class="btn btn-primary">
+            <span class="material-symbols material-symbols-rounded">print</span>
+            Print</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./assets/js/all.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/datatables.js"></script>
+    <script>
+      $(document).ready(function () {
+        if ($(window).width() < 768) {
+          $("#search").click(function () {
+            $(this).next().slideToggle();
+          });
+        }
+
+        if ($(window).width() < 1100) {
+          $("#menu").click(function () {
+            $("aside").toggleClass("d-flex");
+          });
+        }
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const ctx = document.getElementById("myChart");
+
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: [
+            "1st",
+            "2nd",
+            "3rd",
+            "4th",
+            "5th",
+            "6th",
+            "7th",
+            "8th",
+            "9th",
+            "10th",
+            "11th",
+            "12th",
+            "13th",
+            "14th",
+            "15th",
+          ],
+          datasets: [
+            {
+              data: [
+                40, 30, 90, 85, 112, 126, 140, 135, 120, 120, 120, 130, 130,
+                150, 80,
+              ],
+              borderWidth: 4,
+              borderColor: "#1577F2",
+              fill: {
+                target: "origin",
+                above: "rgba(192, 228, 255, 0.12)", // Area will be red above the origin
+              },
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+          elements: {
+            point: {
+              radius: 0,
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: {
+                display: false,
+              },
+              ticks: {
+                font: {
+                  family: "Raleway", // Your font family
+                  size: 14,
+                },
+              },
+            },
+            x: {
+              grid: {
+                display: false,
+              },
+              ticks: {
+                font: {
+                  family: "Raleway", // Your font family
+                  size: 14,
+                },
+              },
+            },
+          },
+          plugins: {
+            legend: {
+              labels: {
+                // This more specific font property overrides the global property
+                font: {
+                  size: 16,
+                  family: "'Raleway'",
+                },
+              },
+            },
+          },
+        },
+      });
+    </script>
+    <script>
+      const ctx2 = document.getElementById("myChart2");
+
+      new Chart(ctx2, {
+        type: "line",
+        data: {
+          labels: [
+            "1st",
+            "2nd",
+            "3rd",
+            "4th",
+            "5th",
+            "6th",
+            "7th",
+            "8th",
+            "9th",
+            "10th",
+            "11th",
+            "12th",
+            "13th",
+            "14th",
+            "15th",
+          ],
+          datasets: [
+            {
+              data: [
+                40, 30, 90, 85, 112, 126, 140, 135, 120, 120, 120, 130, 130,
+                150, 80,
+              ],
+              borderWidth: 4,
+              borderColor: "#B2EA47",
+              fill: {
+                target: "origin",
+                above: "#D6FFDA1D", // Area will be red above the origin
+              },
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+          elements: {
+            point: {
+              radius: 0,
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: {
+                display: false,
+              },
+              ticks: {
+                font: {
+                  family: "Raleway", // Your font family
+                  size: 14,
+                },
+              },
+            },
+            x: {
+              grid: {
+                display: false,
+              },
+              ticks: {
+                font: {
+                  family: "Raleway", // Your font family
+                  size: 14,
+                },
+              },
+            },
+          },
+          plugins: {
+            legend: {
+              labels: {
+                // This more specific font property overrides the global property
+                font: {
+                  size: 16,
+                  family: "'Raleway'",
+                },
+              },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

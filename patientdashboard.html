@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Details</title>
+    <link rel="stylesheet" href="./assets/css/datatables.css" />
+    <link rel="stylesheet" href="./assets/css/bootstrap.css" />
+  </head>
+  <body>
+    <aside>
+      <div class="top">
+        <a href="./index.html" class="d-block">
+          <img
+            src="./assets/images/logo-white.svg"
+            height="48px"
+            class="logo"
+            alt=""
+          />
+        </a>
+        <ul class="list-unstyled ps-0 mb-0">
+          <li class="side-link active">
+            <a href="./patientdashboard.html">
+              <span class="material-symbols material-symbols-rounded"
+                >team_dashboard</span
+              >
+              Dashboard
+            </a>
+          </li>
+          <li class="side-link">
+            <a href="./patientchat.html">
+              <span class="material-symbols material-symbols-rounded"
+                >mail</span
+              >
+              Messages
+              <div class="badge">New</div>
+            </a>
+          </li>
+          <li class="side-link">
+            <a href="./patienthealth.html">
+              <span class="material-symbols material-symbols-rounded"
+                >diversity_4</span
+              >
+              My Health
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="bottom">
+        <div class="side-link">
+          <a href="">
+            <span class="material-symbols material-symbols-rounded"
+              >logout</span
+            >
+            Logout
+          </a>
+        </div>
+      </div>
+    </aside>
+    <main>
+      <header>
+        <div class="container">
+          <div class="search-container">
+            <a href="" class="logo">Udatum</a>
+            <button type="button" class="search" id="search">
+              <span class="material-symbols material-symbols-rounded"
+                >search</span
+              >
+            </button>
+            <form action="" class="w-100">
+              <input
+                type="search"
+                class="form-control w-100"
+                name=""
+                id=""
+                placeholder="Search"
+              />
+              <button class="btn btn-primary rounded-pill">
+                <span class="material-symbols material-symbols-rounded"
+                  >search</span
+                >
+              </button>
+            </form>
+          </div>
+          <div class="right">
+            <div class="dropdown">
+              <button
+                type="button"
+                class="notifications unread"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span class="material-symbols material-symbols-rounded"
+                  >notifications</span
+                >
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+            </div>
+
+            <button type="button" class="avatar unread">JD</button>
+            <button type="button" class="menu" id="menu">
+              <span class="material-symbols material-symbols-rounded"
+                >menu</span
+              >
+            </button>
+          </div>
+        </div>
+      </header>
+      <div class="container">
+        <div class="top-bar">
+          <div class="date-time">
+            <span class="me-4">11th December, 2022</span>
+            <span>6:01 p.m</span>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="patient-details-box bg-white mb-xl-5 mb-3">
+          <div
+            class="d-flex align-items-center justify-content-between flex-wrap"
+          >
+            <div class="left">
+              <h5 class="fw-bold me-xl-5 me-4">Your Profile</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-5 col-12">
+              <table class="table table-borderless mb-0">
+                <tbody>
+                  <tr>
+                    <th scope="col">Patient Email</th>
+                    <td>haseeb@gmail.com</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Birth Date</th>
+                    <td>12/12/1997</td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Assigned Doctor</th>
+                    <td>Dr. Fahad Mirza</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <hr />
+          <div class="row gx-xl-5 gx-3">
+            <div class="col-md-6">
+              <h5 class="fw-bold mb-4">Linked Devices</h5>
+              <table class="patient-linked-dev">
+                <thead>
+                  <tr>
+                    <th scope="col">Device Name</th>
+                    <th scope="col">Device ID</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>BP Meter</td>
+                    <td>42414</td>
+                  </tr>
+                  <tr>
+                    <td>Stethoscope</td>
+                    <td>42414</td>
+                  </tr>
+                  <tr>
+                    <td>Pulse Oximeter</td>
+                    <td>42414</td>
+                  </tr>
+                  <tr>
+                    <td>Weight Scale</td>
+                    <td>42414</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-6">
+              <h5 class="fw-bold mb-4">Forecasts</h5>
+              <table class="table table-bordered forecasts">
+                <tr>
+                  <td>
+                    Lorem ipsum dolor sit amet consectetur. Eget elit quam in
+                    blandit vulputate.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Lorem ipsum dolor sit amet consectetur. Eget elit quam in
+                    blandit vulputate.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Lorem ipsum dolor sit amet consectetur. Eget elit quam in
+                    blandit vulputate.
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="shareData"
+      tabindex="-1"
+      aria-labelledby="shareDataLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header border-0">
+            <h5 class="modal-title" id="shareDataLabel"></h5>
+          </div>
+          <div class="modal-body">
+            <div class="text-center">
+              <h5 class="fw-bold mb-4">SHARE DATA WITH OTHER DOCTORS</h5>
+              <table class="table table-borderless">
+                <tbody>
+                  <tr>
+                    <th>Email</th>
+                    <td>
+                      <input type="text" class="form-control" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <a href="" class="btn btn-primary btn-lg px-xl-4 mx-3">
+                <span class="material-symbols material-symbols-rounded"
+                  >check</span
+                >
+                Share
+              </a>
+              <button
+                class="btn btn-outline-primary btn-lg px-xl-4 mx-3"
+                data-bs-dismiss="modal"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./assets/js/all.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/datatables.js"></script>
+    <script>
+      $(document).ready(function () {
+        if ($(window).width() < 768) {
+          $("#search").click(function () {
+            $(this).next().slideToggle();
+          });
+        }
+
+        if ($(window).width() < 1100) {
+          $("#menu").click(function () {
+            $("aside").toggleClass("d-flex");
+          });
+        }
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const ctx = document.getElementById("myChart");
+
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: [
+            "1st",
+            "2nd",
+            "3rd",
+            "4th",
+            "5th",
+            "6th",
+            "7th",
+            "8th",
+            "9th",
+            "10th",
+            "11th",
+            "12th",
+            "13th",
+            "14th",
+            "15th",
+          ],
+          datasets: [
+            {
+              data: [
+                40, 30, 90, 85, 112, 126, 140, 135, 120, 120, 120, 130, 130,
+                150, 80,
+              ],
+              borderWidth: 4,
+              borderColor: "#1577F2",
+              fill: {
+                target: "origin",
+                above: "rgba(192, 228, 255, 0.12)", // Area will be red above the origin
+              },
+            },
+          ],
+        },
+        options: {
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+          elements: {
+            point: {
+              radius: 0,
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: {
+                display: false,
+              },
+              ticks: {
+                font: {
+                  family: "Raleway", // Your font family
+                  size: 14,
+                },
+              },
+            },
+            x: {
+              grid: {
+                display: false,
+              },
+              ticks: {
+                font: {
+                  family: "Raleway", // Your font family
+                  size: 14,
+                },
+              },
+            },
+          },
+          plugins: {
+            legend: {
+              labels: {
+                // This more specific font property overrides the global property
+                font: {
+                  size: 16,
+                  family: "'Raleway'",
+                },
+              },
+            },
+          },
+        },
+      });
+    </script>
+    <script>
+      const ctx2 = document.getElementById("myChart2");
+
+      new Chart(ctx2, {
+        type: "line",
+        data: {
+          labels: [
+            "1st",
+            "2nd",
+            "3rd",
+            "4th",
+            "5th",
+            "6th",
+            "7th",
+            "8th",
+            "9th",
+            "10th",
+            "11th",
+            "12th",
+            "13th",
+            "14th",
+            "15th",
+          ],
+          datasets: [
+            {
+              data: [
+                40, 30, 90, 85, 112, 126, 140, 135, 120, 120, 120, 130, 130,
+                150, 80,
+              ],
+              borderWidth: 4,
+              borderColor: "#B2EA47",
+              fill: {
+                target: "origin",
+                above: "#D6FFDA1D", // Area will be red above the origin
+              },
+            },
+          ],
+        },
+        options: {
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+          elements: {
+            point: {
+              radius: 0,
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: {
+                display: false,
+              },
+              ticks: {
+                font: {
+                  family: "Raleway", // Your font family
+                  size: 14,
+                },
+              },
+            },
+            x: {
+              grid: {
+                display: false,
+              },
+              ticks: {
+                font: {
+                  family: "Raleway", // Your font family
+                  size: 14,
+                },
+              },
+            },
+          },
+          plugins: {
+            legend: {
+              labels: {
+                // This more specific font property overrides the global property
+                font: {
+                  size: 16,
+                  family: "'Raleway'",
+                },
+              },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

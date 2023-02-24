@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add New Patient</title>
+    <link rel="stylesheet" href="./assets/css/datatables.css" />
+    <link rel="stylesheet" href="./assets/css/bootstrap.css" />
+  </head>
+  <body>
+    <aside>
+      <div class="top">
+        <a href="./index.html" class="d-block">
+          <img src="./assets/images/logo-white.svg" height="48px" class="logo" alt="">
+        </a>
+        <ul class="list-unstyled ps-0 mb-0">
+          <li class="side-link">
+            <a href="./dashboard.html">
+              <span class="material-symbols material-symbols-rounded"
+                >team_dashboard</span
+              >
+              Dashboard
+            </a>
+          </li>
+          <li class="side-link active">
+            <a href="./registeredpatients.html">
+              <span class="material-symbols material-symbols-rounded"
+                >person</span
+              >
+              Patients
+            </a>
+          </li>
+          <li class="side-link">
+            <a href="./chat.html">
+              <span class="material-symbols material-symbols-rounded"
+                >mail</span
+              >
+              Messages
+              <div class="badge">New</div>
+            </a>
+          </li>
+          <li class="side-link">
+            <a href="./profile.html">
+              <span class="material-symbols material-symbols-rounded"
+                >settings</span
+              >
+              Settings
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="bottom">
+        <div class="side-link">
+          <a href="">
+            <span class="material-symbols material-symbols-rounded"
+              >logout</span
+            >
+            Logout
+          </a>
+        </div>
+      </div>
+    </aside>
+    <main>
+      <header>
+        <div class="container">
+          <div class="search-container">
+            <a href="" class="logo">Udatum</a>
+            <button type="button" class="search" id="search">
+              <span class="material-symbols material-symbols-rounded"
+                >search</span
+              >
+            </button>
+            <form action="" class="w-100">
+              <input
+                type="search"
+                class="form-control w-100"
+                name=""
+                id=""
+                placeholder="Search"
+              />
+              <button class="btn btn-primary rounded-pill">
+                <span class="material-symbols material-symbols-rounded"
+                  >search</span
+                >
+              </button>
+            </form>
+          </div>
+          <div class="right">
+            <div class="dropdown">
+              <button type="button" class="notifications unread" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="material-symbols material-symbols-rounded"
+                  >notifications</span
+                >
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </div>
+            
+            <button type="button" class="avatar unread">JD</button>
+            <button type="button" class="menu" id="menu">
+              <span class="material-symbols material-symbols-rounded"
+                >menu</span
+              >
+            </button>
+          </div>
+        </div>
+      </header>
+      <div class="container">
+        <div class="top-bar">
+          <button class="btn btn-primary btn-dashboard">
+            <span class="material-symbols material-symbols-rounded">add</span>
+            Add New Patient
+          </button>
+          <div class="date-time">
+            <span class="me-4">11th December, 2022</span>
+            <span>6:01 p.m</span>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="patients-box">
+          <h5 class="heading">Add Patient Data</h5>
+          <div class="row gx-3 gy-xl-5 gy-3 add-patient-table">
+            <div class="col-md-6">
+              <table class="w-100">
+                <tr>
+                  <td class="h5 text-center">
+                    <span class="material-symbols material-symbols-rounded"
+                      >person</span
+                    >
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Patient Name"
+                    />
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-6">
+              <table class="w-100">
+                <tr>
+                  <td class="h5 text-center">
+                    <span class="material-symbols material-symbols-rounded"
+                      >cake</span
+                    >
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      onfocus="(this.type='date')"
+                      onfocusout="(this.type='text')"
+                      placeholder="Birthday"
+                      class="form-control"
+                    />
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-6">
+              <table class="w-100">
+                <tr>
+                  <td class="h5 text-center">
+                    <span class="material-symbols material-symbols-rounded"
+                      >email</span
+                    >
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Patient Email"
+                    />
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-6">
+              <table class="w-100">
+                <tr>
+                  <td class="h5 text-center">
+                    <span class="material-symbols material-symbols-rounded"
+                      >email</span
+                    >
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Password for Patient Account"
+                    />
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-6">
+              <table class="w-100">
+                <tr>
+                  <td class="h5 text-center">
+                    <span class="material-symbols material-symbols-rounded"
+                      >calendar_month</span
+                    >
+                  </td>
+                  <td>
+                    <input type="date" class="form-control" disabled />
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-6">
+              <table class="w-100">
+                <tr>
+                  <td class="h5 text-center">
+                    <span class="material-symbols material-symbols-rounded"
+                      >analytics</span
+                    >
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Device Barcode"
+                    />
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-6">
+              <table class="w-100">
+                <tr>
+                  <td class="h5 text-center">
+                    <span class="material-symbols material-symbols-rounded"
+                      >analytics</span
+                    >
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="High threshold (optional)"
+                    />
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-6">
+              <table class="w-100">
+                <tr>
+                  <td class="h5 text-center">
+                    <span class="material-symbols material-symbols-rounded"
+                      >analytics</span
+                    >
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Low threshold (optional)"
+                    />
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-12">
+              <table class="w-100">
+                <tr>
+                  <td class="h5 text-center">
+                    <span class="material-symbols material-symbols-rounded">
+                      format_ink_highlighter
+                    </span>
+                  </td>
+                  <td>
+                    <textarea
+                      name=""
+                      id=""
+                      cols="30"
+                      rows="4"
+                      class="form-control"
+                      placeholder="Medical Condition"
+                    ></textarea>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-12">
+              <table class="w-100">
+                <tr>
+                  <td class="h5 text-center">
+                    <span class="material-symbols material-symbols-rounded">
+                      format_ink_highlighter
+                    </span>
+                  </td>
+                  <td>
+                    <textarea
+                      name=""
+                      id=""
+                      cols="30"
+                      rows="4"
+                      class="form-control"
+                      placeholder="Notes"
+                    ></textarea>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-12 text-center">
+              <button
+                class="btn btn-primary btn-lg px-xl-4"
+                data-bs-toggle="modal"
+                data-bs-target="#patientadded"
+              >
+                <span class="material-symbols material-symbols-rounded"
+                  >check</span
+                >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="patientadded"
+      tabindex="-1"
+      aria-labelledby="patientaddedLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header border-0">
+            <h5 class="modal-title" id="patientaddedLabel"></h5>
+            <button
+              class="btn btn-light text-danger bg-transparent btn-lg"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              <span class="material-symbols material-symbols-rounded top-0"
+                >cancel</span
+              >
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="text-center">
+              <img src="./assets/images/patientadded.png" class="mb-4" alt="">
+              <h5 class="fw-bold mb-5 pb-2">PATIENT SUCCESSFULLY ADDED.</h5>
+              <a href="" class="btn btn-primary btn-lg px-xl-4 mx-3">
+                <span class="material-symbols material-symbols-rounded">check</span>
+                Show
+              </a>
+              <button class="btn btn-outline-primary btn-lg px-xl-4 mx-3">
+                <span class="material-symbols material-symbols-rounded">add</span>
+                Add Another Patient
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./assets/js/all.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/datatables.js"></script>
+    <script>
+      $(document).ready(function () {
+        if ($(window).width() < 768) {
+          $("#search").click(function () {
+            $(this).next().slideToggle();
+          });
+        }
+
+        if ($(window).width() < 1100) {
+          $("#menu").click(function () {
+            $("aside").toggleClass("d-flex");
+          });
+        }
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        var table = $("#example").DataTable({
+          dom: "Bfrtip",
+          lengthMenu: [8, 32, 50, 75, 100],
+        });
+      });
+    </script>
+  </body>
+</html>

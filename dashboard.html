@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.css" />
+  </head>
+  <body>
+    <aside>
+      <div class="top">
+        <a href="./index.html" class="d-block">
+          <img src="./assets/images/logo-white.svg" height="48px" class="logo" alt="">
+        </a>
+        <ul class="list-unstyled ps-0 mb-0">
+          <li class="side-link active">
+            <a href="./dashboard.html">
+              <span class="material-symbols material-symbols-rounded"
+                >team_dashboard</span
+              >
+              Dashboard
+            </a>
+          </li>
+          <li class="side-link">
+            <a href="./registeredpatients.html">
+              <span class="material-symbols material-symbols-rounded"
+                >person</span
+              >
+              Patients
+            </a>
+          </li>
+          <li class="side-link">
+            <a href="./chat.html">
+              <span class="material-symbols material-symbols-rounded"
+                >mail</span
+              >
+              Messages
+              <div class="badge">New</div>
+            </a>
+          </li>
+          <li class="side-link">
+            <a href="./profile.html">
+              <span class="material-symbols material-symbols-rounded"
+                >settings</span
+              >
+              Settings
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="bottom">
+        <div class="side-link">
+          <a href="">
+            <span class="material-symbols material-symbols-rounded"
+              >logout</span
+            >
+            Logout
+          </a>
+        </div>
+      </div>
+    </aside>
+    <main>
+      <header>
+        <div class="container">
+          <div class="search-container">
+            <a href="" class="logo">Udatum</a>
+            <button type="button" class="search" id="search">
+              <span class="material-symbols material-symbols-rounded"
+                >search</span
+              >
+            </button>
+            <form action="" class="w-100">
+              <input
+                type="search"
+                class="form-control w-100"
+                name=""
+                id=""
+                placeholder="Search"
+              />
+              <button class="btn btn-primary rounded-pill">
+                <span class="material-symbols material-symbols-rounded"
+                  >search</span
+                >
+              </button>
+            </form>
+          </div>
+          <div class="right">
+            <div class="dropdown">
+              <button type="button" class="notifications unread" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="material-symbols material-symbols-rounded"
+                  >notifications</span
+                >
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </div>
+            
+            <button type="button" class="avatar unread">JD</button>
+            <button type="button" class="menu" id="menu">
+              <span class="material-symbols material-symbols-rounded"
+                >menu</span
+              >
+            </button>
+          </div>
+        </div>
+      </header>
+      <div class="container">
+        <div class="top-bar">
+          <div class="date-time">
+            <span class="me-4">11th December, 2022</span>
+            <span>6:01 p.m</span>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="container">
+          <div class="row gx-3 mx-0 gy-xl-5 gy-3 w-100">
+            <div class="col-md-4">
+              <div class="dashboard-box">
+                <h4 class="heading">Needs Monitoring</h4>
+                <div class="circle-container warning">
+                  <div class="circle">1</div>
+                  <p class="message">Patient needs your attention.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-6">
+              <div class="dashboard-box">
+                <h4 class="heading">Physiologic</h4>
+                <div class="row">
+                  <div class="col-6">
+                    <div class="circle-container orange">
+                      <div class="circle">0</div>
+                      <p class="message">Alerts</p>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="circle-container warning">
+                      <div class="circle">2</div>
+                      <p class="message">Warnings</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="dashboard-box">
+                <h4 class="heading">Activity</h4>
+                <div class="row gy-xl-4 gy-3">
+                  <div class="col-4">
+                    <div class="circle-container active">
+                      <div class="circle">1</div>
+                      <p class="message">Active</p>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="circle-container risk">
+                      <div class="circle">0</div>
+                      <p class="message">At Risk</p>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="circle-container dormant">
+                      <div class="circle">2</div>
+                      <p class="message">Dormant</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="./assets/js/all.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script>
+      $(document).ready(function () {
+        if ($(window).width() < 768) {
+          $("#search").click(function () {
+            $(this).next().slideToggle();
+          });
+        };
+
+        if ($(window).width() < 1100) {
+          $("#menu").click(function () {
+            $('aside').toggleClass('d-flex');
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

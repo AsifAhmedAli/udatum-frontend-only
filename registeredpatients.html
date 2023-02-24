@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registered Patients</title>
+    <link rel="stylesheet" href="./assets/css/datatables.css" />
+    <link rel="stylesheet" href="./assets/css/bootstrap.css" />
+  </head>
+  <body>
+    <aside>
+      <div class="top">
+        <a href="./index.html" class="d-block">
+          <img src="./assets/images/logo-white.svg" height="48px" class="logo" alt="">
+        </a>
+        <ul class="list-unstyled ps-0 mb-0">
+          <li class="side-link">
+            <a href="./dashboard.html">
+              <span class="material-symbols material-symbols-rounded"
+                >team_dashboard</span
+              >
+              Dashboard
+            </a>
+          </li>
+          <li class="side-link active">
+            <a href="./registeredpatients.html">
+              <span class="material-symbols material-symbols-rounded"
+                >person</span
+              >
+              Patients
+            </a>
+          </li>
+          <li class="side-link">
+            <a href="./chat.html">
+              <span class="material-symbols material-symbols-rounded"
+                >mail</span
+              >
+              Messages
+              <div class="badge">New</div>
+            </a>
+          </li>
+          <li class="side-link">
+            <a href="./profile.html">
+              <span class="material-symbols material-symbols-rounded"
+                >settings</span
+              >
+              Settings
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="bottom">
+        <div class="side-link">
+          <a href="">
+            <span class="material-symbols material-symbols-rounded"
+              >logout</span
+            >
+            Logout
+          </a>
+        </div>
+      </div>
+    </aside>
+    <main>
+      <header>
+        <div class="container">
+          <div class="search-container">
+            <a href="" class="logo">Udatum</a>
+            <button type="button" class="search" id="search">
+              <span class="material-symbols material-symbols-rounded"
+                >search</span
+              >
+            </button>
+            <form action="" class="w-100">
+              <input
+                type="search"
+                class="form-control w-100"
+                name=""
+                id=""
+                placeholder="Search"
+              />
+              <button class="btn btn-primary rounded-pill">
+                <span class="material-symbols material-symbols-rounded"
+                  >search</span
+                >
+              </button>
+            </form>
+          </div>
+          <div class="right">
+            <div class="dropdown">
+              <button type="button" class="notifications unread" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="material-symbols material-symbols-rounded"
+                  >notifications</span
+                >
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </div>
+            
+            <button type="button" class="avatar unread">JD</button>
+            <button type="button" class="menu" id="menu">
+              <span class="material-symbols material-symbols-rounded"
+                >menu</span
+              >
+            </button>
+          </div>
+        </div>
+      </header>
+      <div class="container">
+        <div class="top-bar">
+          <a href="./addpatient.html" class="btn btn-primary btn-dashboard">
+            <span class="material-symbols material-symbols-rounded">add</span>
+            Add New Patient
+          </a>
+          <div class="date-time">
+            <span class="me-4">11th December, 2022</span>
+            <span>6:01 p.m</span>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="patients-box">
+          <h5 class="heading">Registered Patients</h5>
+          <div class="register-search-filter">
+            <div class="left mb-3">
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="Search By Name"
+              />
+              <button class="px-lg-5 rounded btn btn-primary py-2">
+                <span class="material-symbols material-symbols-rounded"
+                  >search</span
+                >
+              </button>
+            </div>
+            <div class="dropdown mb-3">
+              <button
+                class="btn btn-outline-secondary py-2 dropdown-toggle rounded"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Filter By
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table
+              class="table table-borderless table-custom clickable"
+              id="example"
+            >
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Patient Name</th>
+                  <th scope="col">Patient Email</th>
+                  <th scope="col" class="text-center">Birthdate</th>
+                  <th scope="col" class="text-center">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <a href="./patientdetails.html"></a>
+                  </td>
+                  <td>Haseeb Khan</td>
+                  <td>haseeb@email.com</td>
+                  <td class="text-center">12/12/1996</td>
+                  <td class="text-center">
+                    <button class="table-patient-action open-chat">
+                      <span
+                        class="material-symbols material-symbols-rounded only-icon"
+                        >chat_bubble</span
+                      >
+                    </button>
+                    <a href="" class="table-patient-action">
+                      <span
+                        class="material-symbols material-symbols-rounded only-icon"
+                        >edit</span
+                      >
+                    </a>
+                    <a href="" class="table-patient-action">
+                      <span
+                        class="material-symbols material-symbols-rounded only-icon"
+                        >delete</span
+                      >
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="./patientdetails.html"></a>
+                  </td>
+                  <td>Haseeb Khan</td>
+                  <td>haseeb@email.com</td>
+                  <td class="text-center">12/12/1996</td>
+                  <td class="text-center">
+                    <button class="table-patient-action open-chat">
+                      <span
+                        class="material-symbols material-symbols-rounded only-icon"
+                        >chat_bubble</span
+                      >
+                    </button>
+                    <a href="" class="table-patient-action">
+                      <span
+                        class="material-symbols material-symbols-rounded only-icon"
+                        >edit</span
+                      >
+                    </a>
+                    <a href="" class="table-patient-action">
+                      <span
+                        class="material-symbols material-symbols-rounded only-icon"
+                        >delete</span
+                      >
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="bubble-chat">
+      <div class="chat-header">
+        <h5 class="user-name mb-0">Haseeb Ahmed</h5>
+        <button class="close-chat">
+          <span class="material-symbols material-symbols-rounded">close</span>
+        </button>
+      </div>
+      <div class="chat-body flex-fill">
+        <div class="date"><p>15 Dec 2023</p></div>
+        <div class="message-container other">
+          <div class="message">
+            Hi, Doctor I had some issues while driving this morning.
+          </div>
+          <div class="time">10:15 am</div>
+        </div>
+        <div class="message-container me">
+          <div class="message">What issue?.</div>
+          <div class="time">10:15 am</div>
+        </div>
+        <div class="message-container other">
+          <div class="message">
+            Hi, Doctor I had some issues while driving this morning.
+          </div>
+          <div class="time">10:15 am</div>
+        </div>
+        <div class="unread"><p>Unread</p></div>
+        <div class="message-container other">
+          <div class="message">
+            Hi, Doctor I had some issues while driving this morning.
+          </div>
+          <div class="time">10:15 am</div>
+        </div>
+      </div>
+      <div class="chat-bottom">
+        <div class="message-con">
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="1"
+            oninput="auto_grow(this)"
+            placeholder="Type Your Message Here..."
+          ></textarea>
+          <div class="attachments">
+            <button
+              class="attachment"
+              onclick="document.getElementById('attach_file').click()"
+            >
+              <span class="material-symbols material-symbols-rounded top-0"
+                >attach_file</span
+              >
+            </button>
+            <input type="file" name="" id="attach_file" class="d-none" />
+            <button class="attachment">
+              <span class="material-symbols material-symbols-rounded top-0"
+                >mood</span
+              >
+            </button>
+          </div>
+          <button type="submit" class="btn btn-primary send px-3">
+            <span class="material-symbols material-symbols-rounded"
+              >send</span
+            >
+            Send
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade custom-modal"
+      id="viewDetails"
+      tabindex="-1"
+      aria-labelledby="viewDetailsLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header position-absolute w-100 border-0">
+            <h5 class="modal-title" id="viewDetailsLabel"></h5>
+            <button
+              class="btn btn-light text-danger bg-transparent btn-lg"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              <span class="material-symbols material-symbols-rounded top-0"
+                >cancel</span
+              >
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="header">
+              <div class="info gap-xl-4 gap-3">
+                <h6 class="heading">Sign Up Date</h6>
+                <p class="mb-0">12/12/2022</p>
+              </div>
+              <h4 class="title">Patient Details</h4>
+            </div>
+            <div class="container-fluid">
+              <div class="row g-3 pt-5">
+                <div class="col-lg-4 col-12">
+                  <div class="info gap-xl-4 gap-3">
+                    <h6 class="heading">Patient Name</h6>
+                    <p class="mb-0">Haseeb Khan</p>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-12">
+                  <div class="info justify-content-lg-center gap-xl-4 gap-3">
+                    <h6 class="heading">Patient Email</h6>
+                    <p class="mb-0">Haseebkhan@gmail.com</p>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-12">
+                  <div class="info justify-content-lg-end gap-xl-4 gap-3">
+                    <h6 class="heading">Birthdate</h6>
+                    <p class="mb-0">12-12-1996</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table class="table table-borderless info d-table mt-5">
+              <tbody>
+                <tr>
+                  <td style="width: 144px"><h6>Medical Condition</h6></td>
+                  <td>
+                    <textarea
+                      name=""
+                      id=""
+                      cols="30"
+                      rows="3"
+                      class="form-control w-100"
+                    ></textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width: 144px"><h6>Notes</h6></td>
+                  <td>
+                    <textarea
+                      name=""
+                      id=""
+                      cols="30"
+                      rows="3"
+                      class="form-control w-100"
+                    ></textarea>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="text-center mt-xl-5 mt-3">
+              <a href="" class="btn btn-primary btn-lg px-xl-4 mx-3">
+                <span class="material-symbols material-symbols-rounded"
+                  >check</span
+                >
+                Update
+              </a>
+              <button class="btn btn-outline-primary btn-lg px-xl-4 mx-3">
+                <span class="material-symbols material-symbols-rounded"
+                  >share</span
+                >
+                Share Data
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./assets/js/all.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/datatables.js"></script>
+    <script>
+      $(document).ready(function () {
+        if ($(window).width() < 768) {
+          $("#search").click(function () {
+            $(this).next().slideToggle();
+          });
+        }
+
+        if ($(window).width() < 1100) {
+          $("#menu").click(function () {
+            $("aside").toggleClass("d-flex");
+          });
+        }
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        var table = $("#example").DataTable({
+          dom: "Bfrtip",
+          lengthMenu: [8, 32, 50, 75, 100],
+        });
+      });
+    </script>
+
+    <script>
+      $(".open-chat").click(function () {
+        $(".bubble-chat").addClass("d-flex");
+      });
+
+      $(".close-chat").click(function () {
+        $(".bubble-chat").removeClass("d-flex");
+      });
+    </script>
+
+    <script>
+      function auto_grow(element) {
+        element.style.height = "5px";
+        element.style.height = element.scrollHeight + "px";
+      }
+    </script>
+    <script>
+      objDiv = document.getElementById("chat-box");
+      objDiv.scrollTop = objDiv.scrollHeight;
+    </script>
+  </body>
+</html>
