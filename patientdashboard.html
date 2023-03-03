@@ -7,6 +7,7 @@
     <title>Patient Details</title>
     <link rel="stylesheet" href="./assets/css/datatables.css" />
     <link rel="stylesheet" href="./assets/css/bootstrap.css" /><script src=".env"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
     <aside>
@@ -49,8 +50,8 @@
       </div>
       <div class="bottom">
         <div class="side-link">
-          <a href="">
-            <span class="material-symbols material-symbols-rounded"
+          <a href="" id="logout-btn">
+            <span class="material-symbols material-symbols-rounded" 
               >logout</span
             >
             Logout
@@ -106,7 +107,8 @@
               </ul>
             </div>
 
-            <button type="button" class="avatar unread">JD</button>
+            <!-- <button type="button" class="avatar unread">JD</button> -->
+            <button type="button" class="avatar unread" id="user-initials"></button>
             <button type="button" class="menu" id="menu">
               <span class="material-symbols material-symbols-rounded"
                 >menu</span
@@ -117,7 +119,7 @@
       </header>
       <div class="container">
         <div class="top-bar">
-          <div class="date-time">
+          <div class="date-time" id="clock">
             <span class="me-4">11th December, 2022</span>
             <span>6:01 p.m</span>
           </div>
@@ -450,6 +452,89 @@
           },
         },
       });
+    </script>
+    <script>
+        $(document).ready(function() {
+  // Check if user is logged in and display name initials
+  var token = localStorage.getItem('token');
+// Extract the user's name from the token
+var name = JSON.parse(atob(token.split('.')[1])).name;
+
+// Display the first two letters of the name in the designated element
+var initials = name.substr(0, 2).toUpperCase();
+$('#user-initials').text(initials);
+});
+
+//  code for clock
+
+$(document).ready(function() {
+  // Update clock display every second
+  setInterval(function() {
+    var now = new Date();
+    
+    // Format date and time
+    var date = now.toLocaleDateString('en-US', {day: 'numeric', month: 'long', year: 'numeric'});
+    var hours = now.getHours();
+    var minutes = now.getMinutes();
+    var seconds = now.getSeconds();
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+    var time = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+    
+    // Display date and time in clock element
+    $('#clock').text(date + ' ' + time);
+  }, 1000);
+});
+
+//  Logout Button code
+$(document).ready(function() {
+  // Attach click event handler to logout button
+  $('#logout-btn').click(function(event) {
+    event.preventDefault();
+    // Display confirmation dialog using SweetAlert2
+    Swal.fire({
+      title: 'Are you sure you want to logout?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, logout'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // If user confirms logout, get authentication token from local storage
+        var token = localStorage.getItem('token');
+
+        // Send POST request to logout API endpoint
+        $.ajax({
+          url: 'http://localhost:3000/doctor-logout',
+          type: 'GET',
+          headers: {
+            'Authorization': 'Bearer ' + token
+          },
+          success: function(response) {
+            // If logout successful, remove token from local storage and redirect to login page
+            localStorage.removeItem('token');
+            window.location.href = './login.html';
+          },
+          error: function(xhr, status, error) {
+            // If error occurred, display error message using SweetAlert2
+            Swal.fire({
+              title: 'Error',
+              text: 'Logout failed: ' + error,
+              icon: 'error',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'OK'
+            });
+          }
+        });
+      }
+    });
+  });
+});
+
     </script>
   </body>
 </html>

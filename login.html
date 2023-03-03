@@ -7,6 +7,7 @@
     <title>Login</title>
     <link rel="stylesheet" href="./assets/css/datatables.css" />
     <link rel="stylesheet" href="./assets/css/bootstrap.css" /><script src=".env"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
     <div class="main-login p-3">
@@ -19,12 +20,15 @@
                   <img src="./assets/images/logo-dark.svg" height="54px" class="mb-3" alt="" />
                 </a>
               </div>
-              <form action="">
+              <form action="" id="login-form" method="post">
                 <h4 class="form-title">Log In To Your Account</h4>
                 <div class="row gy-xl-5 gy-4">
                   <div class="col-12">
                     <div class="form-group mb-0">
                       <input
+                      id="email" 
+                      name="email" 
+                      required
                         type="email"
                         class="form-control"
                         placeholder="Email"
@@ -38,8 +42,10 @@
                         class="form-control"
                         placeholder="Password"
                         id="password"
+                        name="password"
+                          required
                       />
-                      <button type="button" class="btn btn-light viewPassword">
+                      <button type="button" onclick="visibilitypassword()" class="btn btn-light viewPassword">
                         <span class="material-symbols material-symbols-rounded"
                           >visibility</span
                         >
@@ -73,10 +79,24 @@
         </div>
       </div>
     </div>
+    <div id="div12"></div>
+    <div class="loading" id="loader1" style="visibility: hidden;">Loading&#8230;</div>
 
     <script src="./assets/js/all.js"></script>
     <script src="./assets/js/script.js"></script>
     <script>
+
+      // Visibility password code
+      function visibilitypassword(){
+// console.log(document.getElementById("confirmPassword").type);
+  if(document.getElementById("password").type == "text"){
+  document.getElementById("password").type = "password";
+}
+else{
+  document.getElementById("password").type = "text";
+}
+
+}
       $(".viewPassword").click(function () {
         var inputPassword = $(this).siblings("input");
         if (inputPassword.type === "password") {
@@ -85,6 +105,67 @@
           inputPassword.type = "password"
         }
       });
+      
+
+      // LoginAPI integration
+      
+			// const apiUrl = loginAs === 'user' ? '/api/user/login' : '/api/patient/login';
+			// const apiUrl = "http://localhost:3000/doctor-login" || "http://localhost:3000/patient-login";
+
+      $(document).ready(function() {
+  $('#login-form').submit(function(event) {
+    event.preventDefault();
+    
+    var email = $('#email').val();
+    var password = $('#password').val();
+    
+    // Check users API first
+    document.getElementById("loader1").style.visibility = "visible";
+    $.ajax({
+      url: 'http://localhost:3000/doctor-login',
+      method: 'POST',
+      data: {
+        email: email,
+        password: password
+      }
+    }).done(function(response) {
+      document.getElementById("loader1").style.visibility = "hidden";
+      // Login successful
+      // document.cookie = `token=${response.token}; path=/`;
+      // console.log("Token set in cookies:", document.cookie)
+      localStorage.setItem('token', response.token);
+      // localStorage.setItem('name', response.name);
+      window.location.replace('dashboard.html');
+    }).fail(function() {
+      // Try patient API
+      document.getElementById("loader1").style.visibility = "visible";
+      $.ajax({
+        url: 'http://localhost:3000/patient-login',
+        method: 'POST',
+        data: {
+          email: email,
+          password: password
+        }
+      }).done(function(response) {
+        // Login successful
+        document.getElementById("loader1").style.visibility = "hidden";
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('name', response.name);
+        window.location.replace('patientdashboard.html');
+      }).fail(function(error) {
+        document.getElementById("loader1").style.visibility = "hidden";
+        // Login failed
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Invalid username or password!'
+        });
+      });
+    });
+  });
+});
+
+    
     </script>
   </body>
 </html>

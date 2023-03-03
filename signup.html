@@ -27,6 +27,7 @@
                       <input
                         type="text"
                         name="name"
+                        id="name"
                         class="form-control"
                         placeholder="Full Name"
                         required
@@ -38,6 +39,7 @@
                       <input
                         type="email"
                         name="email"
+                        id="email"
                         class="form-control"
                         placeholder="Email"
                         required
@@ -135,55 +137,111 @@ else{
 
 }
 
-          var request;
-          url1 = `${baseurl}/doctor-registration`;
-          // console.log(url1);
-$("#signupform").submit(function (event) {
-// alert(document.getElementById("imagesuploadform").value);
-    // Prevent default posting of form - put here to work in case of errors
-    event.preventDefault();
-
-    // Abort any pending request
+$(document).ready(function() {
+  var request;
+  //     // Abort any pending request
     if (request) {
         request.abort();
     }
-    // setup some local variables
-    // var formData = new FormData(this);
-    var $form = $(this);
 
-    // Let's select and cache all the fields
-    var $inputs = $form.find("input, select, button, textarea");
+  $("#signupform").submit(function(event) {
+    
+    // Prevent default form submission
+    event.preventDefault();
+    
 
-    // Serialize the data in the form
-    var serializedData = $form.serialize();
-    // console.log(serializedData)
-    // console.log(formData.cname);
-    var password1 = document.getElementById("password").value;
-    var confirmPassword1 = document.getElementById("confirmPassword").value;
-     // var password1 = document.getElementsByName("password").value;
-    if(confirmPassword1 == password1){
-      if(password1.length >= 8){
-        document.getElementById("loader1").style.visibility = "visible";
-        $.ajax({
-            type: "post",
-            data: serializedData,
-            url: url1,
-            success: function (result) {
-              console.log(result);
-                // $("#div12").html(result);
-                document.getElementById("loader1").style.visibility = "hidden";
-            },
+    // Get form data
+    var name = $("#name").val();
+    var email = $("#email").val();
+    var password = $("#password").val();
+
+    // Make Ajax request to signup API
+    document.getElementById("loader1").style.visibility = "visible";
+    $.ajax({
+      type: "POST",
+      url: `${baseurl}/doctor-registration`,
+      data: {
+        name: name,
+        email: email,
+        password: password
+      },
+      success: function(response) {
+        console.log(response)
+        document.getElementById("loader1").style.visibility = "hidden";
+        // Show success message using Sweet Alert2
+        Swal.fire({
+          title: "Sign Up Successful!",
+          icon: "success",
+          text: response.message
+        });
+        
+      },
+      
+      error: function(response) {
+        document.getElementById("loader1").style.visibility = "hidden";
+        // Show error message using Sweet Alert2
+        Swal.fire({
+          title: "Sign Up Failed!",
+          text: response.message,
+          icon: "error"
         });
       }
-      else{
-        alert("short password");
-      }
-    }
-    else{
-      alert("not same");
-    }
-
+    });
+  });
 });
+
+
+
+
+//           var request;
+//           url1 = `${baseurl}/doctor-registration`;
+//           // console.log(url1);
+// $("#signupform").submit(function (event) {
+// // alert(document.getElementById("imagesuploadform").value);
+//     // Prevent default posting of form - put here to work in case of errors
+//     event.preventDefault();
+
+//     // Abort any pending request
+//     if (request) {
+//         request.abort();
+//     }
+//     // setup some local variables
+//     // var formData = new FormData(this);
+//     var $form = $(this);
+
+//     // Let's select and cache all the fields
+//     var $inputs = $form.find("input, select, button, textarea");
+
+//     // Serialize the data in the form
+//     var serializedData = $form.serialize();
+//     // console.log(serializedData)
+//     // console.log(formData.cname);
+//     var password1 = document.getElementById("password").value;
+//     var confirmPassword1 = document.getElementById("confirmPassword").value;
+//      // var password1 = document.getElementsByName("password").value;
+//     if(confirmPassword1 == password1){
+//       if(password1.length >= 8){
+//         document.getElementById("loader1").style.visibility = "visible";
+//         $.ajax({
+//             type: "post",
+//             data: serializedData,
+//             url: url1,
+//             success: function (result) {
+//               console.log(result);
+//                 // $("#div12").html(result);
+//                 document.getElementById("loader1").style.visibility = "hidden";
+//             },
+//         });
+//       }
+//       else{
+//         alert("short password");
+//       }
+//     }
+//     else{
+//       alert("not same");
+//     }
+
+// });
 
 
       $(".viewPassword").click(function () {
@@ -195,5 +253,6 @@ $("#signupform").submit(function (event) {
         }
       });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>

@@ -6,13 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile</title>
     <link rel="stylesheet" href="./assets/css/datatables.css" />
-    <link rel="stylesheet" href="./assets/css/bootstrap.css" /><script src=".env"></script>
+    <link rel="stylesheet" href="./assets/css/bootstrap.css" />
+    <script src=".env"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
     <aside>
       <div class="top">
         <a href="./index.html" class="d-block">
-          <img src="./assets/images/logo-white.svg" height="48px" class="logo" alt="">
+          <img
+            src="./assets/images/logo-white.svg"
+            height="48px"
+            class="logo"
+            alt=""
+          />
         </a>
         <ul class="list-unstyled ps-0 mb-0">
           <li class="side-link">
@@ -88,7 +95,14 @@
           </div>
           <div class="right">
             <div class="dropdown">
-              <button type="button" class="notifications unread" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <button
+                type="button"
+                class="notifications unread"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
                 <span class="material-symbols material-symbols-rounded"
                   >notifications</span
                 >
@@ -96,11 +110,17 @@
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" href="#">Action</a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
               </ul>
             </div>
-            
-            <button type="button" class="avatar unread">JD</button>
+
+            <button
+              type="button"
+              class="avatar unread"
+              id="user-initials"
+            ></button>
             <button type="button" class="menu" id="menu">
               <span class="material-symbols material-symbols-rounded"
                 >menu</span
@@ -114,7 +134,7 @@
           <div class="float-start">
             <h5 class="fw-bold">Profile Settings</h5>
           </div>
-          <div class="date-time">
+          <div class="date-time" id="clock">
             <span class="me-4">11th December, 2022</span>
             <span>6:01 p.m</span>
           </div>
@@ -168,10 +188,12 @@
                     <td class="h5 text-center">Name</td>
                     <td>
                       <input
+                        id="name"
                         type="text"
                         class="form-control"
-                        placeholder="Patient Name"
-                        value="Dr Harris"
+                        placeholder="Doctor Name"
+                        autocomplete="off"
+                        readonly
                       />
                       <span class="material-symbols material-symbols-rounded"
                         >format_ink_highlighter</span
@@ -182,18 +204,18 @@
                     <td class="h5 text-center">Email</td>
                     <td>
                       <input
+                        id="email"
                         type="text"
                         class="form-control"
-                        placeholder="Patient Name"
-                        value="harris@examplemail.com"
+                        placeholder="Doctor Email"
                         disabled
                       />
                     </td>
                   </tr>
                 </table>
               </div>
-              <div
-                class="tab-pane fade"
+              <form
+                class="tab-pane fade change-password-form"
                 id="pills-contact"
                 role="tabpanel"
                 aria-labelledby="pills-contact-tab"
@@ -206,6 +228,8 @@
                         type="text"
                         class="form-control"
                         placeholder="Password"
+                        id="new-password"
+                        autocomplete="off"
                       />
                     </td>
                   </tr>
@@ -216,15 +240,17 @@
                         type="text"
                         class="form-control"
                         placeholder="Confirm Password"
+                        id="confirm-new-password"
+                        autocomplete="off"
                       />
                     </td>
                   </tr>
                 </table>
-              </div>
+              </form>
             </div>
           </div>
           <div class="text-center">
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" onclick=" changePassword()">
               <span class="material-symbols material-symbols-rounded"
                 >check</span
               >
@@ -304,6 +330,121 @@
           lengthMenu: [8, 32, 50, 75, 100],
         });
       });
+      //  code for clock
+
+      $(document).ready(function () {
+        // Update clock display every second
+        setInterval(function () {
+          var now = new Date();
+
+          // Format date and time
+          var date = now.toLocaleDateString("en-US", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          });
+          var hours = now.getHours();
+          var minutes = now.getMinutes();
+          var seconds = now.getSeconds();
+          var ampm = hours >= 12 ? "PM" : "AM";
+          hours = hours % 12;
+          hours = hours ? hours : 12;
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+          var time = hours + ":" + minutes + ":" + seconds + " " + ampm;
+
+          // Display date and time in clock element
+          $("#clock").text(date + " " + time);
+        }, 1000);
+      });
+      // code for logged-in user initials
+
+      $(document).ready(function () {
+        // Check if user is logged in and display name initials
+        var token = localStorage.getItem("token");
+        // Extract the user's name from the token
+        var name = JSON.parse(atob(token.split(".")[1])).name;
+
+        // Display the first two letters of the name in the designated element
+        var initials = name.substr(0, 2).toUpperCase();
+        $("#user-initials").text(initials);
+      });
+    </script>
+    <script>
+      // code for change password
+      function changePassword(event) {
+        // event.preventDefault();
+        const token = localStorage.getItem("token");
+        const userId = JSON.parse(atob(token.split(".")[1])).id; // Decode JWT token to retrieve user ID
+        // Decode the token to retrieve the user information
+        const user = JSON.parse(atob(token.split(".")[1]));
+
+        const newPassword = $("#new-password").val();
+        const confirmPassword = $("#confirm-new-password").val();
+
+        if (newPassword !== confirmPassword) {
+          Swal.fire("Passwords do not match!", "", "error");
+          return;
+        }
+        $.ajax({
+          url: "http://localhost:3000/update-password",
+          type: "PUT",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          data: {
+            userId: userId,
+            newPassword: newPassword,
+            confirmPassword: confirmPassword,
+          },
+          success: function () {
+            Swal.fire("Password changed successfully!", "", "success");
+            $(".change-password-form")[0].reset();
+          },
+          error: function (xhr, status, error) {
+            if (xhr.status === 401) {
+              Swal.fire("You are not authorized!", "", "error");
+            } else {
+              Swal.fire("Oops...", "Something went wrong!", "error");
+            }
+          },
+        });
+      }
+      
+
+      $(document).ready(function () {
+        // populate user profile information
+        getUserProfile();
+          
+      });
+
+      // GETT USER PROFILE
+      function getUserProfile() {
+        const token = localStorage.getItem("token");
+        const userId = JSON.parse(atob(token.split(".")[1])).id; // Decode JWT token to retrieve user ID
+        // Decode the token to retrieve the user information
+        const user = JSON.parse(atob(token.split(".")[1]));
+        
+        $.ajax({
+          url: `http://localhost:3000/get-one-doctor/${userId}`,
+          type: "GET",
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+          success: function (data) {
+            $("#name").val(data.name);
+            $("#email").val(data.email);
+          },
+          error: function () {
+            Swal.fire("Oops...", "Something went wrong!", "error");
+          },
+        });
+      }
+
+
+      // code
+
+ 
     </script>
   </body>
 </html>
