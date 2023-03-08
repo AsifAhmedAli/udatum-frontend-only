@@ -15487,12 +15487,14 @@
           oPaginate: {
             sFirst: "First",
             sLast: "Last",
-            sNext: '<span class="material-symbols material-symbols-rounded">arrow_forward_ios</span>',
-            sPrevious: '<span class="material-symbols material-symbols-rounded">arrow_back_ios</span>',
+            sNext:
+              '<span class="material-symbols material-symbols-rounded">arrow_forward_ios</span>',
+            sPrevious:
+              '<span class="material-symbols material-symbols-rounded">arrow_back_ios</span>',
           },
-          sEmptyTable: "No data available in table",
+          sEmptyTable: "",
           sInfo: "Showing _START_ to _END_ of _TOTAL_ entries",
-          sInfoEmpty: "Showing 0 to 0 of 0 entries",
+          sInfoEmpty: "",
           sInfoFiltered: "(filtered from _MAX_ total entries)",
           sInfoPostFix: "",
           sDecimal: "",
@@ -15503,7 +15505,7 @@
           sSearch: "Search:",
           sSearchPlaceholder: "",
           sUrl: "",
-          sZeroRecords: "No matching records found",
+          sZeroRecords: "",
         },
         oSearch: P.extend({}, C.models.oSearch),
         sAjaxDataProp: "data",

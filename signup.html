@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Signup</title>
     <link rel="stylesheet" href="./assets/css/datatables.css" />
-    <link rel="stylesheet" href="./assets/css/bootstrap.css" /><script src=".env"></script>
+    <link rel="stylesheet" href="./assets/css/bootstrap.css" /><script src="env.js"></script>
   </head>
   <body>
     <div class="main-login p-3">
@@ -111,7 +111,7 @@
         </div>
       </div>
     </div>
-    <div id="div12"></div>
+    <!-- <div id="div12"></div> -->
     <div class="loading" id="loader1" style="visibility: hidden;">Loading&#8230;</div>
     <script src="./assets/js/all.js"></script>
     <script src="./assets/js/script.js"></script>
@@ -166,25 +166,36 @@ $(document).ready(function() {
         password: password
       },
       success: function(response) {
-        console.log(response)
+        // console.log(response)
         document.getElementById("loader1").style.visibility = "hidden";
-        // Show success message using Sweet Alert2
         Swal.fire({
-          title: "Sign Up Successful!",
-          icon: "success",
-          text: response.message
+          icon: 'success',
+          title: 'Successful!',
+          text: response.message,
+          allowOutsideClick: false
+        })
+        $( 'button.swal2-confirm' ).click(function() {
+          location.replace('./login.html');
         });
-        
       },
       
       error: function(response) {
         document.getElementById("loader1").style.visibility = "hidden";
-        // Show error message using Sweet Alert2
-        Swal.fire({
-          title: "Sign Up Failed!",
-          text: response.message,
+        // console.log(response.responseJSON.message);
+        if(response.status == 400){
+          Swal.fire({
+          title: "Duplicate Email!",
+          text: response.responseJSON.message,
           icon: "error"
-        });
+        });          
+        }
+        if(response.status == 500){
+          Swal.fire({
+            title: "Sign Up Failed!",
+            text: response.responseJSON.message,
+            icon: "error"
+          });
+        }
       }
     });
   });

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registered Patients</title>
     <link rel="stylesheet" href="./assets/css/datatables.css" />
-    <link rel="stylesheet" href="./assets/css/bootstrap.css" /><script src=".env"></script>
+    <link rel="stylesheet" href="./assets/css/bootstrap.css" /><script src="env.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
@@ -117,8 +117,8 @@
             Add New Patient
           </a>
           <div class="date-time" id="clock">
-            <span class="me-4">11th December, 2022</span>
-            <span>6:01 p.m</span>
+            <span class="me-4"></span>
+            <span></span>
           </div>
         </div>
       </div>
@@ -132,7 +132,7 @@
                 class="form-control form-control-lg"
                 placeholder="Search By Name"
               />
-              <button class="px-lg-5 rounded btn btn-primary py-2">
+              <button class="px-xl-5 rounded btn btn-primary py-2">
                 <span class="material-symbols material-symbols-rounded"
                   >search</span
                 >
@@ -171,63 +171,9 @@
                   <th scope="col" class="text-center">Actions</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <a href="./patientdetails.html"></a>
-                  </td>
-                  <td>Haseeb Khan</td>
-                  <td>haseeb@email.com</td>
-                  <td class="text-center">12/12/1996</td>
-                  <td class="text-center">
-                    <button class="table-patient-action open-chat">
-                      <span
-                        class="material-symbols material-symbols-rounded only-icon"
-                        >chat_bubble</span
-                      >
-                    </button>
-                    <a href="" class="table-patient-action">
-                      <span
-                        class="material-symbols material-symbols-rounded only-icon"
-                        >edit</span
-                      >
-                    </a>
-                    <a href="" class="table-patient-action">
-                      <span
-                        class="material-symbols material-symbols-rounded only-icon"
-                        >delete</span
-                      >
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="./patientdetails.html"></a>
-                  </td>
-                  <td>Haseeb Khan</td>
-                  <td>haseeb@email.com</td>
-                  <td class="text-center">12/12/1996</td>
-                  <td class="text-center">
-                    <button class="table-patient-action open-chat">
-                      <span
-                        class="material-symbols material-symbols-rounded only-icon"
-                        >chat_bubble</span
-                      >
-                    </button>
-                    <a href="" class="table-patient-action">
-                      <span
-                        class="material-symbols material-symbols-rounded only-icon"
-                        >edit</span
-                      >
-                    </a>
-                    <a href="" class="table-patient-action">
-                      <span
-                        class="material-symbols material-symbols-rounded only-icon"
-                        >delete</span
-                      >
-                    </a>
-                  </td>
-                </tr>
+              <tbody id="all_patients">
+
+
               </tbody>
             </table>
           </div>
@@ -402,12 +348,85 @@
         </div>
       </div>
     </div>
-
+    <div class="loading" id="loader1" style="visibility: hidden;">Loading&#8230;</div>
     <script src="./assets/js/all.js"></script>
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/datatables.js"></script>
     <script>
+      
+      // function editpatient(x){
+
+      // }
       $(document).ready(function () {
+        function getMonthName(monthNumber) {
+          const date = new Date();
+          date.setMonth(monthNumber - 1);
+          return date.toLocaleString('en-US', { month: 'long' });
+        }
+        var token = localStorage.getItem('token');
+      console.log(token)
+      if(token == null){
+        window.location.replace("login.html");
+      }
+      else{
+        document.getElementById("loader1").style.visibility = "visible";
+        $.ajax({
+              type: "get",
+              url: `${baseurl}/patient-list-of-a-doctor`,
+              timeout: 0,
+              headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+              success: function (response) {
+                console.log(response)
+                response.patients.forEach(key => {
+                  var dateFormat= new Date(key.date_of_birth);
+                  document.getElementById("all_patients").innerHTML += 
+                  `<tr>
+                  <td>
+                    <a href="./patientdetails.html?id=${key.pid}"></a>
+                  </td>
+                  <td>${key.name}</td>
+                  <td>${key.email}</td>
+                  <td class="text-center">${dateFormat.getDate()-1+"/"+(getMonthName(dateFormat.getMonth()+1))+"/"+dateFormat.getFullYear()}</td>
+                  <td class="text-center">
+                    <button class="table-patient-action open-chat">
+                      <span
+                        class="material-symbols material-symbols-rounded only-icon"
+                        >chat_bubble</span
+                      >
+                    </button>
+                    <a href="./editpatient.html?id=${key.pid}" class="table-patient-action">
+                      <span
+                        class="material-symbols material-symbols-rounded only-icon"
+                        >edit</span
+                      >
+                    </a>
+                    <a href="" class="table-patient-action">
+                      <span
+                        class="material-symbols material-symbols-rounded only-icon"
+                        >delete</span
+                      >
+                    </a>
+                  </td>
+                </tr>`; 
+                });
+
+                  // $("#div11").html(result);
+                  // console.log(response);
+
+                  document.getElementById("loader1").style.visibility = "hidden";
+              },
+              error: function(response) {
+                // console.log(response);
+                
+                if(response.responseJSON.message == "Authentication failed"){
+                  window.location.replace("login.html");
+                    }
+              }
+          });
+      }
         if ($(window).width() < 768) {
           $("#search").click(function () {
             $(this).next().slideToggle();

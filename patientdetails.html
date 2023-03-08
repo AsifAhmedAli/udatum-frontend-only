@@ -6,7 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Patient Details</title>
     <link rel="stylesheet" href="./assets/css/datatables.css" />
-    <link rel="stylesheet" href="./assets/css/bootstrap.css" /><script src=".env"></script>
+    <link rel="stylesheet" href="./assets/css/bootstrap.css" /><script src="env.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+          urlString = window.location.href;
+      let paramString = urlString.split('?')[1];
+      let queryString = new URLSearchParams(paramString);
+      for(let pair of queryString.entries()) {
+        id = pair[1];
+          // console.log("Key is:" + pair[0]);
+          // console.log("Value is:" + pair[1]);
+      }
+      function sharedataemail1(){
+        var email = document.getElementById("sharedataemail").value;
+        patient_link = `${clientbaseurl}/patientdetails.html?id=${id}`;
+        // console.log(patient_link)
+        $.ajax({
+              type: "post",
+              url: `${baseurl}/share-email-data`,
+              data: {email: email, patient_link: patient_link},
+              timeout: 0,
+              // headers: {
+              //   "Authorization": `Bearer ${token}`,
+              //   "Content-Type": "application/json",
+              // },
+              success: function (response) {
+                  // $("#div11").html(result);
+                  console.log(response);
+                  // document.getElementById("loader1").style.visibility = "hidden";
+              },
+              error: function(response) {
+                // console.log(response);
+                
+                // if(response.responseJSON.message == "Authentication failed"){
+                //   window.location.replace("login.html");
+                //     }
+              }
+          });
+      }
+
+</script>
   </head>
   <body>
     <aside>
@@ -126,8 +165,8 @@
       <div class="container">
         <div class="top-bar">
           <div class="date-time" id="clock">
-            <span class="me-4">11th December, 2022</span>
-            <span>6:01 p.m</span>
+            <span class="me-4"></span>
+            <span></span>
           </div>
         </div>
       </div>
@@ -137,10 +176,10 @@
             class="d-flex align-items-center justify-content-between flex-wrap"
           >
             <div class="left">
-              <h5 class="fw-bold me-xl-5 me-4">Haseeb Ahmed Data Record</h5>
+              <h5 class="fw-bold me-xl-5 me-4"><span id="namea"></span> Data Record</h5>
               <div class="d-inline-block">
                 <h6 class="signup-hd">Sign Up Date</h6>
-                <p class="signup-date">12/12/2022</p>
+                <p class="signup-date" id="signup-date"></p>
               </div>
             </div>
             <div class="right">
@@ -172,11 +211,11 @@
                 <tbody>
                   <tr>
                     <th scope="col">Patient Email</th>
-                    <td>haseeb@gmail.com</td>
+                    <td id="pemail"></td>
                   </tr>
                   <tr>
                     <th scope="col">Birth Date</th>
-                    <td>12/12/1997</td>
+                    <td id="dob"></td>
                   </tr>
                   <tr class="time-spend">
                     <th scope="col">Time Spent On Patient in Dec</th>
@@ -184,15 +223,17 @@
                   </tr>
                   <tr class="time-spend">
                     <th scope="col">Medical Condition</th>
-                    <td>High BP</td>
+                    <td id="medical_condition"></td>
                   </tr>
                   <tr class="time-spend">
                     <th scope="col">Notes</th>
                     <td>
-                      <a href="./notes.html" class="fw-normal"
+                      <!-- <script>console.log(id)</script> -->
+                      <a type="button" onclick="myfunc(this)" class="fw-normal"
                         >View All Notes</a
                       >
                     </td>
+
                   </tr>
                 </tbody>
               </table>
@@ -202,8 +243,7 @@
           <div class="d-flex align-items-center justify-content-between">
             <h5 class="fw-bold mb-4">Linked Devices</h5>
           </div>
-          <div class="row">
-            <div class="col-lg-6">
+            <div class="col">
               <table class="linked-dev">
                 <thead>
                   <tr>
@@ -211,39 +251,11 @@
                     <th scope="col">Device ID</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>BP Meter</td>
-                    <td>42414</td>
-                  </tr>
-                  <tr>
-                    <td>Stethoscope</td>
-                    <td>42414</td>
-                  </tr>
+                <tbody id="devices_list">
+
                 </tbody>
               </table>
             </div>
-            <div class="col-lg-6">
-              <table class="linked-dev">
-                <thead>
-                  <tr>
-                    <th scope="col">Device Name</th>
-                    <th scope="col">Device ID</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Pulse Oximeter</td>
-                    <td>42414</td>
-                  </tr>
-                  <tr>
-                    <td>Weight Scale</td>
-                    <td>42414</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
         </div>
         <!-- <div class="patient-details-box bg-white mb-xl-5 mb-3">
           <div class="linked-devices">
@@ -520,12 +532,12 @@
                   <tr>
                     <th>Note</th>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input type="text" name="note" id="note" class="form-control" />
                     </td>
                   </tr>
                 </tbody>
               </table>
-              <a href="" class="btn btn-primary btn-lg px-xl-4 mx-3">
+              <a type="button" onclick="addnote1()" class="btn btn-primary btn-lg px-xl-4 mx-3">
                 <span class="material-symbols material-symbols-rounded"
                   >add</span
                 >
@@ -559,39 +571,132 @@
           <div class="modal-body">
             <div class="text-center">
               <h5 class="fw-bold mb-4">SHARE DATA WITH OTHER DOCTORS</h5>
-              <table class="table table-borderless">
-                <tbody>
-                  <tr>
-                    <th>Email</th>
-                    <td>
-                      <input type="text" class="form-control" />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <a href="" class="btn btn-primary btn-lg px-xl-4 mx-3">
-                <span class="material-symbols material-symbols-rounded"
-                  >check</span
-                >
+              <form>
+                <table class="table table-borderless">
+                  <tbody>
+                    <tr>
+                      <th>Email</th>
+                      <td>
+                        <input required id="sharedataemail" type="email" class="form-control" />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              
+              <a type="button" onclick="sharedataemail1()" class="btn btn-primary btn-lg px-xl-4 mx-3">
+                <span class="material-symbols material-symbols-rounded">check</span>
                 Share
               </a>
+            
               <button
                 class="btn btn-outline-primary btn-lg px-xl-4 mx-3"
                 data-bs-dismiss="modal"
               >
                 Cancel
               </button>
+            </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-
+    <div class="loading" id="loader1" style="visibility: hidden;">Loading&#8230;</div>
     <script src="./assets/js/all.js"></script>
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/datatables.js"></script>
     <script>
       $(document).ready(function () {
+
+        function getMonthName(monthNumber) {
+          const date = new Date();
+          date.setMonth(monthNumber - 1);
+          return date.toLocaleString('en-US', { month: 'long' });
+        }
+        var token = localStorage.getItem('token');
+      // console.log(token)
+      if(token == null){
+        window.location.replace("login.html");
+      }
+      else{
+        $.ajax({
+              type: "get",
+              url: `${baseurl}/patient-list-of-a-doctor`,
+              timeout: 0,
+              headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+              success: function (response) {
+                  // $("#div11").html(result);
+                  // console.log("success");
+                  // document.getElementById("loader1").style.visibility = "hidden";
+              },
+              error: function(response) {
+                // console.log(response);
+                
+                if(response.responseJSON.message == "Authentication failed"){
+                  window.location.replace("login.html");
+                    }
+              }
+          });
+      }
+
+      // const id = urlParams.get('id');
+      document.getElementById("loader1").style.visibility = "visible";
+      $.ajax({
+              type: "get",
+              url: `${baseurl}/get-one-patient/${id}`,
+              timeout: 0,
+              headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+              success: function (response) {
+
+                  // $("#div11").html(result);
+                  // console.log
+                  var dateFormat= new Date(response.created_at);
+                  var dateFormat1= new Date(response.date_of_birth);
+                  
+                  document.getElementById("namea").innerText = response.name;
+                  document.getElementById("signup-date").innerText = dateFormat.getDate()+"/"+(dateFormat.getMonth()+1)+"/"+dateFormat.getFullYear();
+                  document.getElementById("pemail").innerText = response.email;
+                  document.getElementById("dob").innerText = dateFormat1.getDate()-1+"/"+getMonthName((dateFormat1.getMonth()+1))+"/"+dateFormat1.getFullYear();
+                  document.getElementById("medical_condition").innerText = response.medical_condition;
+                  $.ajax({
+                          type: "get",
+                          url: `${baseurl}/get-one-patient-devices/${id}`,
+                          timeout: 0,
+                          headers: {
+                            "Authorization": `Bearer ${token}`,
+                            "Content-Type": "application/json",
+                          },
+                          success: function (response1) {
+
+                              // $("#div11").html(result);
+                              // console.log
+                              response1.forEach(key => {
+                                document.getElementById("devices_list").innerHTML += 
+                              `<tr>
+                                <td>${key.device_name}</td>
+                                <td>${key.device_barcode}</td>
+                              </tr>`;                                
+                              });
+
+                              // pemail
+                              // console.log(response1);
+
+                              // document.getElementById("loader1").style.visibility = "hidden";
+                          }
+                      });
+                  // pemail
+                  // console.log(response);
+
+                  document.getElementById("loader1").style.visibility = "hidden";
+              }
+          });
+
+
         if ($(window).width() < 768) {
           $("#search").click(function () {
             $(this).next().slideToggle();
@@ -604,6 +709,47 @@
           });
         }
       });
+      function addnote1(){
+        // var token = localStorage.getItem('token');
+            var note = document.getElementById("note").value;
+            $.ajax({
+                          type: "post",
+                          url: `${baseurl}/add-note/`,
+                          data: {patient_id: id, note: note},
+                          timeout: 0,
+                          // headers: {
+                          //   "Authorization": `Bearer ${token}`,
+                          //   "Content-Type": "application/json",
+                          // },
+                          success: function (response1) {
+
+                              // $("#div11").html(result);
+                              // console.log(response1);
+                              if(response1.success){
+                                document.getElementById("loader1").style.visibility = "hidden";
+                                Swal.fire({
+                                  icon: 'success',
+                                  title: 'Successful!',
+                                  text: response1.message,
+                                  allowOutsideClick: false
+                                })
+                                $( 'button.swal2-confirm' ).click(function() {
+                                  location.replace(`./patientdetails.html?id=${id}`);
+                                });
+                              }
+                              // pemail
+                              // console.log(response1);
+
+                              // document.getElementById("loader1").style.visibility = "hidden";
+                          }
+                      });
+          }
+          function myfunc(x){
+            // x.location.href=this.href+'?id='+id;return false;
+            // console.log(x.href)
+            x.href = "notes.html?id="+id;
+            // console.log(x.href)
+          }
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

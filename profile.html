@@ -7,7 +7,7 @@
     <title>Profile</title>
     <link rel="stylesheet" href="./assets/css/datatables.css" />
     <link rel="stylesheet" href="./assets/css/bootstrap.css" />
-    <script src=".env"></script>
+    <script src="env.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
@@ -135,15 +135,15 @@
             <h5 class="fw-bold">Profile Settings</h5>
           </div>
           <div class="date-time" id="clock">
-            <span class="me-4">11th December, 2022</span>
-            <span>6:01 p.m</span>
+            <span class="me-4"></span>
+            <span></span>
           </div>
         </div>
       </div>
       <div class="content">
         <div
           class="patients-box d-flex flex-column justify-content-between"
-          style="height: calc(100vh - 120px)"
+          style="height: calc(80vh - 120px)"
         >
           <div>
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -193,7 +193,7 @@
                         class="form-control"
                         placeholder="Doctor Name"
                         autocomplete="off"
-                        readonly
+                        
                       />
                       <span class="material-symbols material-symbols-rounded"
                         >format_ink_highlighter</span
@@ -310,6 +310,34 @@
     <script src="./assets/js/datatables.js"></script>
     <script>
       $(document).ready(function () {
+        var token = localStorage.getItem('token');
+      console.log(token)
+      if(token == null){
+        window.location.replace("login.html");
+      }
+      else{
+        $.ajax({
+              type: "get",
+              url: `${baseurl}/patient-list-of-a-doctor`,
+              timeout: 0,
+              headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+              success: function (response) {
+                  // $("#div11").html(result);
+                  console.log("success");
+                  // document.getElementById("loader1").style.visibility = "hidden";
+              },
+              error: function(response) {
+                // console.log(response);
+                
+                if(response.responseJSON.message == "Authentication failed"){
+                  window.location.replace("login.html");
+                    }
+              }
+          });
+      }
         if ($(window).width() < 768) {
           $("#search").click(function () {
             $(this).next().slideToggle();

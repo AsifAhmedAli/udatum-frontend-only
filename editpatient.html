@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add New Patient</title>
+    <title>Edit Patient</title>
     <link rel="stylesheet" href="./assets/css/datatables.css" />
     <link rel="stylesheet" href="./assets/css/bootstrap.css" /><script src="env.js"></script>
   </head>
@@ -109,21 +109,21 @@
           </div>
         </div>
       </header>
-      <div class="container">
+      <!-- <div class="container">
         <div class="top-bar">
           <button class="btn btn-primary btn-dashboard">
             <span class="material-symbols material-symbols-rounded">add</span>
-            Add New Patient
+            Edit Patient
           </button>
           <div class="date-time" id="clock">
             <span class="me-4"></span>
             <span></span>
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="content">
         <div class="patients-box">
-          <h5 class="heading">Add Patient Data</h5>
+          <h5 class="heading">Edit Patient Data</h5>
           <form id="add_patient">
           <div class="row gx-3 gy-xl-5 gy-3 add-patient-table">
             <div class="col-md-6">
@@ -139,29 +139,7 @@
                       type="text"
                       class="form-control"
                       placeholder="Patient Name"
-                      value="test"
                       id="pname"
-                    />
-                  </td>
-                </tr>
-              </table>
-            </div>
-            <div class="col-md-6">
-              <table class="w-100">
-                <tr>
-                  <td class="h5 text-center">
-                    <span class="material-symbols material-symbols-rounded"
-                      >cake</span
-                    >
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      onfocus="(this.type='date')"
-                      onfocusout="(this.type='text')"
-                      placeholder="Birthday"
-                      class="form-control"
-                      id="bdaydate1"
                     />
                   </td>
                 </tr>
@@ -180,68 +158,7 @@
                       type="email"
                       class="form-control"
                       placeholder="Patient Email"
-                      value="aali.msit22seecs@seecs.edu.pk"
                       id="email1"
-                    />
-                  </td>
-                </tr>
-              </table>
-            </div>
-            <div class="col-md-6">
-              <table class="w-100">
-                <tr>
-                  <td class="h5 text-center">
-                    <span class="material-symbols material-symbols-rounded"
-                      >email</span
-                    >
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Password for Patient Account"
-                      value="test"
-                      id="ppass"
-                    />
-                  </td>
-                </tr>
-              </table>
-            </div>
-            <div class="col-md-6">
-              <table class="w-100">
-                <tr>
-                  <td class="h5 text-center">
-                    <span class="material-symbols material-symbols-rounded"
-                      >analytics</span
-                    >
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Device Name"
-                      value="stethoscope"
-                      id="dname"
-                    />
-                  </td>
-                </tr>
-              </table>
-            </div>
-            <div class="col-md-6">
-              <table class="w-100">
-                <tr>
-                  <td class="h5 text-center">
-                    <span class="material-symbols material-symbols-rounded"
-                      >analytics</span
-                    >
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Device Barcode"
-                      value="barcode"
-                      id="barcode"
                     />
                   </td>
                 </tr>
@@ -260,7 +177,7 @@
                       type="number"
                       class="form-control"
                       placeholder="High threshold (optional)"
-                      value="1212"
+                      
                       id="high_threshold1"
                     />
                   </td>
@@ -287,46 +204,7 @@
                 </tr>
               </table>
             </div>
-            <div class="col-12">
-              <table class="w-100">
-                <tr>
-                  <td class="h5 text-center">
-                    <span class="material-symbols material-symbols-rounded">
-                      format_ink_highlighter
-                    </span>
-                  </td>
-                  <td>
-                    <textarea
-                      cols="30"
-                      rows="4"
-                      class="form-control"
-                      placeholder="Medical Condition"
-                      id="medical_condition1"
-                    >asdfasdf</textarea>
-                  </td>
-                </tr>
-              </table>
-            </div>
-            <div class="col-12">
-              <table class="w-100">
-                <tr>
-                  <td class="h5 text-center">
-                    <span class="material-symbols material-symbols-rounded">
-                      format_ink_highlighter
-                    </span>
-                  </td>
-                  <td>
-                    <textarea
-                      cols="30"
-                      rows="4"
-                      class="form-control"
-                      placeholder="Notes"
-                      id="notes1"
-                    >asdfasdfasdfasdf</textarea>
-                  </td>
-                </tr>
-              </table>
-            </div>
+            
             <div class="col-12 text-center">
               <button
                 class="btn btn-primary btn-lg px-xl-4"
@@ -376,6 +254,14 @@
       //  code for clock
 
 $(document).ready(function() {
+  urlString = window.location.href;
+      let paramString = urlString.split('?')[1];
+      let queryString = new URLSearchParams(paramString);
+      for(let pair of queryString.entries()) {
+        id = pair[1];
+          // console.log("Key is:" + pair[0]);
+          // console.log("Value is:" + pair[1]);
+      }
   var token = localStorage.getItem('token');
       console.log(token)
       if(token == null){
@@ -404,6 +290,34 @@ $(document).ready(function() {
               }
           });
       }
+      document.getElementById("loader1").style.visibility = "visible";
+      $.ajax({
+              type: "get",
+              url: `${baseurl}/get-one-patient/${id}`,
+              timeout: 0,
+              headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+              success: function (response) {
+                  // $("#div11").html(result);
+                  console.log(response);
+                  document.getElementById("pname").value = response.name;
+                  document.getElementById("email1").value = response.email;
+                  document.getElementById("high_threshold1").value = response.high_threshold;
+                  document.getElementById("Low_threshold1").value = response.low_threshold;
+                  document.getElementById("loader1").style.visibility = "hidden";
+              },
+              error: function(response) {
+                // console.log(response);
+                
+                if(response.responseJSON.message == "Authentication failed"){
+                  window.location.replace("login.html");
+                    }
+              }
+          });
+
+
   // Update clock display every second
   setInterval(function() {
     var now = new Date();
@@ -440,10 +354,9 @@ if (request) {
   var bdaydate1 = document.getElementById("bdaydate1").value;
   var email1 = document.getElementById("email1").value;
   var ppass = document.getElementById("ppass").value;
-  var dname = document.getElementById("dname").value;
   var barcode = document.getElementById("barcode").value;
   var high_threshold1 = document.getElementById("high_threshold1").value;
-  
+
   var Low_threshold1 = document.getElementById("Low_threshold1").value;
   var medical_condition1 = document.getElementById("medical_condition1").value;
   var notes1 = document.getElementById("notes1").value;
@@ -476,12 +389,11 @@ data = JSON.stringify({
     "medical_condition": medical_condition1,
     "low_threshold": Low_threshold1,
     "high_threshold": high_threshold1,
-    "device_name": dname,
     "device_barcode": barcode,
     "notes": notes1
   });
   // console.log(data);
-document.getElementById("loader1").style.visibility = "visible";
+// document.getElementById("loader1").style.visibility = "visible";
           $.ajax({
               type: "post",
               data: data,
@@ -499,7 +411,7 @@ document.getElementById("loader1").style.visibility = "visible";
                       text: response.message,
                       icon: "success"
                     });          
-                  document.getElementById("loader1").style.visibility = "hidden";
+                  // document.getElementById("loader1").style.visibility = "hidden";
               },
               error: function(response) {
                 // console.log(response);
@@ -514,7 +426,6 @@ document.getElementById("loader1").style.visibility = "visible";
                       icon: "error"
                     });          
                     }
-                    document.getElementById("loader1").style.visibility = "hidden";
               }
           });
 // $.ajax(settings).done(function (response) {

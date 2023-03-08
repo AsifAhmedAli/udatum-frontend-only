@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Heart Rate Print</title>
     <link rel="stylesheet" href="./assets/css/datatables.css" />
-    <link rel="stylesheet" href="./assets/css/bootstrap.css" /><script src=".env"></script>
+    <link rel="stylesheet" href="./assets/css/bootstrap.css" /><script src="env.js"></script>
   </head>
   <style>
     @page {
@@ -98,6 +98,34 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+  var token = localStorage.getItem('token');
+      console.log(token)
+      if(token == null){
+        window.location.replace("login.html");
+      }
+      else{
+        $.ajax({
+              type: "get",
+              url: `${baseurl}/patient-list-of-a-doctor`,
+              timeout: 0,
+              headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+              success: function (response) {
+                  // $("#div11").html(result);
+                  console.log("success");
+                  // document.getElementById("loader1").style.visibility = "hidden";
+              },
+              error: function(response) {
+                // console.log(response);
+                
+                if(response.responseJSON.message == "Authentication failed"){
+                  window.location.replace("login.html");
+                    }
+              }
+          });
+      }
       const ctx = document.getElementById("myChart");
 
       new Chart(ctx, {
