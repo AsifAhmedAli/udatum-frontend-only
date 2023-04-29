@@ -30,12 +30,12 @@
             </a>
           </li>
           <li class="side-link">
-            <a href="./patientchat.html">
+            <a href="./chat.html" id="messagesanchor">
               <span class="material-symbols material-symbols-rounded"
                 >mail</span
               >
               Messages
-              <div class="badge">New</div>
+              <!-- <div class="badge">New</div> -->
             </a>
           </li>
           <li class="side-link">
@@ -140,15 +140,15 @@
                 <tbody>
                   <tr>
                     <th scope="col">Patient Email</th>
-                    <td>haseeb@gmail.com</td>
+                    <td id="pemail"></td>
                   </tr>
                   <tr>
                     <th scope="col">Birth Date</th>
-                    <td>12/12/1997</td>
+                    <td id="pbday"></td>
                   </tr>
                   <tr>
-                    <th scope="col">Assigned Doctor</th>
-                    <td>Dr. Fahad Mirza</td>
+                    <th scope="col">Assigned Physician</th>
+                    <td id="dname"></td>
                   </tr>
                 </tbody>
               </table>
@@ -165,28 +165,12 @@
                     <th scope="col">Device ID</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>BP Meter</td>
-                    <td>42414</td>
-                  </tr>
-                  <tr>
-                    <td>Stethoscope</td>
-                    <td>42414</td>
-                  </tr>
-                  <tr>
-                    <td>Pulse Oximeter</td>
-                    <td>42414</td>
-                  </tr>
-                  <tr>
-                    <td>Weight Scale</td>
-                    <td>42414</td>
-                  </tr>
+                <tbody id="devices_list">
                 </tbody>
               </table>
             </div>
             <div class="col-md-6">
-              <h5 class="fw-bold mb-4">Forecasts</h5>
+              <!-- <h5 class="fw-bold mb-4">Forecasts</h5>
               <table class="table table-bordered forecasts">
                 <tr>
                   <td>
@@ -206,57 +190,13 @@
                     blandit vulputate.
                   </td>
                 </tr>
-              </table>
+              </table> -->
             </div>
           </div>
         </div>
       </div>
     </main>
-
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="shareData"
-      tabindex="-1"
-      aria-labelledby="shareDataLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header border-0">
-            <h5 class="modal-title" id="shareDataLabel"></h5>
-          </div>
-          <div class="modal-body">
-            <div class="text-center">
-              <h5 class="fw-bold mb-4">SHARE DATA WITH OTHER DOCTORS</h5>
-              <table class="table table-borderless">
-                <tbody>
-                  <tr>
-                    <th>Email</th>
-                    <td>
-                      <input type="text" class="form-control" />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <a href="" class="btn btn-primary btn-lg px-xl-4 mx-3">
-                <span class="material-symbols material-symbols-rounded"
-                  >check</span
-                >
-                Share
-              </a>
-              <button
-                class="btn btn-outline-primary btn-lg px-xl-4 mx-3"
-                data-bs-dismiss="modal"
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <div class="loading" id="loader1" style="visibility: hidden;">Loading&#8230;</div>
     <script src="./assets/js/all.js"></script>
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/datatables.js"></script>
@@ -273,184 +213,6 @@
             $("aside").toggleClass("d-flex");
           });
         }
-      });
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-      const ctx = document.getElementById("myChart");
-
-      new Chart(ctx, {
-        type: "line",
-        data: {
-          labels: [
-            "1st",
-            "2nd",
-            "3rd",
-            "4th",
-            "5th",
-            "6th",
-            "7th",
-            "8th",
-            "9th",
-            "10th",
-            "11th",
-            "12th",
-            "13th",
-            "14th",
-            "15th",
-          ],
-          datasets: [
-            {
-              data: [
-                40, 30, 90, 85, 112, 126, 140, 135, 120, 120, 120, 130, 130,
-                150, 80,
-              ],
-              borderWidth: 4,
-              borderColor: "#1577F2",
-              fill: {
-                target: "origin",
-                above: "rgba(192, 228, 255, 0.12)", // Area will be red above the origin
-              },
-            },
-          ],
-        },
-        options: {
-          plugins: {
-            legend: {
-              display: false,
-            },
-          },
-          elements: {
-            point: {
-              radius: 0,
-            },
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-              grid: {
-                display: false,
-              },
-              ticks: {
-                font: {
-                  family: "Raleway", // Your font family
-                  size: 14,
-                },
-              },
-            },
-            x: {
-              grid: {
-                display: false,
-              },
-              ticks: {
-                font: {
-                  family: "Raleway", // Your font family
-                  size: 14,
-                },
-              },
-            },
-          },
-          plugins: {
-            legend: {
-              labels: {
-                // This more specific font property overrides the global property
-                font: {
-                  size: 16,
-                  family: "'Raleway'",
-                },
-              },
-            },
-          },
-        },
-      });
-    </script>
-    <script>
-      const ctx2 = document.getElementById("myChart2");
-
-      new Chart(ctx2, {
-        type: "line",
-        data: {
-          labels: [
-            "1st",
-            "2nd",
-            "3rd",
-            "4th",
-            "5th",
-            "6th",
-            "7th",
-            "8th",
-            "9th",
-            "10th",
-            "11th",
-            "12th",
-            "13th",
-            "14th",
-            "15th",
-          ],
-          datasets: [
-            {
-              data: [
-                40, 30, 90, 85, 112, 126, 140, 135, 120, 120, 120, 130, 130,
-                150, 80,
-              ],
-              borderWidth: 4,
-              borderColor: "#B2EA47",
-              fill: {
-                target: "origin",
-                above: "#D6FFDA1D", // Area will be red above the origin
-              },
-            },
-          ],
-        },
-        options: {
-          plugins: {
-            legend: {
-              display: false,
-            },
-          },
-          elements: {
-            point: {
-              radius: 0,
-            },
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-              grid: {
-                display: false,
-              },
-              ticks: {
-                font: {
-                  family: "Raleway", // Your font family
-                  size: 14,
-                },
-              },
-            },
-            x: {
-              grid: {
-                display: false,
-              },
-              ticks: {
-                font: {
-                  family: "Raleway", // Your font family
-                  size: 14,
-                },
-              },
-            },
-          },
-          plugins: {
-            legend: {
-              labels: {
-                // This more specific font property overrides the global property
-                font: {
-                  size: 16,
-                  family: "'Raleway'",
-                },
-              },
-            },
-          },
-        },
       });
     </script>
     <script>
@@ -491,15 +253,22 @@ $(document).ready(function() {
 
 //  Logout Button code
 $(document).ready(function() {
-  var token = localStorage.getItem('token');
-      console.log(token)
+    var token = localStorage.getItem('token');
+    var id = localStorage.getItem('id');
+    function getMonthName(monthNumber) {
+          const date = new Date();
+          date.setMonth(monthNumber - 1);
+          return date.toLocaleString('en-US', { month: 'long' });
+        }
+      // console.log(token)
       if(token == null){
-        window.location.replace("login.html");
+        window.location.replace("login_patient.html");
       }
       else{
+        document.getElementById("loader1").style.visibility = "visible";
         $.ajax({
               type: "get",
-              url: `${baseurl}/patient-list-of-a-doctor`,
+              url: `${baseurl}/get-one-patient/${id}`,
               timeout: 0,
               headers: {
                 "Authorization": `Bearer ${token}`,
@@ -508,13 +277,41 @@ $(document).ready(function() {
               success: function (response) {
                   // $("#div11").html(result);
                   console.log("success");
-                  // document.getElementById("loader1").style.visibility = "hidden";
+                  var dateFormat1= new Date(response.date_of_birth);
+                  document.getElementById("pemail").innerText = response.email;
+                  document.getElementById("pbday").innerText = dateFormat1.getDate()-1+"/"+getMonthName((dateFormat1.getMonth()+1))+"/"+dateFormat1.getFullYear();
+                  document.getElementById("dname").innerText = response.doctor_name;
+                  $.ajax({
+                          type: "get",
+                          url: `${baseurl}/get-one-patient-devices/${id}`,
+                          timeout: 0,
+                          headers: {
+                            "Authorization": `Bearer ${token}`,
+                            "Content-Type": "application/json",
+                          },
+                          success: function (response1) {
+
+                              // $("#div11").html(result);
+                              // console.log
+                              response1.forEach(key => {
+                                document.getElementById("devices_list").innerHTML += 
+                              `<tr>
+                                <td>${key.device_name}</td>
+                                <td>${key.device_barcode}</td>
+                              </tr>`;                                
+                              });
+                              console.log(response1);
+
+                              // document.getElementById("loader1").style.visibility = "hidden";
+                          }
+                      });
+                  document.getElementById("loader1").style.visibility = "hidden";
               },
               error: function(response) {
                 // console.log(response);
                 
                 if(response.responseJSON.message == "Authentication failed"){
-                  window.location.replace("login.html");
+                  window.location.replace("login_patient.html");
                     }
               }
           });
@@ -537,7 +334,7 @@ $(document).ready(function() {
 
         // Send POST request to logout API endpoint
         $.ajax({
-          url: 'http://localhost:3000/doctor-logout',
+          url: `${baseurl}/patient-logout`,
           type: 'GET',
           headers: {
             'Authorization': 'Bearer ' + token
@@ -545,7 +342,8 @@ $(document).ready(function() {
           success: function(response) {
             // If logout successful, remove token from local storage and redirect to login page
             localStorage.removeItem('token');
-            window.location.href = './login.html';
+            localStorage.removeItem('id');
+            window.location.href = './login_patient.html';
           },
           error: function(xhr, status, error) {
             // If error occurred, display error message using SweetAlert2

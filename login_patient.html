@@ -122,7 +122,7 @@ else{
     // Check users API first
     document.getElementById("loader1").style.visibility = "visible";
     $.ajax({
-      url: `${baseurl}/doctor-login`,
+      url: `${baseurl}/patient-login`,
       method: 'POST',
       data: {
         email: email,
@@ -134,8 +134,10 @@ else{
       // document.cookie = `token=${response.token}; path=/`;
       // console.log("Token set in cookies:", document.cookie)
       localStorage.setItem('token', response.token);
+      localStorage.setItem('id', response.user.id);
+
       // localStorage.setItem('name', response.name);
-      window.location.replace('dashboard.html');
+      window.location.replace('./patientdashboard.html');
     }).fail(function(response) {
       document.getElementById("loader1").style.visibility = "hidden";
         Swal.fire({

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+    <link rel="stylesheet" href="./assets/css/datatables.css" />
+    <link rel="stylesheet" href="./assets/css/bootstrap.css" /><script src="env.js"></script>
+  </head>
+  <body>
+    <div class="main-login p-3">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-6">
+            <div class="login-container">
+              <div class="logo text-center">
+                <a href="./index.html">
+                  <img src="./assets/images/logo-dark.svg" height="54px" class="mb-3" alt="" />
+                </a>
+              </div>
+              <form id="signupform">
+                <h4 class="form-title">Create Account as Medical Professional</h4>
+                <div class="row gy-xl-5 gy-4">
+                  <div class="col-12">
+                    <div class="form-group mb-0">
+                      <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        class="form-control"
+                        placeholder="Full Name"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group mb-0">
+                      <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        class="form-control"
+                        placeholder="Email"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group mb-0">
+                      <input
+                        type="password"
+                        name="password"
+                        class="form-control"
+                        placeholder="Password"
+                        id="password"
+                        required
+                      />
+                      <button type="button" onclick="visibilitypassword()" class="btn btn-light viewPassword">
+                        <span class="material-symbols material-symbols-rounded"
+                          >visibility</span
+                        >
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group mb-0">
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        placeholder="Confirm Password"
+                        name="visibilityconfirmpassword"
+                        required
+                        
+                      />
+                      <button type="button" onclick="visibilityconfirmpassword()" class="btn btn-light viewPassword">
+                        <span class="material-symbols material-symbols-rounded"
+                          >visibility</span
+                        >
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <button class="btn btn-primary btn-lg fw-bold d-block w-100">
+                      Sign Up
+                    </button>
+                  </div>
+                  <div class="col-12 mt-3">
+                    <button class="btn btn-outline-primary btn-lg fw-bold d-block w-100">
+                      Sign Up With Google
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <div class="already-account h5 fw-bold text-center mt-3">
+                Already have an account? <a href="./login.html" class="text-decoration-none">Login</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6 d-md-block d-none">
+            <div class="h-100">
+              <img
+                src="./assets/images/login.png"
+                class="login-img img-fluid"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div id="div12"></div> -->
+    <div class="loading" id="loader1" style="visibility: hidden;">Loading&#8230;</div>
+    <script src="./assets/js/all.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script>
+function visibilityconfirmpassword(){
+// console.log(document.getElementById("confirmPassword").type);
+  if(document.getElementById("confirmPassword").type == "text"){
+  document.getElementById("confirmPassword").type = "password";
+}
+else{
+  document.getElementById("confirmPassword").type = "text";
+}
+
+}
+function visibilitypassword(){
+// console.log(document.getElementById("confirmPassword").type);
+  if(document.getElementById("password").type == "text"){
+  document.getElementById("password").type = "password";
+}
+else{
+  document.getElementById("password").type = "text";
+}
+
+}
+
+$(document).ready(function() {
+  var request;
+  //     // Abort any pending request
+    if (request) {
+        request.abort();
+    }
+
+  $("#signupform").submit(function(event) {
+    
+    // Prevent default form submission
+    event.preventDefault();
+    
+
+    // Get form data
+    var name = $("#name").val();
+    var email = $("#email").val();
+    var password = $("#password").val();
+
+    // Make Ajax request to signup API
+    document.getElementById("loader1").style.visibility = "visible";
+    $.ajax({
+      type: "POST",
+      url: `${baseurl}/doctor-registration`,
+      data: {
+        name: name,
+        email: email,
+        password: password
+      },
+      success: function(response) {
+        // console.log(response)
+        document.getElementById("loader1").style.visibility = "hidden";
+        Swal.fire({
+          icon: 'success',
+          title: 'Successful!',
+          text: response.message,
+          allowOutsideClick: false
+        })
+        $( 'button.swal2-confirm' ).click(function() {
+          location.replace('./login.html');
+        });
+      },
+      
+      error: function(response) {
+        document.getElementById("loader1").style.visibility = "hidden";
+        // console.log(response.responseJSON.message);
+        if(response.status == 400){
+          Swal.fire({
+          title: "Duplicate Email!",
+          text: response.responseJSON.message,
+          icon: "error"
+        });          
+        }
+        if(response.status == 500){
+          Swal.fire({
+            title: "Sign Up Failed!",
+            text: response.responseJSON.message,
+            icon: "error"
+          });
+        }
+      }
+    });
+  });
+});
+
+
+
+
+//           var request;
+//           url1 = `${baseurl}/doctor-registration`;
+//           // console.log(url1);
+// $("#signupform").submit(function (event) {
+// // alert(document.getElementById("imagesuploadform").value);
+//     // Prevent default posting of form - put here to work in case of errors
+//     event.preventDefault();
+
+//     // Abort any pending request
+//     if (request) {
+//         request.abort();
+//     }
+//     // setup some local variables
+//     // var formData = new FormData(this);
+//     var $form = $(this);
+
+//     // Let's select and cache all the fields
+//     var $inputs = $form.find("input, select, button, textarea");
+
+//     // Serialize the data in the form
+//     var serializedData = $form.serialize();
+//     // console.log(serializedData)
+//     // console.log(formData.cname);
+//     var password1 = document.getElementById("password").value;
+//     var confirmPassword1 = document.getElementById("confirmPassword").value;
+//      // var password1 = document.getElementsByName("password").value;
+//     if(confirmPassword1 == password1){
+//       if(password1.length >= 8){
+//         document.getElementById("loader1").style.visibility = "visible";
+//         $.ajax({
+//             type: "post",
+//             data: serializedData,
+//             url: url1,
+//             success: function (result) {
+//               console.log(result);
+//                 // $("#div12").html(result);
+//                 document.getElementById("loader1").style.visibility = "hidden";
+//             },
+//         });
+//       }
+//       else{
+//         alert("short password");
+//       }
+//     }
+//     else{
+//       alert("not same");
+//     }
+
+// });
+
+
+      $(".viewPassword").click(function () {
+        var inputPassword = $(this).siblings("input");
+        if (inputPassword.type === "password") {
+          inputPassword.type = "text"
+        } else {
+          inputPassword.type = "password"
+        }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>

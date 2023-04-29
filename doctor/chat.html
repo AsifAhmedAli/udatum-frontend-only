@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat</title>
+  <link rel="stylesheet" href="./assets/css/datatables.css" />
+  <link rel="stylesheet" href="./assets/css/bootstrap.css" />
+  <script src="env.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+  <aside>
+    <div class="top">
+      <a href="./index.html" class="d-block">
+        <img src="./assets/images/logo-white.svg" height="48px" class="logo" alt="">
+      </a>
+      <ul class="list-unstyled ps-0 mb-0">
+        <li class="side-link active">
+          <a href="./dashboard.html">
+            <span class="material-symbols material-symbols-rounded"
+              >team_dashboard</span
+            >
+            Dashboard
+          </a>
+        </li>
+        <li class="side-link">
+          <a href="./registeredpatients.html">
+            <span class="material-symbols material-symbols-rounded"
+              >person</span
+            >
+            Patients
+          </a>
+        </li>
+        <li class="side-link">
+          <a href="#" id="messagesanchor">
+            <span class="material-symbols material-symbols-rounded"
+              >mail</span
+            >
+            Messages
+            <!-- <div class="badge">New</div> -->
+          </a>
+        </li>
+        <li class="side-link">
+          <a href="./profile.html">
+            <span class="material-symbols material-symbols-rounded"
+              >settings</span
+            >
+            Settings
+          </a>
+        </li>
+        <li class="side-link">
+          <a href="./activate.html">
+            <span class="material-symbols material-symbols-rounded"
+              >shop</span
+            >
+            Activate Device
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="bottom">
+      <div class="side-link">
+        <a href="" id="logout-btn">
+          <span class="material-symbols material-symbols-rounded"
+            >logout</span
+          >
+          Logout
+        </a>
+      </div>
+    </div>
+  </aside>
+  <main>
+    <header>
+      <div class="container">
+        <div class="search-container">
+          <a href="" class="logo">Udatum</a>
+          <button type="button" class="search" id="search">
+            <span class="material-symbols material-symbols-rounded">search</span>
+          </button>
+          <form action="" class="w-100">
+            <input type="search" class="form-control w-100" name="" id="" placeholder="Search" />
+            <button class="btn btn-primary rounded-pill">
+              <span class="material-symbols material-symbols-rounded">search</span>
+            </button>
+          </form>
+        </div>
+        <div class="right">
+          <div class="dropdown">
+            <button type="button" class="notifications unread" type="button" id="dropdownMenuButton1"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="material-symbols material-symbols-rounded">notifications</span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </li>
+            </ul>
+          </div>
+
+          <button type="button" class="avatar unread" id="user-initials"></button>
+          <button type="button" class="menu" id="menu">
+            <span class="material-symbols material-symbols-rounded">menu</span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <!-- <div class="container">
+        <div class="top-bar">
+          <div class="float-start">
+            <h5 class="fw-bold">Haseeb Ahmed Data Record</h5>
+          </div>
+          <div class="date-time" id="clock">
+            <span class="me-4"></span>
+            <span></span>
+          </div>
+        </div>
+      </div> -->
+    <div class="content">
+      <div class="container">
+        <div class="chat-container">
+          <div class="list">
+            <div class="top">
+              <div class="d-flex align-items-center justify-content-between">
+                <h5 class="fw-bold mb-xl-4 mb-3">Messages</h5>
+                <button data-bs-toggle="modal" data-bs-target="#exampleModal"
+                  class="btn btn-light bg-transparent mb-xl-4 mb-3 fs-4">
+                  <span class="material-symbols material-symbols-rounded">add</span>
+                </button>
+              </div>
+              <!-- <input type="search" name="" id="" class="form-control rounded-pill py-xl-3 px-xl-4"
+                placeholder="Search" /> -->
+            </div>
+            <div class="chats" id="all_chat_rooms">
+
+            </div>
+          </div>
+          <div class="chat-container" id="chatshowarea">
+            <div class="chat-window" style="visibility: hidden;" id="chatwindow">
+              <div class="top">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="d-flex align-items-center gap-3 mb-3">
+                    <button
+                      class="btn btn-sm btn-primary d-md-none d-block"
+                      id="go-chats"
+                    >
+                      <span class="material-symbols material-symbols-rounded"
+                        >arrow_back</span
+                      >
+                    </button>
+                    <div class="img-container">HA</div>
+                    <h5 class="fw-bold mb-0" id="nameofchatroom"></h5>
+                  </div>
+                  <div class="dropdown">
+                    <button
+                      class="btn btn-light bg-transparent mb-3 fs-4"
+                      type="button"
+                      id="dropdownMenuButton1"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <span class="material-symbols material-symbols-rounded"
+                        >more_vert</span
+                      >
+                    </button>
+                    <ul
+                      class="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton1"
+                    >
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li>
+                        <a class="dropdown-item" href="#">Another action</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#"
+                          >Something else here</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="chat" id="chat-box">
+                
+              </div>
+              <div class="bottom">
+                <form id="messagesend">
+                  
+                <div class="message-container">
+                  <textarea
+                    name="msgarea"
+                    id="msgarea"
+                    cols="30"
+                    rows="1"
+                    placeholder="Type Your Message Here..."
+                    required
+                  ></textarea>
+                  <div class="attachments">
+                    <button
+                      type="button"
+                      class="attachment"
+                      onclick="document.getElementById('attach_file').click()"
+                    >
+                      <span
+                        class="material-symbols material-symbols-rounded top-0"
+                        >attach_file</span
+                      >
+                    </button>
+                    <input
+                      type="file"
+                      name="attachments"
+                      id="attach_file"
+                      class="d-none"
+                      multiple
+                    />
+                    <!-- <button class="attachment">
+                      <span
+                        class="material-symbols material-symbols-rounded top-0"
+                        >mood</span
+                      >
+                    </button> -->
+                    <input type="text" style="visibility: hidden;" name="chatroomid" id="chatroomid">
+                  </div>
+                  <div>
+                  <button type="submit" class="btn btn-primary send px-3">
+                    <span class="material-symbols material-symbols-rounded"
+                      >send</span
+                    >
+                    Send
+                  </button>
+
+                </div>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Chat Room</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="newchatroom" class="w-100">
+          <div class="modal-body">
+
+            <input type="text" class="form-control w-100" name="chatroomname" placeholder="Chat Room Name" />
+            <div>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Patient Name</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody id="all_patients_of_a_doctor">
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" id="submitbutton" class="btn btn-primary">Create</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="loading" id="loader1" style="visibility: hidden;">Loading&#8230;</div>
+  <script src="./assets/js/all.js"></script>
+  <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/datatables.js"></script>
+  <script src="./assets/js/logout.js"></script>
+  <script>
+    // messagesend
+
+    $(document).ready(function () {
+      if ($(window).width() < 768) {
+        $("#search").click(function () {
+          $(this).next().slideToggle();
+        });
+      }
+
+      if ($(window).width() < 1100) {
+        $("#menu").click(function () {
+          $("aside").toggleClass("d-flex");
+        });
+      }
+    });
+
+    if ($(window).width() < 768) {
+      $("#go-chats").click(function () {
+        $(".list").show();
+        $(".chat-window").hide();
+      });
+      $("button.chat").click(function () {
+        $(".list").hide();
+        $(".chat-window").show();
+      });
+    }
+    function auto_grow(element) {
+              element.style.height = "5px";
+              element.style.height = element.scrollHeight + "px";
+            }
+              objDiv = document.getElementById("chat-box");
+              objDiv.scrollTop = objDiv.scrollHeight;
+  </script>
+  <script>
+    //  code for clock
+    // authentication and get all patients of a doctor
+    $(document).ready(function () {
+      var token = localStorage.getItem('token');
+      var user_ida = localStorage.getItem('id');
+var messagesanchor = document.getElementById("messagesanchor");
+  messagesanchor.setAttribute("href", `${clientbaseurl}/doctor/chat.html?id=${user_ida}`);
+      function showchatroom(id, name) {
+              // nameofchatroom
+              document.getElementById("nameofchatroom").innerHTML = name;
+              document.getElementById("chatroomid").value = id;
+              // chatroomid
+        // document.getElementById("chatshowarea").innerHTML = chatdata;
+        document.getElementById("chatwindow").style.visibility = "visible";
+//get all chats of a chatroom
+        document.getElementById("loader1").style.visibility = "visible";
+        $.ajax({
+          type: "get",
+          url: `${baseurl}/chat-room-messages/${id}`,
+          timeout: 0,
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          success: function (response) {
+            // console.log(response.results.length);
+            document.getElementById("chat-box").innerHTML = "";
+            var i = 0;
+            response.results.forEach(key => {
+              i++;
+              var dateFormat= new Date(key.timestamp);
+              if(key.sender_id == user_ida){
+                if(i == response.results.length){
+                  document.getElementById("chat-box").innerHTML += `   
+                  <div class="message-container me">
+                    <div class="time">${dateFormat.getDate()+"/"+(dateFormat.getMonth()+1)+"/"+dateFormat.getFullYear() + " " +dateFormat.getHours() + ":" + dateFormat.getMinutes() + ":" + dateFormat.getSeconds()}</div>
+                    <div class="message">
+                      ${key.message}
+                    </div>
+                  </div>`;
+                }
+                else{
+                  document.getElementById("chat-box").innerHTML += `   
+                <div class="message-container me">
+                  <div class="time">${dateFormat.getDate()+"/"+(dateFormat.getMonth()+1)+"/"+dateFormat.getFullYear() + " " +dateFormat.getHours() + ":" + dateFormat.getMinutes() + ":" + dateFormat.getSeconds()}</div>
+                  <div class="message">
+                    ${key.message}
+                  </div>
+                </div>`;
+                }
+              }
+              else{
+                document.getElementById("chat-box").innerHTML += `              
+              <div class="message-container other">
+                <div class="time">${dateFormat.getDate()+"/"+(dateFormat.getMonth()+1)+"/"+dateFormat.getFullYear() + " " +dateFormat.getHours() + ":" + dateFormat.getMinutes() + ":" + dateFormat.getSeconds()}</div>
+                <div class="message">
+                    ${key.message}
+                  </div>
+                </div>`;
+              }
+              var objDiv = document.getElementById("chat-box");
+              objDiv.scrollTop = objDiv.scrollHeight;
+            });
+            // console.log(response)
+            // response.patients.forEach(key => {
+            // var dateFormat= new Date(key.date_of_birth);
+            //   document.getElementById("all_patients_of_a_doctor").innerHTML += 
+            //   `<tr>
+            //     <th>${key.name}</th>
+            //     <td><input type="checkbox" name="${key.name}" value="${key.pid}"></td>
+            //   </tr>`;
+            // });
+
+            // $("#div11").html(result);
+            // console.log(response);
+
+            document.getElementById("loader1").style.visibility = "hidden";
+          },
+          error: function (response) {
+            // console.log(response);
+
+            if (response.responseJSON.message == "Authentication failed") {
+              window.location.replace("login.html");
+            }
+          }
+        });
+          }
+      var request;
+
+$("#messagesend").submit(function (event) {
+// alert(document.getElementById("imagesuploadform").value);
+    // Prevent default posting of form - put here to work in case of errors
+    event.preventDefault();
+
+    // Abort any pending request
+    if (request) {
+        request.abort();
+    }
+    // setup some local variables
+    var formData = new FormData(this);
+    var dateFormat= new Date();
+    formData.append("sender_id", user_ida);
+    // msgarea
+    var messaga = document.getElementById("msgarea").value;
+    // console.log(formData)
+    document.getElementById("loader1").style.visibility = "visible";
+    $.ajax({
+        type: "post",
+        data: formData,
+        url: `${baseurl}/new-message`,
+        success: function (result) {
+            console.log("success");
+            document.getElementById("chat-box").innerHTML += `   
+                  <div class="message-container me">
+                    <div class="time">${dateFormat.getDate()+"/"+(dateFormat.getMonth()+1)+"/"+dateFormat.getFullYear() + " " +dateFormat.getHours() + ":" + dateFormat.getMinutes() + ":" + dateFormat.getSeconds()}</div>
+                    <div class="message">
+                      ${messaga}
+                    </div>
+                  </div>`;
+                  document.getElementById("msgarea").value = "";
+                  var objDiv = document.getElementById("chat-box");
+              objDiv.scrollTop = objDiv.scrollHeight;
+            document.getElementById("loader1").style.visibility = "hidden";
+        },
+cache: false,
+contentType: false,
+processData: false
+    });
+});
+
+      // console.log(token)
+      if (token == null) {
+        window.location.replace("login.html");
+      } else {
+        document.getElementById("loader1").style.visibility = "visible";
+        $.ajax({
+          type: "get",
+          url: `${baseurl}/patient-list-of-a-doctor`,
+          timeout: 0,
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          success: function (response) {
+            // console.log(response)
+            response.patients.forEach(key => {
+              // var dateFormat= new Date(key.date_of_birth);
+              document.getElementById("all_patients_of_a_doctor").innerHTML +=
+                `<tr>
+                    <th>${key.name}</th>
+                    <td><input type="checkbox" name="${key.name}" value="${key.pid}"></td>
+                  </tr>`;
+            });
+
+            // $("#div11").html(result);
+            // console.log(response);
+
+            document.getElementById("loader1").style.visibility = "hidden";
+          },
+          error: function (response) {
+            // console.log(response);
+
+            if (response.responseJSON.message == "Authentication failed") {
+              window.location.replace("login.html");
+            }
+          }
+        });
+        //show chat room 
+        /// get all chatrooms
+        document.getElementById("loader1").style.visibility = "visible";
+        $.ajax({
+          type: "get",
+          url: `${baseurl}/all-chatrooms/${user_ida}`,
+          timeout: 0,
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          success: function (response) {
+            // console.log(response)
+            // document.getElementById("chatwindow").style.visibility = "visible";
+            response.results.forEach(key => {
+              // var dateFormat= new Date(key.date_of_birth);
+              document.getElementById("all_chat_rooms").innerHTML +=
+                `<button class="chat" style="border-bottom: 1px solid gray; border-radius: 0px" id="${key.id}">
+                    <div class="img-container">HA</div>
+                    <div class="d-flex justify-content-between w-100">
+                      <div class="me-2">
+                        <h5 class="name">${key.name}</h5>
+                      </div>
+                      <div>
+                        <p class="time">8:55 pm</p>
+                        <p class="unread-messages">2</p>
+                      </div>
+                    </div>
+                  </button>`;
+            });
+
+            response.results.forEach(key => {
+              var x = document.getElementById(key.id);
+              x.addEventListener("click", function () {
+                // document.getElementById("chatwindow").style.visibility = "visible"; 
+                showchatroom(key.id, key.name);
+              });
+            }); // $("#div11").html(result);
+            // console.log(response);
+
+            document.getElementById("loader1").style.visibility = "hidden";
+          },
+          error: function (response) {
+            // console.log(response);
+
+            if (response.responseJSON.message == "Authentication failed") {
+              window.location.replace("login.html");
+            }
+          }
+        });
+      }
+
+      $('#newchatroom').submit(function (event) {
+        event.preventDefault();
+        //     if (request) {
+        //     request.abort();
+        // }
+        // setup some local variables
+        var $form = $(this);
+
+        // Let's select and cache all the fields
+        var $inputs = $form.find("input, select, button, textarea");
+
+        // Serialize the data in the form
+        var serializedData = $form.serialize();
+        serializedData += `&userid=${user_ida}`;
+        // console.log(serializedData);
+        document.getElementById("loader1").style.visibility = "visible";
+        $.ajax({
+          url: `${baseurl}/create-chat-room/${serializedData}`,
+          method: 'POST',
+          timeout: 0,
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }).done(function (response) {
+          document.getElementById("loader1").style.visibility = "hidden";
+          if (response.success) {
+            Swal.fire({
+              icon: 'success',
+              title: 'Successful!',
+              text: response.message,
+              allowOutsideClick: false
+            })
+            $('button.swal2-confirm').click(function () {
+              location.reload();
+            });
+          }
+        }).fail(function (response) {
+          document.getElementById("loader1").style.visibility = "hidden";
+          Swal.fire({
+            title: "Error!",
+            text: response.responseJSON.message,
+            icon: "error"
+          });
+        });
+      });
+
+
+
+      // Update clock display every second
+      setInterval(function () {
+        var now = new Date();
+
+        // Format date and time
+        var date = now.toLocaleDateString('en-US', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        });
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+        var ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        var time = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+
+        // Display date and time in clock element
+        $('#clock').text(date + ' ' + time);
+      }, 1000);
+    });
+    // code for logged-in user initials
+
+    $(document).ready(function () {
+      // Check if user is logged in and display name initials
+      var token = localStorage.getItem('token');
+      // Extract the user's name from the token
+      var name = JSON.parse(atob(token.split('.')[1])).name;
+
+      // Display the first two letters of the name in the designated element
+      var initials = name.substr(0, 2).toUpperCase();
+      $('#user-initials').text(initials);
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.css" /><script src="env.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <aside>
+      <div class="top">
+        <a href="./dashboard.html" class="d-block">
+          <img src="./assets/images/logo-white.svg" height="48px" class="logo" alt="">
+        </a>
+        <ul class="list-unstyled ps-0 mb-0">
+          <li class="side-link active">
+            <a href="./dashboard.html">
+              <span class="material-symbols material-symbols-rounded"
+                >team_dashboard</span
+              >
+              Dashboard
+            </a>
+          </li>
+          <li class="side-link">
+            <a href="./registeredpatients.html">
+              <span class="material-symbols material-symbols-rounded"
+                >person</span
+              >
+              Patients
+            </a>
+          </li>
+          <li class="side-link">
+            <a href="#" id="messagesanchor">
+              <span class="material-symbols material-symbols-rounded"
+                >mail</span
+              >
+              Messages
+              <!-- <div class="badge">New</div> -->
+            </a>
+          </li>
+          <li class="side-link">
+            <a href="./profile.html">
+              <span class="material-symbols material-symbols-rounded"
+                >settings</span
+              >
+              Settings
+            </a>
+          </li>
+          <li class="side-link">
+            <a href="./activate.html">
+              <span class="material-symbols material-symbols-rounded"
+                >shop</span
+              >
+              Activate Device
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="bottom">
+        <div class="side-link">
+          <a href="" id="logout-btn">
+            <span class="material-symbols material-symbols-rounded"
+              >logout</span
+            >
+            Logout
+          </a>
+        </div>
+      </div>
+    </aside>
+    <main>
+      <header>
+        <div class="container">
+          <div class="search-container">
+            <a href="" class="logo">Udatum</a>
+            <button type="button" class="search" id="search">
+              <span class="material-symbols material-symbols-rounded"
+                >search</span
+              >
+            </button>
+            <form action="" class="w-100">
+              <input
+                type="search"
+                class="form-control w-100"
+                name=""
+                id=""
+                placeholder="Search"
+              />
+              <button class="btn btn-primary rounded-pill">
+                <span class="material-symbols material-symbols-rounded"
+                  >search</span
+                >
+              </button>
+            </form>
+          </div>
+          <div class="right">
+            <div class="dropdown">
+              <button type="button" class="notifications unread" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="material-symbols material-symbols-rounded"
+                  >notifications</span
+                >
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </div>
+            
+            <button type="button" class="avatar unread" id="user-initials"></button>
+            <button type="button" class="menu" id="menu">
+              <span class="material-symbols material-symbols-rounded"
+                >menu</span
+              >
+            </button>
+          </div>
+        </div>
+      </header>
+      <div class="container">
+        <div class="top-bar">
+          <div class="date-time" id="clock" >
+            <span class="me-4"></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="container">
+          <div class="row gx-3 mx-0 gy-xl-5 gy-3 w-100">
+            <div class="col-md-4">
+              <div class="dashboard-box">
+                <h4 class="heading">Needs Monitoring</h4>
+                <div class="circle-container warning">
+                  <div class="circle" id="Needs_Monitoring">1</div>
+                  <p class="message">Patient needs your attention.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <div class="dashboard-box">
+                <h4 class="heading">Physiologic</h4>
+                <div class="row">
+                  <div class="col">
+                    <div class="circle-container orange">
+                      <div class="circle">0</div>
+                      <p class="message">Alerts</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="dashboard-box">
+                <h4 class="heading">Activity</h4>
+                <div class="row gy-xl-4 gy-3">
+                  <div class="col-4">
+                    <div class="circle-container active">
+                      <div class="circle" id="Needs_Monitoring1">1</div>
+                      <p class="message">Active</p>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="circle-container risk">
+                      <div class="circle">0</div>
+                      <p class="message">At Risk</p>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="circle-container dormant">
+                      <div class="circle">2</div>
+                      <p class="message">Dormant</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="./assets/js/all.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/logout.js"></script>
+    <div class="loading" id="loader1" style="visibility: hidden;">Loading&#8230;</div>
+    <script>
+      $(document).ready(function () {
+
+
+        var user_ida = localStorage.getItem('id');
+var messagesanchor = document.getElementById("messagesanchor");
+  messagesanchor.setAttribute("href", `${clientbaseurl}/doctor/chat.html?id=${user_ida}`);
+
+  if ($(window).width() < 768) {
+          $("#search").click(function () {
+            $(this).next().slideToggle();
+          });
+        };
+
+        if ($(window).width() < 1100) {
+          $("#menu").click(function () {
+            $('aside').toggleClass('d-flex');
+          });
+        }
+  // Check if user is logged in and display name initials
+  var token = localStorage.getItem('token');
+  // var with_access_token = localStorage.getItem('with_access_token');
+  // var with_refresh_token = localStorage.getItem('with_refresh_token');
+  // var with_userid = localStorage.getItem('with_userid');
+
+  // const queryString = window.location.search;
+  //       const urlParams = new URLSearchParams(queryString);
+  //       const product = urlParams.get('code');
+        // if(product == null){
+          // console.log("null hy")
+          // var expireytime = localStorage.getItem('expiry');
+//          console.log(expireytime);
+//          console.log(Date.now());
+          // if (typeof expireytime !== 'undefined') {
+          //   if(Date.now() > expireytime){
+          //     localStorage.removeItem('token');
+          //     localStorage.removeItem('id');
+          //     // localStorage.removeItem('with_access_token');
+          //     // localStorage.removeItem('with_refresh_token');
+          //     // localStorage.removeItem('with_userid');
+          //     // localStorage.removeItem('expiry');
+          //     // window.location.href = './login.html';
+          //   } 
+          // }
+        // }
+        // else{
+          // console.log(product);
+          // if(with_refresh_token != null && with_refresh_token != null && with_access_token != null){
+          //   // window.location.replace("./login.html");
+          // }
+          // else{
+          //   document.getElementById("loader1").style.visibility = "visible";
+          //   data = JSON.stringify({
+          //     code: product
+          //   })
+          //   $.ajax({
+          //         type: "post",
+          //         url: `${baseurl}/get-access-token`,
+          //         timeout: 0,
+          //         data: data,
+          //         headers: {
+          //           "Authorization": `Bearer ${token}`,
+          //           "Content-Type": "application/json",
+          //         },
+          //         success: function (response) {
+          //             // $("#div11").html(result);
+          //             // console.log(response);
+          //             var resposnse = JSON.parse(response);
+          //             localStorage.setItem('with_access_token', resposnse.body.access_token);
+          //             localStorage.setItem('with_refresh_token', resposnse.body.refresh_token);
+          //             localStorage.setItem('with_userid', resposnse.body.userid);
+          //             var timenow = Date.now();
+          //             var additions = resposnse.body.expires_in * 1000;
+          //             // timenow = timenow + resposnse.body.expires_in;
+          //             timenow = timenow + additions;
+          //             // console.log(timenow);
+          //             localStorage.setItem('expiry', timenow);
+          //             // checktimeer(timenow)
+          //             document.getElementById("loader1").style.visibility = "hidden";
+          //         },
+          //         error: function(response) {
+          //           // console.log(response);
+          //         }
+          //     });
+          // }
+        // }
+
+        //get devices data to show in alerts and dormants
+        
+        // var weights = [];
+        // function myfuan(weightvalue, weights1) {
+        //   weights1.push(weightvalue * 2.2046 / 1000);
+        //   // console.log(weights.length)
+        //   return weights1;
+        // }
+      //   var with_access_token = localStorage.getItem('with_access_token');
+      // if (with_access_token != undefined || with_access_token != null) {
+      //   data = JSON.stringify({
+      //     with_access_token: with_access_token
+      //   })
+      //   $.ajax({
+      //     type: "post",
+      //     url: `${baseurl}/get-weight`,
+      //     data: data,
+      //     timeout: 0,
+      //     headers: {
+      //       "Authorization": `Bearer ${token}`,
+      //       "Content-Type": "application/json",
+      //     },
+      //     success: function (response1) {
+
+      //       // $("#div11").html(result);
+      //       // console.log(response1);
+      //       var ress = JSON.parse(response1);
+      //       // console.log(ress.body)
+      //       ress.body.measuregrps.forEach(key => {
+      //         key.measures.forEach(key1 => {
+      //           // weights.push(key1.value/1000);
+      //           weights = myfuan(key1.value, weights);
+                
+      //         });
+      //       });
+      //       document.getElementById("loader1").style.visibility = "hidden";
+
+      //     }
+      //   });
+      //   console.log(weights);
+      // }
+    if(token == null){
+        window.location.replace("login.html");
+      }
+      else{
+        $.ajax({
+              type: "get",
+              url: `${baseurl}/patient-list-of-a-doctor`,
+              timeout: 0,
+              headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+              success: function (response) {
+                  $("#Needs_Monitoring").html(response.totalPatients);
+                  $("#Needs_Monitoring1").html(response.totalPatients);
+                  console.log("success");
+                  // console.log(response.totalPatients);
+                  // localStorage.setItem('with_token', );
+              },
+              error: function(response) {
+                // console.log(response);
+                if(response.responseJSON.message == "Authentication failed"){
+                  localStorage.removeItem('id');
+                  localStorage.removeItem('token');
+                  // window.location.replace("login.html");
+                    }
+              }
+          });
+      }
+// Extract the user's name from the token
+var name = JSON.parse(atob(token.split('.')[1])).name;
+
+// Display the first two letters of the name in the designated element
+var initials = name.substr(0, 2).toUpperCase();
+$('#user-initials').text(initials);
+  // Update clock display every second
+  setInterval(function() {
+    var now = new Date();
+    
+    // Format date and time
+    var date = now.toLocaleDateString('en-US', {day: 'numeric', month: 'long', year: 'numeric'});
+    var hours = now.getHours();
+    var minutes = now.getMinutes();
+    var seconds = now.getSeconds();
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+    var time = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+    
+    // Display date and time in clock element
+    $('#clock').text(date + ' ' + time);
+  }, 1000);
+
+
+});
+
+    </script>
+  </body>
+</html>

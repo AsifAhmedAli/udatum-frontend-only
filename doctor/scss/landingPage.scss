@@ -1,0 +1,473 @@
+:root {
+  --bs-orange2: #ea7447;
+}
+.landing-page {
+  @media screen and (min-width: 1201px) {
+    .container,
+    .container-fluid {
+      padding-left: 80px;
+      padding-right: 80px;
+    }
+  }
+  header {
+    padding: 13px 0;
+    height: 107px;
+    background-color: white;
+    .devices {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: -6px;
+      margin-bottom: 40px;
+      height: 100px;
+      padding: 0;
+      z-index: 1;
+      + .navbar {
+        @media screen and (min-width: 1200px) {
+          margin-top: 36px;
+        }
+      }
+    }
+    .nav-link {
+      &.active {
+        color: $primary !important;
+      }
+      @media screen and (min-width: 1201px) {
+        font-size: 20px;
+        font-weight: 500;
+        color: #585858 !important;
+        padding: 12px 26px !important;
+        &:hover {
+          text-decoration: underline;
+          color: $primary !important;
+        }
+      }
+    }
+  }
+  .title-1 {
+    font-weight: 600;
+  }
+  .punch {
+    @media screen and (min-width: 1201px) {
+      font-size: 20px;
+    }
+    font-weight: 380;
+  }
+  .hero {
+    padding: 143px 0;
+    background-image: url("../images/hero.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    * {
+      color: white;
+    }
+    h1 {
+      font-weight: 600;
+      margin-bottom: 36px;
+    }
+    .punch {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      letter-spacing: 0.04em;
+      text-align: justify;
+    }
+    .more {
+      font-size: 20px;
+      font-weight: 380;
+      letter-spacing: 0.04em;
+      text-align: justify;
+      margin-bottom: 60px;
+    }
+  }
+  .mission {
+    padding-top: 40px;
+    padding-bottom: 64px;
+    background-color: $primary;
+    color: white;
+  }
+  .aiengine {
+    padding: 63px 0;
+    .feature {
+      width: 100%;
+      height: 537px;
+      object-fit: cover;
+      object-position: center center;
+      border-radius: 20px;
+    }
+  }
+  .howitworks {
+    padding: 63px 0;
+    .box {
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+      border-radius: 20px;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      .info {
+        font-weight: 700;
+        padding: 28px 24px;
+        text-align: center;
+        height: 100%;
+      }
+      img {
+        max-height: 230px;
+        height: 230px;
+        min-height: 230px;
+        border-radius: 20px 20px 0 0;
+        object-fit: cover;
+        object-position: center center;
+        width: 100%;
+      }
+      &.device {
+        .info {
+          color: #ea7447;
+          background-color: #f3cdbf42;
+        }
+      }
+      &.data {
+        .info {
+          color: #1fba82;
+          background-color: #c0ffdd38;
+        }
+      }
+      &.cloud {
+        .info {
+          color: #4453d2;
+          background-color: #f9f9f9;
+        }
+      }
+      &.view {
+        .info {
+          color: #01a2b0;
+          background-color: #4ec9cd40;
+        }
+      }
+    }
+  }
+  .monitoring {
+    padding: 63px 0;
+    .feature {
+      height: 460px;
+      width: 100%;
+      border-radius: 20px;
+      object-fit: cover;
+      object-position: center center;
+    }
+    .box {
+      @media screen and (min-width: 1201px) {
+        padding-left: 72px;
+      }
+      .title-1 {
+        span {
+          color: var(--bs-orange2);
+        }
+      }
+      ul {
+        > li {
+          font-size: 20px;
+          font-weight: 600;
+          color: #585858;
+          @media screen and (min-width: 1201px) {
+            margin-bottom: 40px;
+          }
+          margin-bottom: 1rem;
+          .material-symbols {
+            margin-right: 20px;
+            color: var(--bs-orange2);
+          }
+        }
+      }
+    }
+  }
+  .ourplatform {
+    padding: 63px 0;
+    .box {
+      padding: 55px 2rem 35px;
+      height: 100%;
+      background: #ffffff;
+      box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.25);
+      border-radius: 20px;
+      text-align: center;
+      &.orange {
+        .material-symbols {
+          color: var(--bs-orange2);
+        }
+      }
+      &.green {
+        .material-symbols {
+          color: #69a648;
+        }
+      }
+      &.purple {
+        .material-symbols {
+          color: #774aff;
+        }
+      }
+      .material-symbols {
+        display: block;
+        font-size: 87px;
+        margin-bottom: 33px;
+        font-weight: 700;
+      }
+      .heading {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      .punch {
+        font-size: 20px;
+        font-weight: 380;
+        margin-bottom: 0;
+      }
+    }
+  }
+  .patientmonitoring {
+    padding: 63px 0;
+    p {
+      font-size: 20px;
+    }
+    .feature {
+      height: 460px;
+      border-radius: 20px;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .ourprogram {
+    background-color: $primary;
+    padding: 63px 0;
+  }
+  .joinus {
+    padding: 114px 0 65px;
+    .box {
+      background-image: url("../images/joinus.png");
+      padding: 3rem 0;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      border-radius: 20px;
+      text-align: center;
+      * {
+        color: white;
+      }
+      h2 {
+        margin-bottom: 40px;
+      }
+      @media screen and (max-width: 1200px) {
+        padding: 3rem 1rem;
+        h2 {
+          margin-bottom: 2rem;
+        }
+      }
+    }
+  }
+  .getintouch {
+    padding: 48px 0;
+    margin-bottom: 90px;
+    background-color: #f9f9f9;
+    .form-control {
+      border-radius: 0;
+      border: none;
+      border-bottom: 1px solid $primary;
+      background-color: transparent;
+      padding-top: 14px;
+      padding-bottom: 14px;
+      font-weight: 500;
+    }
+  }
+  .pricingmodel {
+    position: relative;
+    background-color: $primary;
+    margin-top: 63px;
+    padding-top: 63px;
+    padding-bottom: 63px;
+  }
+  .rpm {
+    padding-top: 63px;
+    padding-bottom: 63px;
+    background-color: #f1fff8;
+    margin-top: 63px;
+    .pricing-model {
+      position: relative;
+      &::before {
+        position: absolute;
+        width: 88px;
+        height: calc(100% - 230px);
+        background-color: transparent;
+        border: 1px dashed $primary;
+        content: "";
+        left: 50%;
+        transform: translateX(-100%);
+        top: 140px;
+      }
+      &::after {
+        position: absolute;
+        width: 50px;
+        background-color: transparent;
+        border-bottom: 1px dashed #504ecd;
+        content: "";
+        left: 55%;
+        transform: translateX(-200px);
+        top: 160px;
+      }
+      .first-month {
+        .money{
+          text-align: center;
+          margin-top: 1rem;
+          font-size: 32px;
+          font-weight: 600;
+          color: $primary;
+        }
+        .box {
+          background-color: #4ec9cd40;
+          border-radius: 10px;
+          padding: 1rem;
+          text-align: center;
+          max-width: 364px;
+          margin: auto;
+          h6 {
+            font-size: 20px;
+            font-weight: 800;
+            color: #01a2b0;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+          }
+          p {
+            margin-bottom: 0;
+            font-size: 18px;
+            font-weight: normal;
+          }
+        }
+      }
+      .monthly {
+        .box-container {
+          padding: 1rem 0;
+          position: relative;
+          .money,
+          .time {
+            position: absolute;
+            display: inline-block;
+          }
+          .money {
+            font-size: 32px;
+            font-weight: 600;
+            color: $primary;
+            left: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0.5rem;
+            background-color: #f1fff8;
+            z-index: 1;
+          }
+          .time {
+            font-size: 1rem;
+            font-weight: 600;
+            bottom: -25px;
+            left: 64px;
+            margin-bottom: 0;
+            padding: 0.5rem;
+            background-color: #f1fff8;
+            z-index: 1;
+          }
+          .box {
+            background-color: #378d90;
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            max-width: 364px;
+            margin: auto;
+            h6 {
+              font-size: 20px;
+              font-weight: 800;
+              color: white;
+              margin-bottom: 8px;
+              text-transform: uppercase;
+            }
+            p {
+              margin-bottom: 0;
+              font-size: 18px;
+              color: white;
+              font-weight: 380;
+            }
+          }
+        }
+        @media screen and (max-width: 1399px){
+          .box-container{
+            .money{
+              left: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+  footer {
+    padding: 35px 0;
+    background-color: #2f2e41;
+    img {
+      margin-right: 24px;
+      display: inline-block;
+    }
+    ul {
+      display: inline-block;
+      > li {
+        display: inline-block;
+        a {
+          color: white;
+          text-decoration: none;
+          font-size: 20px;
+          font-weight: 500;
+          padding: 0 12px;
+        }
+      }
+    }
+    .rights {
+      font-size: 20px;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 0;
+    }
+  }
+  @media screen and (max-width: 991px) {
+    .hero {
+      padding: 3rem 0;
+    }
+    .mission,
+    .howitworks,
+    .monitoring,
+    .ourplatform,
+    .patientmonitoring,
+    .joinus,
+    .aiengine,
+    .getintouch,
+    .pricingmodel footer {
+      padding: 2rem 0;
+    }
+    .monitoring {
+      .box {
+        ul {
+          > li {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+    .getintouch {
+      margin-bottom: 24px;
+    }
+    footer {
+      ul {
+        margin-top: 1rem;
+        > li {
+          display: block;
+          padding: 8px 0;
+          a {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}

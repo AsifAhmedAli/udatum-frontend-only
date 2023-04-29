@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Dashboard - Udatum</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="../env.js"></script>
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <style>
+        .nav-item:hover{
+            cursor:pointer;
+        }
+        .asdfas:hover{
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="background-color: #3b5fdd !important;background-image: none  !important;">
+            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-text mx-3"><span>Admin Panel</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+
+                    <li class="nav-item" onclick="all_physicians()"><a class="nav-link" ><i class="far fa-user-circle"></i><span>All Physicians</span></a></li>
+                    <!-- <li class="nav-item" onclick="ajax_sll_view_category()"><a class="nav-link" ><i class="far fa-user-circle"></i><span>View All Categories</span></a></li>     
+                    <li class="nav-item" onclick="ajax_call_add_employee()"><a class="nav-link" ><i class="far fa-user-circle"></i><span>Add Employees</span></a></li>        
+                    <li class="nav-item" onclick="ajax_call_view_employee()"><a class="nav-link" ><i class="far fa-user-circle"></i><span>View Active Employees</span></a></li>  
+                    <li class="nav-item" onclick="ajax_call_view_employee_Archieve()"><a class="nav-link" ><i class="far fa-user-circle"></i><span>View Employees archive</span></a></li>                       
+                    <li class="nav-item" onclick="ajax_call_upload_document()"><a class="nav-link" ><i class="far fa-user-circle"></i><span>Upload Documents</span></a></li>                       
+                    <li class="nav-item" onclick="ajax_call_documents_from_employees()"><a class="nav-link" ><i class="far fa-user-circle"></i><span>Documents From Employees</span></a></li>
+                    <li class="nav-item" onclick="ajax_call_update_policy_request()"><a class="nav-link" ><i class="far fa-user-circle"></i><span>Updated Policy Approval</span></a></li>
+                    <li class="nav-item" onclick="ajax_call_register_new_tool()"><a class="nav-link" ><i class="far fa-user-circle"></i><span>Register New Tool</span></a></li>
+                    <li class="nav-item" onclick="ajax_call_view_tools()"><a class="nav-link" ><i class="far fa-user-circle"></i><span>View All Tools</span></a></li>                    
+                    <li class="nav-item" onclick="ajax_call_received_requests()"><a class="nav-link"><i class="far fa-user-circle"></i><span>Received Requests <span class="px-1" style="border:1px solid white;border-radius:50%"></span></span></a></li>
+                    <li class="nav-item" onclick="ajax_call_variation_show()"><a class="nav-link" ><i class="far fa-user-circle"></i><span>View All Variations</span></a></li> -->
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid">
+                        <div class="ml-auto d-none d-sm-block">
+                            <img src="../assets/images/logo-dark.svg" style="max-width: 140px;">
+                            <!--<img src="https://secureservercdn.net/50.62.172.157/x7e.438.myftpupload.com/wp-content/uploads/2018/06/metrocare_logov.png" style="width:60px; height:auto;" />-->
+                        </div>
+                        <ul class="navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item dropdown no-arrow">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"><span class="d-none d-lg-inline mr-2 text-gray-600 small"></span><img class="border rounded-circle img-profile" src="../assets/images/logo-dark.svg"></a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mt-3">
+                            <a class="dropdown-item" href="logout.html"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div id="showhere">
+
+                </div>
+            </div>
+            <!-- <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © Mexit.it</span></div>
+                </div>
+            </footer> -->
+
+        <div class="loading" id="loader1" style="visibility: hidden;">Loading&#8230;</div>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        <div id="div11"></div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="assets/js/script.min.js"></script>
+    <script src="./auth.js"></script>
+    <script>
+
+        function all_physicians(){
+            document.getElementById("loader1").style.visibility = "visible";
+            var i = 1;
+            var butt = "";
+            $.ajax({
+                type: "get",
+                url: `./all_docs_tbl.html`,
+                headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json",
+                },
+                success: function (result) {
+                    $("#showhere").html(result);
+                }
+            });            
+                $.ajax({
+                type: "get",
+                url: `${baseurl}/admin/get-all-doctors`,
+                headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json",
+                },
+                success: function (result) {
+                    console.log(result.data.doctors);
+                    result.data.doctors.forEach(key => {
+                        var dateFormat = new Date(key.create_time);
+                        if(key.status1){
+                            butt = "<button disabled class='btn btn-dark btn-sm'>Approved</button";
+                        }
+                        else{
+                            butt = "<button onclick='approve_doctor("+key.id +")' class='btn btn-outline-dark btn-sm'>Approve</button>";
+                        }
+                        if(key.verified1){
+                            verification = "<button disabled class='btn btn-dark btn-sm'>Verified</button";
+                        }
+                        else{
+                            verification = "<button disabled class='btn btn-outline-dark btn-sm'>Not Verified</button>";
+                        }
+                        $("#all_docs_data").append(`
+                        
+                            <tr>
+                                <th scope="row">${i}</th>
+                                <td><a class="mupointer" type="button" onclick="getdoctor(${key.id})">${key.name}</a></td>
+                                <td><a class="mupointer" type="button" onclick="getdoctor(${key.id})">${key.email}</a></td>
+                                <td>${key.password}</td>
+                                <td>${dateFormat.getDate()} ${(getMonthName(dateFormat.getMonth() + 1))} ${dateFormat.getFullYear()} ${dateFormat.getHours()}:${dateFormat.getMinutes()}:${dateFormat.getSeconds()}</td>
+                                <td>${butt}</td>
+                                <td>${verification}</td>
+                            </tr>
+                            
+                        `);    
+                        i++;
+                    });
+                    document.getElementById("loader1").style.visibility = "hidden";
+                }
+            });
+        }
+        function approve_doctor(x){
+            // alert(x);
+            $.ajax({
+                type: "put",
+                url: `${baseurl}/admin/approve/${x}`,
+                headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json",
+                },
+                success: function (result) {
+                    console.log(result.message);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Successful!',
+                        text: result.message,
+                        allowOutsideClick: false
+                    })
+                    $('button.swal2-confirm').click(function () {
+                        all_physicians();
+                    });
+                    document.getElementById("loader1").style.visibility = "hidden";
+                }
+        });
+    }
+    function getdoctor(x){
+        // alert(x)
+        document.getElementById("loader1").style.visibility = "visible";
+        var i = 0;
+        $.ajax({
+                type: "get",
+                url: `./doctor_details.html`,
+                headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json",
+                },
+                success: function (result) {
+                    $("#div11").html(result);
+                    $.ajax({
+                        type: "get",
+                        url: `${baseurl}/all-patients-of-one-doctor/${x}`,
+                        headers: {
+                        "Authorization": `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                        },
+                        success: function (response) {
+                            console.log(response.patients);
+                            // totalPatients
+                            $("#numberofpatients").html(`[${response.totalPatients}]`);
+                            response.patients.forEach(key => {
+                                // if(key.time_spent == null){
+                                //     key.time_spent = 0;
+                                // }
+                                var timespent = toHoursAndMinutes(key.time_spent)
+                                var dateFormat = new Date(key.created_at);
+                                var dateFormat1 = new Date(key.date_of_birth);
+                                
+                                $("#all_pats_data").append(`
+                                <tr>
+                                    <th scope="row">${i}</th>
+                                    <td><a class="mupointer" type="button" onclick="getdoctor(${key.pid})">${key.name}</a></td>
+                                    <td><a class="mupointer" type="button" onclick="getdoctor(${key.pid})">${key.email}</a></td>
+                                    <td>${key.password}</td>
+                                    <td>${dateFormat.getDate()} ${(getMonthName(dateFormat.getMonth() + 1))} ${dateFormat.getFullYear()} ${dateFormat.getHours()}:${dateFormat.getMinutes()}:${dateFormat.getSeconds()}</td>
+                                    <td>${dateFormat1.getDate() - 1} ${(getMonthName(dateFormat1.getMonth() + 1))} ${dateFormat1.getFullYear()}</td>
+                                    <td>${key.doctor_name}</td>
+                                    <td>${timespent.h}:${timespent.m}:${timespent.s}</td>
+                                </tr>                        
+                            `);
+                            i++;
+                            });
+                            
+                            // $("#div11").html(result);
+                            document.getElementById("loader1").style.visibility = "hidden";
+                            
+                        }
+                    });
+
+                }
+            });
+    }
+    function toHoursAndMinutes(totalSeconds) {
+        const totalMinutes = Math.floor(totalSeconds / 60);
+
+        const seconds = totalSeconds % 60;
+        const hours = Math.floor(totalMinutes / 60);
+        const minutes = totalMinutes % 60;
+
+        return { h: hours, m: minutes, s: seconds };
+        }
+        // console.log(toHoursAndMinutes(60));
+
+        // function ajax_call_view_category(){
+        //         $.ajax({
+        //         type: "post",
+        //         url: "view-category.php",
+        //         success: function (result) {
+        //             $("#showhere").html(result);
+        //         }
+        //     });
+        // }
+        // function ajax_call_add_employee(){
+        //         $.ajax({
+        //         type: "post",
+        //         url: "add-employee.php",
+        //         success: function (result) {
+        //             $("#showhere").html(result);
+        //         }
+        //     });
+        // }
+        //         function ajax_call_view_employee(){
+        //         $.ajax({
+        //         type: "post",
+        //         url: "view-employee.php",
+        //         success: function (result) {
+        //             $("#showhere").html(result);
+        //         }
+        //     });
+        // }
+        //         function ajax_call_upload_document(){
+        //         $.ajax({
+        //         type: "post",
+        //         url: "upload_documents.php",
+        //         success: function (result) {
+        //             $("#showhere").html(result);
+        //         }
+        //     });
+        // }        
+        //         function ajax_call_documents_from_employees(){
+        //         $.ajax({
+        //         type: "post",
+        //         url: "documents_from_employees.php",
+        //         success: function (result) {
+        //             $("#showhere").html(result);
+        //         }
+        //     });
+        // }
+        // function ajax_call_update_policy_request(){
+        //         $.ajax({
+        //         type: "post",
+        //         url: "new-policy-request.php",
+        //         success: function (result) {
+        //             $("#showhere").html(result);
+        //         }
+        //     });
+        // }                
+        // function ajax_call_view_employee_Archieve(){
+        //     $.ajax({
+        //         type: "post",
+        //         url: "employee_archieve_controller.php",
+        //         success: function (result) {
+        //             $("#showhere").html(result);
+        //         }
+        //     });
+        // }
+        // function ajax_call_register_new_tool(){
+        //     $.ajax({
+        //         type: "post",
+        //         url: "add_new_tool.php",
+        //         success: function (result) {
+        //             $("#showhere").html(result);
+        //         }
+        //     });
+        // }
+        // function ajax_call_view_tools(){
+        //     $.ajax({
+        //         type: "post",
+        //         url: "view_tools.php",
+        //         success: function (result) {
+        //             $("#showhere").html(result);
+        //         }
+        //     });
+
+        // }
+        // function ajax_call_received_requests(){
+        //     $.ajax({
+        //     type: "post",
+        //     url: "received_requests.php",
+        //     success: function(result){
+        //         $("#showhere").html(result);
+        //     }
+        // });
+        // }
+        // function ajax_call_variation_show(){
+        //     var x1 = "x1";
+        //     document.getElementById("loader1").style.visibility = "visible";
+        //     $.ajax({
+        //     type: "post",
+        //     data:{x1:x1},
+        //     url: "controller.php",
+        //     success: function(result){
+        //         $("#showhere").html(result);
+        //         document.getElementById("loader1").style.visibility = "hidden";
+        //     }
+        // }); 
+        // }
+    </script>
+</body>
+
+</html>
