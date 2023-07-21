@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Device</title>
+    <link rel="stylesheet" href="./assets/css/datatables.css" />
+    <link rel="stylesheet" href="./assets/css/bootstrap.css" /><script src="env.js"></script>
+  </head>
+  <body onload="getpreviousorders()">
+    <aside>
+      <div class="top">
+        <a href="./index.html" class="d-block">
+          <img src="./assets/images/logo-white.svg" height="48px" class="logo" alt="">
+        </a>
+        <ul class="list-unstyled ps-0 mb-0">
+          <li class="side-link active">
+            <a href="./dashboard.html">
+              <span class="material-symbols material-symbols-rounded"
+                >team_dashboard</span
+              >
+              Dashboard
+            </a>
+          </li>
+          <li class="side-link">
+            <a href="./registeredpatients.html">
+              <span class="material-symbols material-symbols-rounded"
+                >person</span
+              >
+              Patients
+            </a>
+          </li>
+          <li class="side-link">
+            <a href="#" id="messagesanchor">
+              <span class="material-symbols material-symbols-rounded"
+                >mail</span
+              >
+              Messages
+              <!-- <div class="badge">New</div> -->
+            </a>
+          </li>
+          <li class="side-link">
+            <a href="./profile.html">
+              <span class="material-symbols material-symbols-rounded"
+                >settings</span
+              >
+              Settings
+            </a>
+          </li>
+          <li class="side-link">
+            <a href="./activate.html">
+              <span class="material-symbols material-symbols-rounded"
+                >shop</span
+              >
+              Activate Device
+            </a>
+          </li>
+          <li class="side-link">
+            <a href="./orderdevice.html">
+              <span class="material-symbols material-symbols-rounded"
+                >shop</span
+              >
+              Order Device
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="bottom">
+        <div class="side-link">
+          <a href="" id="logout-btn">
+            <span class="material-symbols material-symbols-rounded"
+              >logout</span
+            >
+            Logout
+          </a>
+        </div>
+      </div>
+    </aside>
+    <main>
+      <header>
+        <div class="container">
+          <div class="search-container">
+            <a href="" class="logo">Udatum</a>
+            <button type="button" class="search" id="search">
+              <span class="material-symbols material-symbols-rounded"
+                >search</span
+              >
+            </button>
+            <form action="" class="w-100">
+              <input
+                type="search"
+                class="form-control w-100"
+                name=""
+                id=""
+                placeholder="Search"
+              />
+              <button class="btn btn-primary rounded-pill">
+                <span class="material-symbols material-symbols-rounded"
+                  >search</span
+                >
+              </button>
+            </form>
+          </div>
+          <div class="right">
+            <div class="dropdown">
+              <button type="button" class="notifications unread" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="material-symbols material-symbols-rounded"
+                  >notifications</span
+                >
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </div>
+            
+            <button type="button" class="avatar unread">JD</button>
+            <button type="button" class="menu" id="menu">
+              <span class="material-symbols material-symbols-rounded"
+                >menu</span
+              >
+            </button>
+          </div>
+        </div>
+      </header>
+      <div class="container">
+        <div class="top-bar">
+          <button class="btn btn-primary btn-dashboard">
+            <span class="material-symbols material-symbols-rounded">add</span>
+            Order Device
+          </button>
+          <div class="date-time" id="clock">
+            <span class="me-4"></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="patients-box">
+          <h5 class="heading">Order New Device</h5>
+          <form id="ordernewdevice">
+          <div class="row gx-3 gy-xl-5 gy-3 add-patient-table">
+            <div class="col-md-6">
+              <table class="w-100">
+                <tr>
+                  <td class="h5 text-center">
+                    <span class="material-symbols material-symbols-rounded"
+                      >devices</span
+                    >
+                  </td>
+                  <td>
+                    <select class="form-control" id="dname" required>
+                      <!-- <option selected disabled>Device Name</option> -->
+                      <option value="Weight">Weight</option>
+                    </select>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-6">
+              <table class="w-100">
+                <tr>
+                  <td class="h5 text-center">
+                    <span class="material-symbols material-symbols-rounded"
+                      >devices</span
+                    >
+                  </td>
+                  <td>
+                    <input class="form-control" placeholder="Number of Devices" type="number" id="numberofdevices" required>
+                  </td>
+                </tr>
+                
+              </table>
+            </div>
+            <div class="col-md-12">
+              <table class="w-100">
+                <tr>
+                  <td class="h5 text-center">
+                    <span class="material-symbols material-symbols-rounded"
+                      >home</span
+                    >
+                  </td>
+                  <td>
+                    <input class="form-control" style="color: black;" placeholder="Delivery Address" id="address" required>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-12 text-center">
+              <button
+                class="btn btn-primary btn-lg px-xl-4"
+                type="submit"
+              >
+                <span class="material-symbols material-symbols-rounded"
+                  >check</span
+                >
+                Order
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <hr class="my-5">
+        <h3 class="text-center my-5">
+          Previous Orders
+        </h3>
+        <hr class="my-5">
+        <div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Ordered On</th>
+                <th scope="col">Device Type</th>
+                <th scope="col">Number of Devices</th>
+                <th scope="col">Address</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody id="tdata">
+
+            </tbody>
+          </table>
+        </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="./assets/js/all.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/datatables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./assets/js/logout.js"></script>
+    <script src="./assets/js/orderdevice.js"></script>
+    <div class="loading" id="loader1" style="visibility: hidden;">Loading&#8230;</div>
+
+  </body>
+</html>

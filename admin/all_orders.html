@@ -1,0 +1,110 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Ordered By</th>
+            <th scope="col">Ordered On</th>
+            <th scope="col">Device Type</th>
+            <th scope="col">Number of Devices</th>
+            <th scope="col">Status</th>
+            <th scope="col">Delivery Address</th>
+            <th scope="col">Edit</th>
+        </tr>
+    </thead>
+    <tbody id="tbody">
+
+    </tbody>
+  </table>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Order Status</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <form id="statusform">
+          <select id="status" class="form-control">
+              <option value="Pending">Pending</option>
+              <option value="In Review">In Review</option>
+              <option value="Delivered">Delivered</option>
+          </select>
+          <div>
+          <input type="text" style="visibility: hidden;" class="col-12" id="orderid">
+        </div>
+        <div class="mx-auto text-center">
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+      var request;
+      $("#statusform").submit(function (event) {
+        var myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {
+            keyboard: false,
+        });
+        myModal.hide();
+     
+  // Prevent default posting of form - put here to work in case of errors
+  event.preventDefault();
+
+  // Abort any pending request
+  if (request) {
+    request.abort();
+  }
+  document.getElementById("loader1").style.visibility = "visible";
+  var status = document.getElementById("status").value;
+  var orderid = document.getElementById("orderid").value;
+  data = JSON.stringify({
+    status: status,
+  });
+  // console.log(devicetype);
+  $.ajax({
+    type: "post",
+    url: `${baseurl}/admin/update-order-status/${orderid}`,
+    timeout: 0,
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    data: data,
+    success: function (response) {
+      Swal.fire({
+        icon: "success",
+        title: "Successful!",
+        text: "Order Updated Successfully",
+        allowOutsideClick: false,
+      });
+      $("button.swal2-confirm").click(function () {
+        // all_orders();
+          window.location.reload();
+      });
+      document.getElementById("loader1").style.visibility = "hidden";
+    },
+    error: function (response) {
+    //   console.log(response);
+
+    //   if (response.responseJSON.message == "Already Ordered") {
+    //     Swal.fire({
+    //       icon: "error",
+    //       title: "Failed!",
+    //       text: response.responseJSON.message,
+    //       allowOutsideClick: false,
+    //     });
+    //     $("button.swal2-confirm").click(function () {
+    //       window.location.reload();
+    //     });
+    //   }
+    },
+  });
+});
+  </script>

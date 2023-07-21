@@ -56,6 +56,15 @@
               Activate Device
             </a>
           </li>
+          <li class="side-link">
+            <a href="./orderdevice.html">
+              <span class="material-symbols material-symbols-rounded"
+                >shop</span
+              >
+              Order Device
+            </a>
+          </li>
+
         </ul>
       </div>
       <div class="bottom">
@@ -190,47 +199,6 @@
                       class="form-control"
                       placeholder="Patient Email"
                       id="email1"
-                      required
-                    />
-                  </td>
-                </tr>
-              </table>
-            </div>
-            <div class="col-md-6">
-              <table class="w-100">
-                <tr>
-                  <td class="h5 text-center">
-                    <span class="material-symbols material-symbols-rounded"
-                      >analytics</span
-                    >
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      placeholder="High threshold (optional)"
-                      required
-                      id="high_threshold1"
-                    />
-                  </td>
-                </tr>
-              </table>
-            </div>
-            <div class="col-md-6">
-              <table class="w-100">
-                <tr>
-                  <td class="h5 text-center">
-                    <span class="material-symbols material-symbols-rounded"
-                      >analytics</span
-                    >
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      placeholder="Low threshold (optional)"
-                      value="1212"
-                      id="Low_threshold1"
                       required
                     />
                   </td>
@@ -375,10 +343,7 @@ var messagesanchor = document.getElementById("messagesanchor");
                   document.getElementById("pname").value = response.name;
                   // document.getElementById("bdaydate1").value = response.date_of_birth;
                   document.getElementById("email1").value = response.email;
-                  document.getElementById("high_threshold1").value = response.high_threshold;
-                  document.getElementById("Low_threshold1").value = response.low_threshold;
                   document.getElementById("medical_condition1").value = response.medical_condition;
-                  
                   document.getElementById("loader1").style.visibility = "hidden";
               },
               error: function(response) {
@@ -428,9 +393,6 @@ if (request) {
   var email1 = document.getElementById("email1").value;
   // var ppass = document.getElementById("ppass").value;
   // var barcode = document.getElementById("barcode").value;
-  var high_threshold1 = document.getElementById("high_threshold1").value;
-
-  var Low_threshold1 = document.getElementById("Low_threshold1").value;
   var medical_condition1 = document.getElementById("medical_condition1").value;
   // var notes1 = document.getElementById("notes1").value;
   // console.log(token);
@@ -460,8 +422,6 @@ data = JSON.stringify({
     "email": email1,
     // "password": ppass,
     "medical_condition": medical_condition1,
-    "low_threshold": Low_threshold1,
-    "high_threshold": high_threshold1,
     // "device_barcode": barcode,
     // "notes": notes1
   });

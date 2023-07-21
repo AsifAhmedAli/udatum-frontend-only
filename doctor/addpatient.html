@@ -56,6 +56,15 @@
               Activate Device
             </a>
           </li>
+          <li class="side-link">
+            <a href="./orderdevice.html">
+              <span class="material-symbols material-symbols-rounded"
+                >shop</span
+              >
+              Order Device
+            </a>
+          </li>
+
         </ul>
       </div>
       <div class="bottom">
@@ -200,7 +209,7 @@
                 <tr>
                   <td class="h5 text-center">
                     <span class="material-symbols material-symbols-rounded"
-                      >email</span
+                      >lock</span
                     >
                   </td>
                   <td>
@@ -210,90 +219,6 @@
                       placeholder="Password for Patient Account"
                       value="test"
                       id="ppass"
-                    />
-                  </td>
-                </tr>
-              </table>
-            </div>
-            <div class="col-md-6">
-              <table class="w-100">
-                <tr>
-                  <td class="h5 text-center">
-                    <span class="material-symbols material-symbols-rounded"
-                      >analytics</span
-                    >
-                  </td>
-                  <td>
-                    <!-- <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Device Name"
-                      value="stethoscope"
-                      id="dname"
-                    /> -->
-                    <select class="form-control" id="dname">
-                      <!-- <option selected disabled>Device Name</option> -->
-                      <option value="Weight">Weight</option>
-                    </select>
-                  </td>
-                </tr>
-              </table>
-            </div>
-            <div class="col-md-6">
-              <table class="w-100">
-                <tr>
-                  <td class="h5 text-center">
-                    <span class="material-symbols material-symbols-rounded"
-                      >analytics</span
-                    >
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Device Barcode"
-                      value="barcode"
-                      id="barcode"
-                    />
-                  </td>
-                </tr>
-              </table>
-            </div>
-            <div class="col-md-6">
-              <table class="w-100">
-                <tr>
-                  <td class="h5 text-center">
-                    <span class="material-symbols material-symbols-rounded"
-                      >analytics</span
-                    >
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      placeholder="High threshold (optional)"
-                      value="1212"
-                      id="high_threshold1"
-                    />
-                  </td>
-                </tr>
-              </table>
-            </div>
-            <div class="col-md-6">
-              <table class="w-100">
-                <tr>
-                  <td class="h5 text-center">
-                    <span class="material-symbols material-symbols-rounded"
-                      >analytics</span
-                    >
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      placeholder="Low threshold (optional)"
-                      value="1212"
-                      id="Low_threshold1"
                     />
                   </td>
                 </tr>
@@ -455,10 +380,6 @@ if (request) {
   var bdaydate1 = document.getElementById("bdaydate1").value;
   var email1 = document.getElementById("email1").value;
   var ppass = document.getElementById("ppass").value;
-  var dname = document.getElementById("dname").value;
-  var barcode = document.getElementById("barcode").value;
-  var high_threshold1 = document.getElementById("high_threshold1").value;
-  var Low_threshold1 = document.getElementById("Low_threshold1").value;
   var medical_condition1 = document.getElementById("medical_condition1").value;
   var notes1 = document.getElementById("notes1").value;
   // console.log(token);
@@ -488,10 +409,6 @@ data = JSON.stringify({
     "email": email1,
     "password": ppass,
     "medical_condition": medical_condition1,
-    "low_threshold": Low_threshold1,
-    "high_threshold": high_threshold1,
-    "device_name": dname,
-    "device_barcode": barcode,
     "notes": notes1
   });
   // console.log(data);
