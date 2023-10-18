@@ -35,50 +35,54 @@ $("#ordernewdevice").submit(function (event) {
   var devicetype = document.getElementById("dname").value;
   var address = document.getElementById("address").value;
   var numberofdevices = document.getElementById("numberofdevices").value;
-  data = JSON.stringify({
-    devicetype: devicetype,
-    did: user_ida,
-    numberofdevices: numberofdevices,
-    address: address,
-  });
-  console.log(devicetype);
-  $.ajax({
-    type: "post",
-    url: `${baseurl}/order-device`,
-    timeout: 0,
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-    data: data,
-    success: function (response) {
-      Swal.fire({
-        icon: "success",
-        title: "Successful!",
-        text: "Device Ordered Successfully",
-        allowOutsideClick: false,
-      });
-      $("button.swal2-confirm").click(function () {
-        window.location.reload();
-      });
-      document.getElementById("loader1").style.visibility = "hidden";
-    },
-    error: function (response) {
-      // console.log(response);
+  window.location.replace(
+    `${clientbaseurl}/doctor/checkout.html?devicetype=${devicetype}&address=${address}&numberofdevices=${numberofdevices}&did=${user_ida}`
+  );
+  // data = JSON.stringify({
+  //   devicetype: devicetype,
+  //   did: user_ida,
+  //   numberofdevices: numberofdevices,
+  //   address: address,
+  // });
+  // console.log(devicetype);
 
-      if (response.responseJSON.message == "Already Ordered") {
-        Swal.fire({
-          icon: "error",
-          title: "Failed!",
-          text: response.responseJSON.message,
-          allowOutsideClick: false,
-        });
-        $("button.swal2-confirm").click(function () {
-          window.location.reload();
-        });
-      }
-    },
-  });
+  // $.ajax({
+  //   type: "post",
+  //   url: `${baseurl}/order-device`,
+  //   timeout: 0,
+  //   headers: {
+  //     Authorization: `Bearer ${token}`,
+  //     "Content-Type": "application/json",
+  //   },
+  //   data: data,
+  //   success: function (response) {
+  //     Swal.fire({
+  //       icon: "success",
+  //       title: "Successful!",
+  //       text: "Device Ordered Successfully",
+  //       allowOutsideClick: false,
+  //     });
+  //     $("button.swal2-confirm").click(function () {
+  //       window.location.reload();
+  //     });
+  //     document.getElementById("loader1").style.visibility = "hidden";
+  //   },
+  //   error: function (response) {
+  //     // console.log(response);
+
+  //     if (response.responseJSON.message == "Already Ordered") {
+  //       Swal.fire({
+  //         icon: "error",
+  //         title: "Failed!",
+  //         text: response.responseJSON.message,
+  //         allowOutsideClick: false,
+  //       });
+  //       $("button.swal2-confirm").click(function () {
+  //         window.location.reload();
+  //       });
+  //     }
+  //   },
+  // });
 });
 // console.log(token)
 if (token == null) {

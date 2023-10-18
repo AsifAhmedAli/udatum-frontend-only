@@ -4,483 +4,178 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Udatum</title>
+    <title>Login</title>
     <link rel="stylesheet" href="./assets/css/datatables.css" />
     <link rel="stylesheet" href="./assets/css/bootstrap.css" /><script src="env.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
-    <div class="landing-page">
-      <header class="sticky-top">
-        <!-- <div class="text-center devices d-lg-block d-none">
-          <div class="dropdown">
-            <button
-              class="btn btn-outline-secondary rounded px-2"
-              type="button"
-              id="dropdownMenuButton1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <span class="material-symbols material-symbols-rounded"
-                >arrow_right</span
-              >
-              Medical Wearables
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </div>
-        </div> -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-white">
-          <div class="container">
-            <a class="navbar-brand" href="./landingpage.html">
-              <img src="./assets/images/logo-dark.svg" height="54px" alt="" />
-            </a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ps-lg-5 ms-lg-5 me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="./landingpage.html"
-                    >Home</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="./pricing.html"
-                    >Billing</a
-                  >
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Medical Wearables
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                  </ul>
-                </li>
-              </ul>
-              <div class="d-flex flex-lg-row flex-column">
-                <a
-                  href="./login.html"
-                  class="btn btn-link text-decoration-none text-secondary mb-3"
-                >
-                  Physician Login
+    <div class="main-login p-3">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-6">
+            <div class="login-container">
+              <div class="logo text-center">
+                <a href="./index.html">
+                  <img src="./assets/images/logo-dark.svg" height="54px" class="mb-3" alt="" />
                 </a>
-                <a
-                  href="./login_patient.html"
-                  class="btn btn-link text-decoration-none text-secondary mb-3"
-                >
-                  Patient Login
-                </a>
-                <a href="./signup.html" class="btn btn-primary mb-3">Signup</a>
               </div>
-            </div>
-          </div>
-        </nav>
-      </header>
-      <section class="hero">
-        <div class="container">
-          <div class="col-md-7">
-            <h1>
-              Revolutionizing Patient-Physician
-              <span class="text-primary">Communication</span> and
-              <span class="text-primary">Data Sharing</span>.
-            </h1>
-            <p class="punch">
-              Udatum allows physicians to remotely monitor patient's bio-metrics
-              to provide the quickest and most effective treatment plans.
-            </p>
-            <p class="more">
-              Track your own health metrics and receive daily health forecasting
-              based on our powerful AI algorithms.
-            </p>
-            <a href="" class="btn btn-primary">Signup</a>
-          </div>
-        </div>
-      </section>
-      <section class="mission">
-        <div class="container">
-          <h2 class="text-center title-1 mb-3">Mission</h2>
-          <p class="punch">
-            Udatum is developed by data scientist and physicians with over a
-            decade of experience in cutting edge robotics and clinical research,
-            with the goal of modernizing healthcare communication by
-            decentralizing data sharing. Our platform allows both physicians and
-            patients to track health metrics, adjust patient care, and receive
-            trend forecasts.
-          </p>
-        </div>
-      </section>
-      <section class="ourplatform">
-        <div class="container">
-          <h2 class="text-center title-1 mb-xl-5 mb-4">Our Platform</h2>
-          <div class="row g-4">
-            <div class="col-lg-4 col-12">
-              <div class="box orange">
-                <span class="material-symbols material-symbols-rounded"
-                  >sms</span
-                >
-                <h4 class="heading">Live Chat between Physicians & Patients</h4>
-                <p class="punch">Chat with your provider instantaneously</p>
-              </div>
-            </div>
-            <div class="col-lg-4 col-12">
-              <div class="box green">
-                <span class="material-symbols material-symbols-rounded"
-                  >graphic_eq</span
-                >
-                <h4 class="heading">Record Health Data</h4>
-                <p class="punch">
-                  Seamlessly record health data without the need for setup or a
-                  phone
-                </p>
-              </div>
-            </div>
-            <div class="col-lg-4 col-12">
-              <div class="box purple">
-                <span class="material-symbols material-symbols-rounded"
-                  >pacemaker</span
-                >
-                <h4 class="heading">Monitoring of Health Data</h4>
-                <p class="punch">
-                  Allow physician to record several health readings throughout
-                  the month, as oppose to during a single visit
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="monitoring">
-        <div class="container">
-          <div class="row justify-content-between g-4">
-            <div class="col-lg-6 order-lg-0 order-1">
-              <img
-                src="./assets/images/remotemonitoring.png"
-                class="feature"
-                alt=""
-              />
-            </div>
-            <div class="col-lg-6 order-lg-1 order-0">
-              <div class="box">
-                <h3 class="h1 title-1 mb-4">
-                  <span>Remote Monitoring</span> By Physicians Allow to Track:
-                </h3>
-                <ul class="list-unstyled pt-3 ps-0 mb-0">
-                  <li>
-                    <span class="material-symbols material-symbols-rounded"
-                      >check_circle</span
-                    >
-                    High Blood Pressure
-                  </li>
-                  <li>
-                    <span class="material-symbols material-symbols-rounded"
-                      >check_circle</span
-                    >
-                    Diabetes
-                  </li>
-                  <li>
-                    <span class="material-symbols material-symbols-rounded"
-                      >check_circle</span
-                    >
-                    Weight Loss or Gain
-                  </li>
-                  <li>
-                    <span class="material-symbols material-symbols-rounded"
-                      >check_circle</span
-                    >
-                    Sleep Apnea
-                  </li>
-                  <li>
-                    <span class="material-symbols material-symbols-rounded"
-                      >check_circle</span
-                    >
-                    Heart Conditions
-                  </li>
-                  <li>
-                    <span class="material-symbols material-symbols-rounded"
-                      >check_circle</span
-                    >
-                    Chronic obstructive pulmonary disease
-                  </li>
-                  <li>
-                    <span class="material-symbols material-symbols-rounded"
-                      >check_circle</span
-                    >
-                    Asthma
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="aiengine">
-        <div class="container">
-          <div class="row g-4 justify-content-between align-items-center">
-            <div class="col-lg-5">
-              <h2 class="title-1 mb-xl-5 mb-4">
-                Our <span class="text-primary">AI Engine</span> is the hero
-                behind the platform.
-              </h2>
-            </div>
-            <div class="col-lg-6">
-              <img src="./assets/images/ai.png" class="feature" alt="" />
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="patientmonitoring">
-        <div class="container">
-          <div class="row g-4 justify-content-between align-items-center">
-            <div class="col-lg-6">
-              <img
-                src="./assets/images/patientmonitoring.png"
-                class="feature"
-                alt=""
-              />
-            </div>
-            <div class="col-lg-5">
-              <h2 class="title-1 mb-xl-5 mb-4">
-                <span class="text-primary">Remote Patient Monitoring</span> With
-                <span class="text-primary">Udatum</span> Makes Practices More
-                Successfull
-              </h2>
-              <p class="text-secondary mb-xl-5 mb-4">
-                About $120 a month per patient. With just 50 patients enrolled,
-                that's $72,000 a year.
-              </p>
-              <a href="">See how?</a>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="howitworks">
-        <div class="container">
-          <h2 class="title-1 mb-4 text-center">How It Works?</h2>
-          <p class="text-secondary mb-xl-5 mb-4 text-center">
-            Want to see a video tutorial of the working?
-            <a
-              href="#openVideo"
-              class="text-decoration-none"
-              data-bs-toggle="modal"
-              >Click Here</a
-            >
-          </p>
-          <div class="row g-3">
-            <div class="col-lg-3 col-md-6 col-12">
-              <div class="box device">
-                <img src="./assets/images/device.png" alt="" />
-                <div class="info">1. Physician prescribes device</div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-              <div class="box data">
-                <img src="./assets/images/data.png" alt="" />
-                <div class="info">
-                  2. Patient records biometric data (ex. blood pressure, weight,
-                  etc.)
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-              <div class="box cloud">
-                <img src="./assets/images/cloud.png" alt="" />
-                <div class="info">
-                  3. Data is sent to cloud automatically in real-time
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-              <div class="box view">
-                <img src="./assets/images/view.png" alt="" />
-                <div class="info">
-                  4. Data appears on Udatum for physician to review
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="ourprogram">
-        <div class="container">
-          <h2 class="text-center text-white title-1">
-            Our Data is end-to-end encrypted on a HIPPA compliant platform
-          </h2>
-        </div>
-      </section>
-      <section class="joinus">
-        <div class="container">
-          <div class="box">
-            <div class="row">
-              <div class="col-lg-7 mx-auto">
-                <h2 class="fw-normal text-center text-white">
-                  Find our partner healthcare facilities and physican's near you
-                  to sign up for <b class="fw-bold">UDATUM</b>.
-                </h2>
-                <h2 class="title-1">
-                  Invite Your Healthcare Facility to Join Our Initiative.
-                </h2>
-                <form action="">
-                  <div class="row gy-xl-5 gy-3">
-                    <div class="col-12">
+              <form action="" id="login-form" method="post">
+                <h4 class="form-title">Log In To Your Account</h4>
+                <div class="row gy-xl-5 gy-4">
+                  <div class="col-12">
+                    <div class="form-group mb-0">
                       <input
+                      id="email" 
+                      name="email" 
+                      required
                         type="email"
-                        name=""
-                        id=""
-                        class="form-control form-control-lg rounded-pill px-4 text-dark"
-                        placeholder="Enter Email Address"
+                        class="form-control"
+                        placeholder="Email"
                       />
                     </div>
-                    <div class="col-12">
-                      <button class="btn btn-primary">Send Invite</button>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group mb-0">
+                      <input
+                        type="password"
+                        class="form-control"
+                        placeholder="Password"
+                        id="password"
+                        name="password"
+                          required
+                      />
+                      <button type="button" onclick="visibilitypassword()" class="btn btn-light viewPassword">
+                        <span class="material-symbols material-symbols-rounded"
+                          >visibility</span
+                        >
+                      </button>
                     </div>
                   </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="getintouch">
-        <div class="container">
-          <h2 class="text-center title-1 mb-xl-5 mb-4">Get in Touch</h2>
-          <div class="row g-4 justify-content-between">
-            <div class="col-md-6">
-              <img
-                src="./assets/images/getintouch.png"
-                class="img-fluid"
-                alt=""
-              />
-            </div>
-            <div class="col-md-5">
-              <form action="">
-                <div class="row gy-4">
-                  <div class="col-12">
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Enter Your Name"
-                    />
+                  <div class="col-12 text-end mt-3">
+                    <a href="" class="text-secondary text-decoration-none">Forgot Password?</a>
                   </div>
                   <div class="col-12">
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Email Address"
-                    />
-                  </div>
-                  <div class="col-12">
-                    <textarea
-                      name=""
-                      id=""
-                      cols="30"
-                      rows="4"
-                      class="form-control"
-                      placeholder="Message"
-                    ></textarea>
-                  </div>
-                  <div class="col-12 text-end">
-                    <button class="btn btn-primary">Submit</button>
+                    <button class="btn btn-primary btn-lg fw-bold d-block w-100">
+                      Login
+                    </button>
                   </div>
                 </div>
               </form>
-            </div>
-          </div>
-        </div>
-      </section>
-      <footer>
-        <div class="container">
-          <div class="row g-3 align-items-center">
-            <div class="col-lg-8">
-              <div class="d-flex align-items-center flex-lg-nowrap flex-wrap">
-                <a href="#" class="d-block">
-                  <img
-                  src="./assets/images/logo-white.svg"
-                  height="54px"
-                  alt=""
-                />
-                </a>
-                <ul class="list-unstyled ps-0 mb-0">
-                  <li>
-                    <a href="">Services</a>
-                  </li>
-                  <li>
-                    <a href="">Features</a>
-                  </li>
-                  <li>
-                    <a href="">Terms & Conditions</a>
-                  </li>
-                </ul>
+              <div class="already-account h5 fw-bold text-center mt-3">
+                Don't have an account? <a href="./signup.html" class="text-decoration-none">Signup</a>
               </div>
             </div>
-            <div class="col-lg-4 text-lg-end">
-              <h5 class="rights">2022 All Rights Reserved</h5>
+          </div>
+          <div class="col-xl-6 d-md-block d-none">
+            <div class="h-100">
+              <img
+                src="./assets/images/login.png"
+                class="login-img img-fluid"
+                alt=""
+              />
             </div>
-          </div>
-        </div>
-      </footer>
-    </div>
-
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="openVideo"
-      tabindex="-1"
-      aria-labelledby="openVideoLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="openVideoLabel">How it Works</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <video
-              src="https://www.pexels.com/video/a-cloud-of-blue-green-paint-underwater-7565438/"
-              class=""
-              height="400px"
-              width="100%"
-              style="object-fit: contain"
-            ></video>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
           </div>
         </div>
       </div>
     </div>
-    
-<script>
-// console.log(asdf);
-</script>
+    <div id="div12"></div>
+    <div class="loading" id="loader1" style="visibility: hidden;">Loading&#8230;</div>
+
     <script src="./assets/js/all.js"></script>
     <script src="./assets/js/script.js"></script>
+    <script>
+
+      // Visibility password code
+      function visibilitypassword(){
+// console.log(document.getElementById("confirmPassword").type);
+  if(document.getElementById("password").type == "text"){
+      document.getElementById("password").type = "password";
+    }
+    else{
+      document.getElementById("password").type = "text";
+    }
+  }
+      $(".viewPassword").click(function () {
+        var inputPassword = $(this).siblings("input");
+        if (inputPassword.type === "password") {
+          inputPassword.type = "text"
+        } else {
+          inputPassword.type = "password"
+        }
+      });
+      
+
+      // LoginAPI integration
+      
+			// const apiUrl = loginAs === 'user' ? '/api/user/login' : '/api/patient/login';
+			// const apiUrl = "http://localhost:3000/doctor-login" || "http://localhost:3000/patient-login";
+
+      $(document).ready(function() {
+  $('#login-form').submit(function(event) {
+    event.preventDefault();
+    
+    var email = $('#email').val();
+    var password = $('#password').val();
+    
+    // Check users API first
+    document.getElementById("loader1").style.visibility = "visible";
+    $.ajax({
+      url: `${baseurl}/doctor-login`,
+      method: 'POST',
+      data: {
+        email: email,
+        password: password
+      }
+    }).done(function(response) {
+      document.getElementById("loader1").style.visibility = "hidden";
+      // Login successful
+      // document.cookie = `token=${response.token}; path=/`;
+      // console.log("Token set in cookies:", document.cookie)
+      localStorage.setItem('token', response.token);
+      localStorage.setItem('id', response.user.id);
+      // console.log(response);
+      // localStorage.setItem('token', response.token);
+      // localStorage.setItem('name', response.name);
+      // window.location.replace('dashboard.html');
+      window.location.replace("./dashboard.html");
+    }).fail(function(response) {
+      document.getElementById("loader1").style.visibility = "hidden";
+        Swal.fire({
+          title: "Error!",
+          text: response.responseJSON.message,
+          icon: "error"
+        });          
+
+      //   // Try patient API
+    //   document.getElementById("loader1").style.visibility = "visible";
+    //   $.ajax({
+    //     url: `${baseurl}/patient-login`,
+    //     method: 'POST',
+    //     data: {
+    //       email: email,
+    //       password: password
+    //     }
+    //   }).done(function(response) {
+    //     // Login successful
+    //     document.getElementById("loader1").style.visibility = "hidden";
+    //     localStorage.setItem('token', response.token);
+    //     localStorage.setItem('name', response.name);
+    //     window.location.replace('patientdashboard.html');
+    //   }).fail(function(error) {
+    //     document.getElementById("loader1").style.visibility = "hidden";
+    //     // Login failed
+    //     Swal.fire({
+    //       title: "Error!",
+    //       text: response.responseJSON.message,
+    //       icon: "error"
+    //     });          
+    //   });
+    });
+  });
+});
+
+    
+    </script>
   </body>
 </html>

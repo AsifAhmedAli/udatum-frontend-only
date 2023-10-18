@@ -224,6 +224,67 @@
                 </tr>
               </table>
             </div>
+            <div class="col-md-6">
+              <table class="w-100">
+                <tr>
+                  <td class="h5 text-center">
+                    <span class="material-symbols material-symbols-rounded"
+                      >lock</span
+                    >
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      placeholder="Patient's Weight"
+                      value="12"
+                      id="pweight"
+                    />
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-6">
+              <table class="w-100">
+                <tr>
+                  <td class="h5 text-center">
+                    <span class="material-symbols material-symbols-rounded"
+                      >lock</span
+                    >
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      placeholder="Patient's Height"
+                      value="test"
+                      id="pheight"
+                    />
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-6">
+              <table class="w-100">
+                <tr>
+                  <td class="h5 text-center">
+                    <span class="material-symbols material-symbols-rounded"
+                      >lock</span
+                    >
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Patient's Gender"
+                      value="test"
+                      id="pgender"
+                    />
+                  </td>
+                </tr>
+              </table>
+            </div>
+            
             <div class="col-12">
               <table class="w-100">
                 <tr>
@@ -382,6 +443,9 @@ if (request) {
   var ppass = document.getElementById("ppass").value;
   var medical_condition1 = document.getElementById("medical_condition1").value;
   var notes1 = document.getElementById("notes1").value;
+  var weight = document.getElementById("pweight").value;
+  var height = document.getElementById("pheight").value;
+  var gender = document.getElementById("pgender").value;
   // console.log(token);
 //   var settings = {
 //   "url": `${baseurl}/patient-registration`,
@@ -409,7 +473,10 @@ data = JSON.stringify({
     "email": email1,
     "password": ppass,
     "medical_condition": medical_condition1,
-    "notes": notes1
+    "notes": notes1,
+    "weight": weight,
+    "height": height,
+    "gender": gender
   });
   // console.log(data);
 document.getElementById("loader1").style.visibility = "visible";

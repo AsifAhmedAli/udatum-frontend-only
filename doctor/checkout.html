@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Buy cool new product</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body id="showeverything">
+    <section>
+      <div class="product">
+        <img src="https://i.imgur.com/EHyR2nP.png" alt="The cover of Stubborn Attachments" />
+        <div class="description">
+          <h3>Stubborn Attachments</h3>
+          <h5>$20.00</h5>
+        </div>
+      </div>
+      <!-- <form action="/create-checkout-session" method="POST"> -->
+        <button onclick="checkout()" type="button" id="checkout-button">Checkout</button>
+      <!-- </form> -->
+    </section>
+    <div class="loading" id="loader1" style="visibility: hidden;">Loading&#8230;</div>
+    <script src="env.js"></script>
+    <script src="./assets/js/checkout.js"></script>
+    <script src="./assets/js/all.js"></script>
+    <!-- <script src="./assets/js/script.js"></script> -->
+    <!-- <script src="./assets/js/datatables.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+  </body>
+</html>
