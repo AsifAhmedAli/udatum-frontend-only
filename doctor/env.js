@@ -1,3 +1,3 @@
-var baseurl = "https://api.udatum.tech/";
+var baseurl = "https://api.udatum.tech";
 
-var clientbaseurl = "https://www.udatum.tech/";
+var clientbaseurl = "https://www.udatum.tech";
