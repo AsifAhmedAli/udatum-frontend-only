@@ -1,3 +1,3 @@
-var baseurl = "http://localhost:3000";
+var baseurl = "https://api.udatum.tech/";
 
-var clientbaseurl = "http://127.0.0.1:5500";
+var clientbaseurl = "https://www.udatum.tech/";
