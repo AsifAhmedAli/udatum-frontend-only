@@ -204,8 +204,8 @@
                                 $("#all_pats_data").append(`
                                 <tr>
                                     <th scope="row">${i}</th>
-                                    <td><a class="mupointer" type="button" onclick="getdoctor(${key.pid})">${key.name}</a></td>
-                                    <td><a class="mupointer" type="button" onclick="getdoctor(${key.pid})">${key.email}</a></td>
+                                    <td>${key.name}</td>
+                                    <td>${key.email}</td>
                                     <td>${key.password}</td>
                                     <td>${dateFormat.getDate()} ${(getMonthName(dateFormat.getMonth() + 1))} ${dateFormat.getFullYear()} ${dateFormat.getHours()}:${dateFormat.getMinutes()}:${dateFormat.getSeconds()}</td>
                                     <td>${dateFormat1.getDate() - 1} ${(getMonthName(dateFormat1.getMonth() + 1))} ${dateFormat1.getFullYear()}</td>

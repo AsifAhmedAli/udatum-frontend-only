@@ -74,12 +74,7 @@
           <button type="button" class="search" id="search">
             <span class="material-symbols material-symbols-rounded">search</span>
           </button>
-          <form action="" class="w-100">
-            <input type="search" class="form-control w-100" name="" id="" placeholder="Search" />
-            <button class="btn btn-primary rounded-pill">
-              <span class="material-symbols material-symbols-rounded">search</span>
-            </button>
-          </form>
+
         </div>
         <div class="right">
           <div class="dropdown">
@@ -118,48 +113,7 @@
         <h5 class="heading">Add Device Details</h5>
         <form id="activate_device">
           <div class="row gx-3 gy-xl-5 gy-3 add-patient-table">
-            <!-- <div class="col-md-6">
-              <table class="w-100">
-                <tr>
-                  <td class="h5 text-center">
-                    <span class="material-symbols material-symbols-rounded"
-                      >person</span
-                    >
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Patient Name"
-                      id="pname"
-                      required
-                    />
-                  </td>
-                </tr>
-              </table>
-            </div>
-            <div class="col-md-6">
-              <table class="w-100">
-                <tr>
-                  <td class="h5 text-center">
-                    <span class="material-symbols material-symbols-rounded"
-                      >cake</span
-                    >
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      onfocus="(this.type='date')"
-                      onfocusout="(this.type='text')"
-                      placeholder="Birthday"
-                      class="form-control"
-                      id="bdaydate1"
-                      required
-                    />
-                  </td>
-                </tr>
-              </table>
-            </div>-->
+
             <div class="col-md-6">
               <table class="w-100">
                 <tr>
@@ -186,7 +140,7 @@
                 </tr>
               </table>
             </div>
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
               <table class="w-100">
                 <tr>
                   <td class="h5 text-center">
@@ -198,8 +152,8 @@
                   </td>
                 </tr>
               </table>
-            </div>
-            <div class="col-md-6">
+            </div> -->
+            <!-- <div class="col-md-6">
               <table class="w-100">
                 <tr>
                   <td class="h5 text-center">
@@ -211,7 +165,7 @@
                   </td>
                 </tr>
               </table>
-            </div>
+            </div> -->
             <div class="col-md-6">
               <table class="w-100">
                 <tr>
@@ -219,8 +173,11 @@
                     <span class="material-symbols material-symbols-rounded">analytics</span>
                   </td>
                   <td>
-                    <input type="text" class="form-control" placeholder="Patient's Gender" disabled name="gender"
-                      id="pgender" />
+                    <select name="gender" id="pgender"  class="form-select">
+                      <option selected disabled>Patient's Gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
                   </td>
                 </tr>
               </table>
@@ -232,20 +189,7 @@
                     <span class="material-symbols material-symbols-rounded">analytics</span>
                   </td>
                   <td>
-                    <input type="text" class="form-control" placeholder="Patient's Email" disabled name="email"
-                      id="pemail" />
-                  </td>
-                </tr>
-              </table>
-            </div>
-            <div class="col-md-6">
-              <table class="w-100">
-                <tr>
-                  <td class="h5 text-center">
-                    <span class="material-symbols material-symbols-rounded">analytics</span>
-                  </td>
-                  <td>
-                    <input type="text" class="form-control" placeholder="Patient's Name" disabled name="name"
+                    <input type="text" class="form-control" placeholder="Patient's Name" name="name"
                       id="pname" />
                   </td>
                 </tr>
@@ -258,95 +202,41 @@
                     <span class="material-symbols material-symbols-rounded">analytics</span>
                   </td>
                   <td>
-                    <input type="text" class="form-control" placeholder="Patient's Birthday" disabled name="bday"
-                      id="bday" />
+                    <input type="text" class="form-control" placeholder="Patient's Email" name="email"
+                      id="pemail" />
                   </td>
                 </tr>
               </table>
             </div>
 
-            <!-- <div class="col-md-6">
-              <table class="w-100">
-                <tr>
-                  <td class="h5 text-center">
-                    <span class="material-symbols material-symbols-rounded"
-                      >analytics</span
-                    >
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      placeholder="High threshold (optional)"
-                      required
-                      id="high_threshold1"
-                    />
-                  </td>
-                </tr>
-              </table>
-            </div>
             <div class="col-md-6">
               <table class="w-100">
                 <tr>
                   <td class="h5 text-center">
-                    <span class="material-symbols material-symbols-rounded"
-                      >analytics</span
-                    >
+                    <span class="material-symbols material-symbols-rounded">analytics</span>
                   </td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      placeholder="Low threshold (optional)"
-                      value="1212"
-                      id="Low_threshold1"
-                      required
-                    />
+                    <input type="date" class="form-control" placeholder="Patient's Birthday" name="bday"
+                      id="bday" />
                   </td>
                 </tr>
               </table>
             </div>
-            <div class="col-12">
-              <table class="w-100">
+            <div class="col-md-12">
+              <table class="col-md-6 col-12 mx-auto" >
                 <tr>
                   <td class="h5 text-center">
-                    <span class="material-symbols material-symbols-rounded">
-                      format_ink_highlighter
-                    </span>
+                    <span class="material-symbols material-symbols-rounded">analytics</span>
                   </td>
                   <td>
-                    <textarea
-                      cols="30"
-                      rows="4"
-                      class="form-control"
-                      placeholder="Medical Condition"
-                      id="medical_condition1"
-                      required
-                    ></textarea>
+                    <select id="device_type" required class="form-control ">
+                      <!-- <option disabled>Select Device Type</option> -->
+                      <option value="Blood Pressure">Blood Pressure</option>
+                    </select>
                   </td>
                 </tr>
               </table>
-            </div> -->
-            <!-- <div class="col-12">
-              <table class="w-100">
-                <tr>
-                  <td class="h5 text-center">
-                    <span class="material-symbols material-symbols-rounded">
-                      format_ink_highlighter
-                    </span>
-                  </td>
-                  <td>
-                    <textarea
-                      cols="30"
-                      rows="4"
-                      class="form-control"
-                      placeholder="Notes"
-                      id="notes1"
-                    >asdfasdfasdfasdf</textarea>
-                  </td>
-                </tr>
-              </table>
-            </div> -->
+            </div>
             <div class="col-12 text-center">
               <button class="btn btn-primary btn-lg px-xl-4" type="submit">
                 <span class="material-symbols material-symbols-rounded">check</span>
@@ -395,7 +285,7 @@
       );
       // console.log(token)
       if (token == null) {
-        window.location.replace("login.html");
+        window.location.replace("index.html");
       } else {
         document.getElementById("loader1").style.visibility = "visible";
         $.ajax({
@@ -421,7 +311,7 @@
             // console.log(response);
 
             if (response.responseJSON.message == "Authentication failed") {
-              window.location.replace("login.html");
+              window.location.replace("index.html");
             }
           },
         });
@@ -467,9 +357,7 @@
         success: function (response) {
           // $("#div11").html(result);
           console.log(response);
-          $("#pweight").val(response.weight)
-          $("#pheight").val(response.height)
-          $("#pgender").val(response.gender)
+          $("#pgender").val(response.gender).change()
           $("#pemail").val(response.email)
           $("#pname").val(response.name)
           $("#bday").val(response.date_of_birth)
@@ -489,7 +377,7 @@
           // console.log(response);
 
           if (response.responseJSON.message == "Authentication failed") {
-            window.location.replace("login.html");
+            window.location.replace("index.html");
           } else {
             Swal.fire({
               title: "Error!",

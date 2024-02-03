@@ -24,7 +24,7 @@ $("#logout-btn").click(function (event) {
           // If logout successful, remove token from local storage and redirect to login page
           localStorage.removeItem("token");
           localStorage.removeItem("id");
-          window.location.href = "./login.html";
+          window.location.href = "./index.html";
         },
         error: function (xhr, status, error) {
           // If error occurred, display error message using SweetAlert2

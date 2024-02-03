@@ -86,7 +86,7 @@ $("#ordernewdevice").submit(function (event) {
 });
 // console.log(token)
 if (token == null) {
-  window.location.replace("login.html");
+  window.location.replace("index.html");
 } else {
   $.ajax({
     type: "get",
@@ -105,7 +105,7 @@ if (token == null) {
       // console.log(response);
 
       if (response.responseJSON.message == "Authentication failed") {
-        window.location.replace("login.html");
+        window.location.replace("index.html");
       }
     },
   });
@@ -168,7 +168,7 @@ function getpreviousorders() {
       // console.log(response);
 
       if (response.responseJSON.message == "Authentication failed") {
-        window.location.replace("login.html");
+        window.location.replace("index.html");
       }
     },
   });

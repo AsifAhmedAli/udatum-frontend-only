@@ -60,7 +60,7 @@
           // console.log(response);
 
           // if(response.responseJSON.message == "Authentication failed"){
-          //   window.location.replace("login.html");
+          //   window.location.replace("index.html");
           //     }
         }
       });
@@ -75,13 +75,13 @@
         <img src="./assets/images/logo-white.svg" height="48px" class="logo" alt="">
       </a>
       <ul class="list-unstyled ps-0 mb-0">
-        <li class="side-link active">
+        <li class="side-link ">
           <a href="./dashboard.html">
             <span class="material-symbols material-symbols-rounded">team_dashboard</span>
             Dashboard
           </a>
         </li>
-        <li class="side-link">
+        <li class="side-link active">
           <a href="./registeredpatients.html">
             <span class="material-symbols material-symbols-rounded">person</span>
             Patients
@@ -136,12 +136,7 @@
           <button type="button" class="search" id="search">
             <span class="material-symbols material-symbols-rounded">search</span>
           </button>
-          <form action="" class="w-100">
-            <input type="search" class="form-control w-100" name="" id="" placeholder="Search" />
-            <button class="btn btn-primary rounded-pill">
-              <span class="material-symbols material-symbols-rounded">search</span>
-            </button>
-          </form>
+
         </div>
         <div class="right">
           <div class="dropdown">
@@ -300,10 +295,12 @@
             </button>
           </div>
         </div> -->
-      <div class="patient-details-box bg-white mb-xl-5">
+
+
+      <div class="patient-details-box bg-white mb-xl-5" id="analytics_area">
         <div>
           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
+            <!-- <li class="nav-item" role="presentation">
               <button class="nav-link" id="weight-scale-tab" data-bs-toggle="pill" data-bs-target="#weight-scale"
                 type="button" role="tab" aria-controls="weight-scale" aria-selected="false">
                 Weight Scale
@@ -320,51 +317,30 @@
                 type="button" role="tab" aria-controls="heart-rate" aria-selected="false">
                 Heart Rate
               </button>
-            </li>
+            </li> -->
             <li class="nav-item" role="presentation">
               <button class="nav-link" id="blood-pressure-tab" data-bs-toggle="pill" data-bs-target="#blood-pressure"
                 type="button" role="tab" aria-controls="blood-pressure" aria-selected="false">
                 Blood Pressure
               </button>
             </li>
-            <li class="nav-item" role="presentation">
+            <!-- <li class="nav-item" role="presentation">
               <button class="nav-link" id="steps-tab" data-bs-toggle="pill" data-bs-target="#steps" type="button"
                 role="tab" aria-controls="steps" aria-selected="false">
                 Step Tracker
               </button>
-            </li>
+            </li> -->
           </ul>
           
-          <div class="tab-pane fade" id="weight-scale" role="tabpanel" aria-labelledby="weight-scale-tab">
+          <!-- <div class="tab-pane fade" id="weight-scale" role="tabpanel" aria-labelledby="weight-scale-tab">
               <div class="patient-details-box bg-white mb-xl-5 mt-4">
                 <div class="d-flex align-items-center flex-md-nowrap flex-wrap justify-content-between">
                   <div class="d-flex align-items-center gap-3 mb-3">
                     <div class="vector-icon green">
-                      <!-- <span
-                        class="material-symbols material-symbols-rounded top-0"
-                        >footprint</span
-                      > -->
                     </div>
                     <h5 class="fw-bold">Weight Scale</h5>
                   </div>
-                  <!-- <div class="d-flex align-items-center gap-3 mb-3">
-                    <select
-                      name=""
-                      id=""
-                      class="form-select fw-bold mb-2"
-                      style="width: 145px"
-                    >
-                      <option value="">December</option>
-                    </select>
-                    <select
-                      name=""
-                      id=""
-                      class="form-select fw-bold mb-2"
-                      style="width: 145px"
-                    >
-                      <option value="">2022</option>
-                    </select>
-                  </div> -->
+                  
                 </div>
 
                 <div class="d-block w-100 mt-xl-5 mt-3">
@@ -379,9 +355,9 @@
                   </div>
                 </div>
               </div>
-          </div>
-          <div class="tab-pane fade" id="pulse" role="tabpanel" aria-labelledby="pulse-tab"></div>
-          <div class="tab-pane fade" id="heart-rate" role="tabpanel" aria-labelledby="heart-rate-tab">
+          </div> -->
+          <!-- <div class="tab-pane fade" id="pulse" role="tabpanel" aria-labelledby="pulse-tab"></div> -->
+          <!-- <div class="tab-pane fade" id="heart-rate" role="tabpanel" aria-labelledby="heart-rate-tab">
             <div class="d-flex align-items-center flex-md-nowrap flex-wrap justify-content-between">
               <div class="d-flex align-items-center gap-3 mb-3">
                 <div class="vector-icon blue">
@@ -390,12 +366,7 @@
                 <h5 class="fw-bold">Heart Rate</h5>
               </div>
               <div class="d-flex align-items-center flex-md-nowrap flex-wrap gap-3 mb-3">
-                <!-- <select name="" id="" class="form-select fw-bold mb-2" style="width: 145px">
-                  <option value="">December</option>
-                </select>
-                <select name="" id="" class="form-select fw-bold mb-2" style="width: 145px">
-                  <option value="">2022</option>
-                </select> -->
+
                 <button class="btn btn-primary px-xl-4 mb-2">
                   <span class="material-symbols material-symbols-rounded">print</span>
                   Print
@@ -406,35 +377,16 @@
             <div class="d-block w-100 mt-xl-5 mt-3" style="height: 300px">
               <canvas id="myChart"></canvas>
             </div>
-          </div>
-          <div class="tab-pane fade" id="blood-pressure" role="tabpanel" aria-labelledby="blood-pressure-tab"></div>
-          <div class="tab-pane fade" id="steps" role="tabpanel" aria-labelledby="steps-tab">
+          </div> -->
+          <div class="tab-pane fade" id="blood-pressure" role="tabpanel" aria-labelledby="blood-pressure-tab">
             <div class="patient-details-box bg-white mb-xl-5 mt-4">
               <div class="d-flex align-items-center flex-md-nowrap flex-wrap justify-content-between">
                 <div class="d-flex align-items-center gap-3 mb-3">
                   <div class="vector-icon green">
-                    <span class="material-symbols material-symbols-rounded top-0">footprint</span>
+                    <span class="material-symbols material-symbols-rounded top-0">blood_pressure</span>
                   </div>
-                  <h5 class="fw-bold">Step Tracker</h5>
+                  <h5 class="fw-bold">Blood Pressure Tracker</h5>
                 </div>
-                <!-- <div class="d-flex align-items-center gap-3 mb-3">
-                      <select
-                        name=""
-                        id=""
-                        class="form-select fw-bold mb-2"
-                        style="width: 145px"
-                      >
-                        <option value="">December</option>
-                      </select>
-                      <select
-                        name=""
-                        id=""
-                        class="form-select fw-bold mb-2"
-                        style="width: 145px"
-                      >
-                        <option value="">2022</option>
-                      </select>
-                    </div> -->
               </div>
 
               <div class="d-block w-100 mt-xl-5 mt-3">
@@ -450,12 +402,58 @@
               </div>
             </div>
           </div>
+          <!-- <div class="tab-pane fade" id="steps" role="tabpanel" aria-labelledby="steps-tab">
+            <div class="patient-details-box bg-white mb-xl-5 mt-4">
+              <div class="d-flex align-items-center flex-md-nowrap flex-wrap justify-content-between">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                  <div class="vector-icon green">
+                    <span class="material-symbols material-symbols-rounded top-0">footprint</span>
+                  </div>
+                  <h5 class="fw-bold">Step Tracker</h5>
+                </div>
+              </div>
+
+              <div class="d-block w-100 mt-xl-5 mt-3">
+                <div style="height: 300px">
+                  <canvas id="myChart2"></canvas>
+                </div>
+                <div class="text-center mt-4">
+                  <button class="btn btn-primary px-xl-4">
+                    <span class="material-symbols material-symbols-rounded">print</span>
+                    Print
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>  -->
         </div>
       </div>
     </div>
-    </div>
   </main>
-
+  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Enter Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Client ID</label>
+            <input type="text" class="form-control" id="clientid">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Client Secret</label>
+            <input type="text" class="form-control" id="clientsecret">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="safe_basic_dta()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
   <!-- Modal -->
   <div class="modal fade" id="addNote" tabindex="-1" aria-labelledby="addNoteLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -552,7 +550,7 @@
 
             // Send POST request to logout API endpoint
             $.ajax({
-              url: 'http://localhost:3000/doctor-logout',
+              url: `${baseurl}/doctor-logout`,
               type: 'GET',
               headers: {
                 'Authorization': 'Bearer ' + token
@@ -561,7 +559,7 @@
                 // If logout successful, remove token from local storage and redirect to login page
                 localStorage.removeItem('token');
                 localStorage.removeItem('id');
-                window.location.href = './login.html';
+                window.location.href = './index.html';
               },
               error: function (xhr, status, error) {
                 // If error occurred, display error message using SweetAlert2
@@ -705,7 +703,7 @@
       }
       // console.log(token)
       if (token == null) {
-        window.location.replace("login.html");
+        window.location.replace("index.html");
       } else {
         $.ajax({
           type: "get",
@@ -724,12 +722,67 @@
             // console.log(response);
 
             if (response.responseJSON.message == "Authentication failed") {
-              window.location.replace("login.html");
+              window.location.replace("index.html");
             }
           }
         });
       }
+      // var did = localStorage.getItem('id');
+      // $.ajax({
+      //     type: "get",
+      //     url: `${baseurl}/get-cid-csecret/${did}`,
+      //     timeout: 0,
+      //     headers: {
+      //       "Authorization": `Bearer ${token}`,
+      //       "Content-Type": "application/json",
+      //     },
+      //     success: function (response) {
+      //       // $("#div11").html(result);
+      //       // console.log(response);
+      //       if(response.msg.length == 0){
+      //         document.getElementById("button_attach_account").classList.remove("d-none");
+      //       }
+      //       else if(response.msg == "Not Found"){
+      //         document.getElementById("button_attach_account").classList.remove("d-none");
+      //       }
+      //       else{
+      //         document.getElementById("analytics_area").classList.remove("d-none");
+      //       }
+      //       // document.getElementById("loader1").style.visibility = "hidden";
+      //     },
+      //     error: function (response) {
+      //       // console.log(response);
 
+      //       // if (response.responseJSON.message == "Authentication failed") {
+      //       //   window.location.replace("index.html");
+      //       // }
+      //     }
+      //   });
+        $.ajax({
+        type: "get",
+        url: `${baseurl}/get-withings-url`,
+        timeout: 0,
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        success: function (response) {
+          // console.log(response.url)
+          // window.location.replace(response.url);
+          // console.log(response.nonce)
+          // Swal.fire({
+          //   icon: 'success',
+          //   title: 'Successful!',
+          //   text: response.message,
+          //   allowOutsideClick: false
+          // })
+          // $('button.swal2-confirm').click(function () {
+          //   location.replace(`./patientdetails.html?id=${id}`);
+          // });
+          // timeonscreen = parseInt(response.results[0].time_spent);
+          document.getElementById("loader1").style.visibility = "hidden";
+        }
+      });
       // const id = urlParams.get('id');
       document.getElementById("loader1").style.visibility = "visible";
       $.ajax({
@@ -893,120 +946,350 @@
     }
 
 
-    const ctx = document.getElementById("myChart");
+    // const ctx = document.getElementById("myChart");
 
-    new Chart(ctx, {
-      type: "line",
-      data: {
-        labels: [
-          "1st",
-          "2nd",
-          "3rd",
-          "4th",
-          "5th",
-          "6th",
-          "7th",
-          "8th",
-          "9th",
-          "10th",
-          "11th",
-          "12th",
-          "13th",
-          "14th",
-          "15th",
-        ],
-        datasets: [{
-          data: [
-            40, 30, 90, 85, 112, 126, 140, 135, 120, 120, 120, 130, 130,
-            150, 80,
-          ],
-          borderWidth: 4,
-          borderColor: "#1577F2",
-          fill: {
-            target: "origin",
-            above: "rgba(192, 228, 255, 0.12)", // Area will be red above the origin
-          },
-        }, ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false,
-          },
+    // new Chart(ctx, {
+    //   type: "line",
+    //   data: {
+    //     labels: [
+    //       "1st",
+    //       "2nd",
+    //       "3rd",
+    //       "4th",
+    //       "5th",
+    //       "6th",
+    //       "7th",
+    //       "8th",
+    //       "9th",
+    //       "10th",
+    //       "11th",
+    //       "12th",
+    //       "13th",
+    //       "14th",
+    //       "15th",
+    //     ],
+    //     datasets: [{
+    //       data: [
+    //         40, 30, 90, 85, 112, 126, 140, 135, 120, 120, 120, 130, 130,
+    //         150, 80,
+    //       ],
+    //       borderWidth: 4,
+    //       borderColor: "#1577F2",
+    //       fill: {
+    //         target: "origin",
+    //         above: "rgba(192, 228, 255, 0.12)", // Area will be red above the origin
+    //       },
+    //     }, ],
+    //   },
+    //   options: {
+    //     responsive: true,
+    //     maintainAspectRatio: false,
+    //     plugins: {
+    //       legend: {
+    //         display: false,
+    //       },
+    //     },
+    //     elements: {
+    //       point: {
+    //         radius: 0,
+    //       },
+    //     },
+    //     scales: {
+    //       y: {
+    //         beginAtZero: true,
+    //         grid: {
+    //           display: false,
+    //         },
+    //         ticks: {
+    //           font: {
+    //             family: "Raleway", // Your font family
+    //             size: 14,
+    //           },
+    //         },
+    //       },
+    //       x: {
+    //         grid: {
+    //           display: false,
+    //         },
+    //         ticks: {
+    //           font: {
+    //             family: "Raleway", // Your font family
+    //             size: 14,
+    //           },
+    //         },
+    //       },
+    //     },
+    //     plugins: {
+    //       legend: {
+    //         labels: {
+    //           // This more specific font property overrides the global property
+    //           font: {
+    //             size: 16,
+    //             family: "'Raleway'",
+    //           },
+    //         },
+    //       },
+    //     },
+    //   },
+    // });
+
+
+    //  code for clock
+    var weights = [];
+
+    function myfuan(weightvalue, weights1) {
+      weights1.push(weightvalue * 2.2046 / 1000);
+      // console.log(weights.length)
+      return weights1;
+    }
+
+    $("#blood-pressure-tab").click(function () {
+      // console.log(token)
+      // console.log(id)
+      document.getElementById("loader1").style.visibility = "visible";
+      var device_type = "Blood Pressure";
+      var pid = id;
+      $.ajax({
+        type: "post",
+        url: `${baseurl}/get-activation-token`,
+        data: JSON.stringify({
+          device_type: device_type,
+          pid:pid
+        }),
+        timeout: 0,
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
-        elements: {
-          point: {
-            radius: 0,
-          },
-        },
-        scales: {
-          y: {
-            beginAtZero: true,
-            grid: {
-              display: false,
-            },
-            ticks: {
-              font: {
-                family: "Raleway", // Your font family
-                size: 14,
-              },
-            },
-          },
-          x: {
-            grid: {
-              display: false,
-            },
-            ticks: {
-              font: {
-                family: "Raleway", // Your font family
-                size: 14,
-              },
-            },
-          },
-        },
-        plugins: {
-          legend: {
-            labels: {
-              // This more specific font property overrides the global property
-              font: {
-                size: 16,
-                family: "'Raleway'",
-              },
-            },
-          },
-        },
-      },
+        success: function (response1) {
+          // console.log(response1)
+          document.getElementById("loader1").style.visibility = "hidden";
+          localStorage.setItem('with_access_token', response1.resa2.body.access_token);
+          localStorage.setItem('with_refres_token', response1.resa2.body.refresh_token);
+          populate_data_blood_pressure();
+          // $("#div11").html(result);
+          // console.log(response1);
+          // pemail
+          // console.log(response1);
+
+          // document.getElementById("loader1").style.visibility = "hidden";
+        }
+      });
     });
+    function populate_data_blood_pressure(){
+      document.getElementById("loader1").style.visibility = "visible";
+      var with_access_token = localStorage.getItem('with_access_token');
+      if (with_access_token != undefined || with_access_token != null) {
+        data = JSON.stringify({
+          with_access_token: with_access_token,
+          pid: id
+        })
+        var pressureslist = [];
+        var humanReadableDate;
+        var dateslist = [];
+        $.ajax({
+          type: "post",
+          url: `${baseurl}/get-blood-pressure`,
+          data: data,
+          timeout: 0,
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          success: function (response1) {
+
+            // var ress = JSON.parse(response1);
+            // console.log(response1.data)
+            response1.data.forEach(element => {
+              
+            });
+            // console.log(ress.body.measuregrps[0].measures[0].value)
+            if(response1.msg == "reload"){
+              populate_data_blood_pressure();
+            }
+
+            response1.data.forEach(key => {
+              pressureslist.push(key.value);
+              humanReadableDate = convertUnixTimestampToHumanReadable(key.dateofmeasurement);
+              dateslist.push(humanReadableDate)
+             });
+            drawchart2(pressureslist, dateslist);
+            document.getElementById("loader1").style.visibility = "hidden";
+            
+          }
+        });
+
+
+      }
+      else{
+        alert("No Token")
+      }
+    }
+
+    function convertUnixTimestampToHumanReadable(unixTimestamp) {
+  // Create a new Date object and set the timestamp
+  const date = new Date(unixTimestamp * 1000); // Multiply by 1000 to convert from seconds to milliseconds
+
+  // Get the individual components of the date
+  const year = date.getFullYear();
+  const month = ('0' + (date.getMonth() + 1)).slice(-2); // Months are zero-indexed, so we add 1
+  const day = ('0' + date.getDate()).slice(-2);
+  const hours = ('0' + date.getHours()).slice(-2);
+  const minutes = ('0' + date.getMinutes()).slice(-2);
+  const seconds = ('0' + date.getSeconds()).slice(-2);
+
+  // Construct the human-readable date string
+  const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
+  return formattedDate;
+}
+    // function safe_basic_dta() {
+    //   // console.log(token)
+    //   var did = localStorage.getItem('id');
+    //   var cid = document.getElementById("clientid").value;
+    //   var csecret = document.getElementById("clientsecret").value;
+    //   $.ajax({
+    //     type: "post",
+    //     url: `${baseurl}/add-cid-csecret/`,
+    //     data: JSON.stringify({
+    //         did:did,
+    //         cid:cid,
+    //         csecret:csecret,
+    //     }),
+    //     timeout: 0,
+    //     headers: {
+    //       "Authorization": `Bearer ${token}`,
+    //       "Content-Type": "application/json",
+    //     },
+    //     success: function (response1) {
+
+    //       // $("#div11").html(result);
+    //       console.log(response1);
+    //       // console.log(response1.nonce);
+          
+    //       if (response1.msg == "Data Added") {
+    //         document.getElementById("loader1").style.visibility = "hidden";
+    //         Swal.fire({
+    //           icon: 'success',
+    //           title: 'Successful!',
+    //           text: response1.msg,
+    //           allowOutsideClick: false
+    //         })
+    //         $('button.swal2-confirm').click(function () {
+    //           window.location.reload();
+    //         });
+    //       }
+    //       // pemail
+    //       // console.log(response1);
+
+    //       // document.getElementById("loader1").style.visibility = "hidden";
+    //     }
+    //   });
+    // }
+
+
+            // const ctx3 = document.getElementById("myChart3");
+        // const weightchart = new Chart(ctx3, {
+        //   type: "line",
+        //   data: {
+        //     labels: [
+
+        //     ],
+        //     datasets: [{
+        //       label: "Weights",
+        //       data: [
+
+        //       ],
+        //       borderWidth: 4,
+        //       borderColor: "#B2EA47",
+        //       fill: {
+        //         target: "origin",
+        //         above: "#D6FFDA1D", // Area will be red above the origin
+        //       },
+        //     }, ],
+        //   },
+        //   options: {
+        //     responsive: true,
+        //     maintainAspectRatio: false,
+        //     plugins: {
+        //       legend: {
+        //         display: false,
+        //       },
+        //     },
+        //     elements: {
+        //       point: {
+        //         radius: 3,
+        //       },
+        //     },
+        //     scales: {
+        //       y: {
+        //         beginAtZero: true,
+        //         grid: {
+        //           display: false,
+        //         },
+        //         ticks: {
+        //           font: {
+        //             family: "Raleway", // Your font family
+        //             size: 14,
+        //           },
+        //         },
+        //       },
+        //       x: {
+        //         grid: {
+        //           display: false,
+        //         },
+        //         ticks: {
+        //           font: {
+        //             family: "Raleway", // Your font family
+        //             size: 14,
+        //           },
+        //         },
+        //       },
+        //     },
+        //     plugins: {
+        //       legend: {
+        //         labels: {
+        //           // This more specific font property overrides the global property
+        //           font: {
+        //             size: 16,
+        //             family: "'Raleway'",
+        //           },
+        //         },
+        //       },
+        //     },
+        //   },
+        // });
+
+        // function drawchart1(weights) {
+        //   weights.sort(function (a, b) {
+        //     return a - b
+        //   })
+        //   for (i = 0; i < weights.length; i++) {
+        //     weightchart.data.labels.push(weights[i]);
+        //     weightchart.data.datasets[0].data.push(weights[i]);
+        //     // weightchart.data.datasets[0].labels.push(weights[i]);
+        //   }
+        //   weightchart.update();
+        //   // console.log(weightchart.data.datasets[0].data);
+        // }
+
+
+
+
+
 
     const ctx2 = document.getElementById("myChart2");
 
 
-    new Chart(ctx2, {
+    const pressureschart = new Chart(ctx2, {
       type: "line",
       data: {
         labels: [
-          "1st",
-          "2nd",
-          "3rd",
-          "4th",
-          "5th",
-          "6th",
-          "7th",
-          "8th",
-          "9th",
-          "10th",
-          "11th",
-          "12th",
-          "13th",
-          "14th",
-          "15th",
+
         ],
         datasets: [{
+          label: "Blood Pressure",
           data: [
-            40, 30, 90, 85, 112, 126, 140, 135, 120, 120, 120, 130, 130,
-            150, 80,
           ],
           borderWidth: 4,
           borderColor: "#B2EA47",
@@ -1068,135 +1351,21 @@
       },
     });
 
-    //  code for clock
-    var weights = [];
-
-    function myfuan(weightvalue, weights1) {
-      weights1.push(weightvalue * 2.2046 / 1000);
-      // console.log(weights.length)
-      return weights1;
-    }
-
-    $("#weight-scale-tab").click(function () {
-      // console.log("asdf")
-      var with_access_token = localStorage.getItem('with_access_token');
-      if (with_access_token != undefined || with_access_token != null) {
-        data = JSON.stringify({
-          with_access_token: with_access_token
-        })
-        $.ajax({
-          type: "post",
-          url: `${baseurl}/get-weight`,
-          data: data,
-          timeout: 0,
-          headers: {
-            "Authorization": `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-          success: function (response1) {
-
-            // $("#div11").html(result);
-            // console.log(response1);
-            var ress = JSON.parse(response1);
-            // console.log(ress.body)
-            ress.body.measuregrps.forEach(key => {
-              key.measures.forEach(key1 => {
-                // weights.push(key1.value/1000);
-                weights = myfuan(key1.value, weights);
-                // console.log(weights.length);
-              });
-            });
-            document.getElementById("loader1").style.visibility = "hidden";
-            drawchart1(weights);
+          function drawchart2(pressures, dates) {
+            pressureschart.data.labels = [];
+            pressureschart.data.datasets[0].data = [];
+            pressureschart.update();
+          for (i = 0; i < pressures.length; i++) {
+            pressureschart.data.labels.push(dates[i]);
+            pressureschart.data.datasets[0].data.push(pressures[i]);
           }
-        });
-        const ctx3 = document.getElementById("myChart3");
-        const weightchart = new Chart(ctx3, {
-          type: "line",
-          data: {
-            labels: [
-
-            ],
-            datasets: [{
-              label: "Weights",
-              data: [
-
-              ],
-              borderWidth: 4,
-              borderColor: "#B2EA47",
-              fill: {
-                target: "origin",
-                above: "#D6FFDA1D", // Area will be red above the origin
-              },
-            }, ],
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: {
-                display: false,
-              },
-            },
-            elements: {
-              point: {
-                radius: 3,
-              },
-            },
-            scales: {
-              y: {
-                beginAtZero: true,
-                grid: {
-                  display: false,
-                },
-                ticks: {
-                  font: {
-                    family: "Raleway", // Your font family
-                    size: 14,
-                  },
-                },
-              },
-              x: {
-                grid: {
-                  display: false,
-                },
-                ticks: {
-                  font: {
-                    family: "Raleway", // Your font family
-                    size: 14,
-                  },
-                },
-              },
-            },
-            plugins: {
-              legend: {
-                labels: {
-                  // This more specific font property overrides the global property
-                  font: {
-                    size: 16,
-                    family: "'Raleway'",
-                  },
-                },
-              },
-            },
-          },
-        });
-
-        function drawchart1(weights) {
-          weights.sort(function (a, b) {
-            return a - b
-          })
-          for (i = 0; i < weights.length; i++) {
-            weightchart.data.labels.push(weights[i]);
-            weightchart.data.datasets[0].data.push(weights[i]);
-            // weightchart.data.datasets[0].labels.push(weights[i]);
-          }
-          weightchart.update();
+          pressureschart.update();
           // console.log(weightchart.data.datasets[0].data);
         }
 
-      }
-    })
+
+
+
   </script>
 </body>
 

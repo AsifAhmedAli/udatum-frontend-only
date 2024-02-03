@@ -88,34 +88,10 @@
                 >search</span
               >
             </button>
-            <form action="" class="w-100">
-              <input
-                type="search"
-                class="form-control w-100"
-                name=""
-                id=""
-                placeholder="Search"
-              />
-              <button class="btn btn-primary rounded-pill">
-                <span class="material-symbols material-symbols-rounded"
-                  >search</span
-                >
-              </button>
-            </form>
+
           </div>
           <div class="right">
-            <div class="dropdown">
-              <button type="button" class="notifications unread" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="material-symbols material-symbols-rounded"
-                  >notifications</span
-                >
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </div>
+
             
             <button type="button" class="avatar unread">JD</button>
             <button type="button" class="menu" id="menu">
@@ -380,7 +356,7 @@ $(document).ready(function() {
 var messagesanchor = document.getElementById("messagesanchor");
   messagesanchor.setAttribute("href", `${clientbaseurl}/doctor/chat.html?id=${user_ida}`);
       if(token == null){
-        window.location.replace("login.html");
+        window.location.replace("index.html");
       }
       else{
         $.ajax({
@@ -400,7 +376,7 @@ var messagesanchor = document.getElementById("messagesanchor");
                 // console.log(response);
                 
                 if(response.responseJSON.message == "Authentication failed"){
-                  window.location.replace("login.html");
+                  window.location.replace("index.html");
                     }
               }
           });
@@ -507,7 +483,7 @@ document.getElementById("loader1").style.visibility = "visible";
                 // console.log(response);
                 
                 if(response.responseJSON.message == "Authentication failed"){
-                  window.location.replace("login.html");
+                  window.location.replace("index.html");
                     }
                 if(response.status == 500){
                       Swal.fire({

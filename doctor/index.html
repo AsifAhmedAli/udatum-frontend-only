@@ -129,6 +129,7 @@
       }
     }).done(function(response) {
       document.getElementById("loader1").style.visibility = "hidden";
+      // console.log(response.url)
       // Login successful
       // document.cookie = `token=${response.token}; path=/`;
       // console.log("Token set in cookies:", document.cookie)
@@ -137,7 +138,7 @@
       // console.log(response);
       // localStorage.setItem('token', response.token);
       // localStorage.setItem('name', response.name);
-      // window.location.replace('dashboard.html');
+      // window.location.replace(response.url);
       window.location.replace("./dashboard.html");
     }).fail(function(response) {
       document.getElementById("loader1").style.visibility = "hidden";

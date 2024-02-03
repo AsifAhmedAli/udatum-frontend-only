@@ -90,12 +90,7 @@
           <button type="button" class="search" id="search">
             <span class="material-symbols material-symbols-rounded">search</span>
           </button>
-          <form action="" class="w-100">
-            <input type="search" class="form-control w-100" name="" id="" placeholder="Search" />
-            <button class="btn btn-primary rounded-pill">
-              <span class="material-symbols material-symbols-rounded">search</span>
-            </button>
-          </form>
+
         </div>
         <div class="right">
           <div class="dropdown">
@@ -410,7 +405,7 @@ var messagesanchor = document.getElementById("messagesanchor");
             // console.log(response);
 
             if (response.responseJSON.message == "Authentication failed") {
-              window.location.replace("login.html");
+              window.location.replace("index.html");
             }
           }
         });
@@ -460,7 +455,7 @@ processData: false
 
       // console.log(token)
       if (token == null) {
-        window.location.replace("login.html");
+        window.location.replace("index.html");
       } else {
         document.getElementById("loader1").style.visibility = "visible";
         $.ajax({
@@ -491,7 +486,7 @@ processData: false
             // console.log(response);
 
             if (response.responseJSON.message == "Authentication failed") {
-              window.location.replace("login.html");
+              window.location.replace("index.html");
             }
           }
         });
@@ -541,7 +536,7 @@ processData: false
             // console.log(response);
 
             if (response.responseJSON.message == "Authentication failed") {
-              window.location.replace("login.html");
+              window.location.replace("index.html");
             }
           }
         });

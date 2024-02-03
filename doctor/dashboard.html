@@ -88,34 +88,10 @@
                 >search</span
               >
             </button>
-            <form action="" class="w-100">
-              <input
-                type="search"
-                class="form-control w-100"
-                name=""
-                id=""
-                placeholder="Search"
-              />
-              <button class="btn btn-primary rounded-pill">
-                <span class="material-symbols material-symbols-rounded"
-                  >search</span
-                >
-              </button>
-            </form>
+
           </div>
           <div class="right">
-            <div class="dropdown">
-              <button type="button" class="notifications unread" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="material-symbols material-symbols-rounded"
-                  >notifications</span
-                >
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </div>
+
             
             <button type="button" class="avatar unread" id="user-initials"></button>
             <button type="button" class="menu" id="menu">
@@ -235,14 +211,14 @@ var messagesanchor = document.getElementById("messagesanchor");
           //     // localStorage.removeItem('with_refresh_token');
           //     // localStorage.removeItem('with_userid');
           //     // localStorage.removeItem('expiry');
-          //     // window.location.href = './login.html';
+          //     // window.location.href = './index.html';
           //   } 
           // }
         // }
         // else{
           // console.log(product);
           // if(with_refresh_token != null && with_refresh_token != null && with_access_token != null){
-          //   // window.location.replace("./login.html");
+          //   // window.location.replace("./index.html");
           // }
           // else{
           //   document.getElementById("loader1").style.visibility = "visible";
@@ -323,7 +299,7 @@ var messagesanchor = document.getElementById("messagesanchor");
       //   console.log(weights);
       // }
     if(token == null){
-        window.location.replace("login.html");
+        window.location.replace("index.html");
       }
       else{
         $.ajax({
@@ -346,7 +322,7 @@ var messagesanchor = document.getElementById("messagesanchor");
                 if(response.responseJSON.message == "Authentication failed"){
                   localStorage.removeItem('id');
                   localStorage.removeItem('token');
-                  // window.location.replace("login.html");
+                  // window.location.replace("index.html");
                     }
               }
           });
