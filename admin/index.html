@@ -111,7 +111,7 @@
                 "Content-Type": "application/json",
                 },
                 success: function (result) {
-                    console.log(result.data.doctors);
+                    // console.log(result.data.doctors);
                     result.data.doctors.forEach(key => {
                         var dateFormat = new Date(key.create_time);
                         if(key.status1){
@@ -141,6 +141,9 @@
                         `);    
                         i++;
                     });
+                    document.getElementById("loader1").style.visibility = "hidden";
+                },
+                error: function (result) {
                     document.getElementById("loader1").style.visibility = "hidden";
                 }
             });
