@@ -53,7 +53,7 @@ function all_orders() {
     },
     error: function (response) {
       // console.log(response);
-
+      document.getElementById("loader1").style.visibility = "hidden";
       if (response.responseJSON.message == "Authentication failed") {
         window.location.replace("login.html");
       }
