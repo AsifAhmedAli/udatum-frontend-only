@@ -13,6 +13,7 @@ $.ajax({
     // $("#showhere").html(result);
   },
   error: function (response) {
+    document.getElementById("loader1").style.visibility = "hidden";
     console.log(response);
     if (response.responseJSON.message == "Authentication failed") {
       localStorage.removeItem("admin_id");
