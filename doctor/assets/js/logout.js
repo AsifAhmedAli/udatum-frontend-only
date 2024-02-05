@@ -15,7 +15,7 @@ $("#logout-btn").click(function (event) {
 
       // Send POST request to logout API endpoint
       $.ajax({
-        url: "http://localhost:3000/doctor-logout",
+        url: `${baseurl}/doctor-logout`,
         type: "GET",
         headers: {
           Authorization: "Bearer " + token,
