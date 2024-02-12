@@ -149,7 +149,7 @@ function getpreviousorders() {
     },
     success: function (response) {
       // $("#div11").html(result);
-      console.log(response + "asdfb");
+      // console.log(response + "asdfb");
       if(response.length == 0){
 
       }
@@ -171,11 +171,12 @@ function getpreviousorders() {
       document.getElementById("loader1").style.visibility = "hidden";
     },
     error: function (response) {
-      console.log(response);
+      // console.log(response);
 
       if (response.responseJSON.message == "Authentication failed") {
         window.location.replace("index.html");
       }
+      document.getElementById("loader1").style.visibility = "hidden";
     },
   });
 }
