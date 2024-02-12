@@ -34,8 +34,8 @@ function checkout() {
         address: address,
       },
       success: function (response) {
-        // console.log(response);
-        window.location.replace(response.url);
+        console.log(response);
+        // window.location.replace(response.url);
         // document.getElementById("showeverything").innerHTML = response;
         //   Swal.fire({
         //     icon: "success",
