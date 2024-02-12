@@ -149,18 +149,23 @@ function getpreviousorders() {
     },
     success: function (response) {
       // $("#div11").html(result);
-      var i = 1;
-      response.forEach((key) => {
-        document.getElementById("tdata").innerHTML += `<tr>
-        <th scope="row">${i}</th>
-        <td>${key.timestamp}</td>
-        <td>${key.devicetype}</td>
-        <td>${key.numberofdevices}</td>
-        <td>${key.address}</td>
-        <td>${key.statusoforder}</td>
-      </tr>`;
-        i++;
-      });
+      if(response.length == 0){
+
+      }
+      else{
+        var i = 1;
+        response.forEach((key) => {
+          document.getElementById("tdata").innerHTML += `<tr>
+          <th scope="row">${i}</th>
+          <td>${key.timestamp}</td>
+          <td>${key.devicetype}</td>
+          <td>${key.numberofdevices}</td>
+          <td>${key.address}</td>
+          <td>${key.statusoforder}</td>
+        </tr>`;
+          i++;
+        });        
+      }
       console.log(response);
       document.getElementById("loader1").style.visibility = "hidden";
     },
