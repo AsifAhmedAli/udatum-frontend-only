@@ -35,9 +35,13 @@ $("#ordernewdevice").submit(function (event) {
   var devicetype = document.getElementById("dname").value;
   var address = document.getElementById("address").value;
   var numberofdevices = document.getElementById("numberofdevices").value;
-  window.location.replace(
-    `${clientbaseurl}/doctor/checkout.html?devicetype=${devicetype}&address=${address}&numberofdevices=${numberofdevices}&did=${user_ida}`
-  );
+  // address = address.toString();
+  // console.log(address)
+  devicetype = encodeURIComponent(devicetype);
+  address = encodeURIComponent(address);
+  numberofdevices = encodeURIComponent(numberofdevices);
+  // var url = encodeURIComponent(``);
+  window.location.replace(`${clientbaseurl}/doctor/checkout.html?devicetype=${devicetype}&address=${address}&numberofdevices=${numberofdevices}&did=${user_ida}`);
   // data = JSON.stringify({
   //   devicetype: devicetype,
   //   did: user_ida,

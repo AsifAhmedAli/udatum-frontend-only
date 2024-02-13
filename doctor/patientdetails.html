@@ -1100,12 +1100,14 @@
 
             // var ress = JSON.parse(response1);
             // console.log(response1.data)
-            response1.data.forEach(element => {
+
+            // response1.data.forEach(element => {
               
-            });
+            // });
             // console.log(ress.body.measuregrps[0].measures[0].value)
             if(response1.msg == "reload"){
               populate_data_blood_pressure();
+              return 0;
             }
 
             response1.data.forEach(key => {
