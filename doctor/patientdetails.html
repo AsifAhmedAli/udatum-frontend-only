@@ -633,6 +633,20 @@
         success: function (response) {
           console.log(response);
           timeonscreen = parseInt(response.results[0].time_spent);
+          var cond = 1;
+      setInterval(function () {
+        if (cond == 1) {
+          timeonscreen = starttimer(timeonscreen);
+        }
+
+      }, 1000);
+      window.addEventListener("visibilitychange", (event) => {
+        if (document.visibilityState === "hidden") {
+          cond = 0;
+        } else {
+          cond = 1;
+        }
+      });
           document.getElementById("loader1").style.visibility = "hidden";
         }
       });
@@ -651,20 +665,7 @@
 
       //Timer on the screen
 
-      var cond = 1;
-      setInterval(function () {
-        if (cond == 1) {
-          timeonscreen = starttimer(timeonscreen);
-        }
 
-      }, 1000);
-      window.addEventListener("visibilitychange", (event) => {
-        if (document.visibilityState === "hidden") {
-          cond = 0;
-        } else {
-          cond = 1;
-        }
-      });
 
       // const beforeUnloadListener = (event) => {
       //   event.preventDefault();
