@@ -43,7 +43,7 @@ if (
         allowOutsideClick: false,
       });
       $("button.swal2-confirm").click(function () {
-        window.location.replace("./dashboard.html");
+        window.location.replace("dashboard.html");
       });
       document.getElementById("loader1").style.visibility = "hidden";
     },
