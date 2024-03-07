@@ -139,7 +139,7 @@
 
         </div>
         <div class="right">
-          <div class="dropdown">
+          <!-- <div class="dropdown">
             <button type="button" class="notifications unread" type="button" id="dropdownMenuButton1"
               data-bs-toggle="dropdown" aria-expanded="false">
               <span class="material-symbols material-symbols-rounded">notifications</span>
@@ -151,7 +151,7 @@
                 <a class="dropdown-item" href="#">Something else here</a>
               </li>
             </ul>
-          </div>
+          </div> -->
 
           <button type="button" class="avatar unread" id="user-initials"></button>
           <button type="button" class="menu" id="menu">
@@ -1086,6 +1086,9 @@
           pid: id
         })
         var pressureslist = [];
+        var pressureslist1 = [];
+        var pressureslist2 = [];
+        var differ = 0;
         var humanReadableDate;
         var dateslist = [];
         $.ajax({
@@ -1112,11 +1115,24 @@
             }
 
             response1.data.forEach(key => {
-              pressureslist.push(key.value);
+              if(key.type == 9){
+                pressureslist.push(key.value);
+              }
+              else if(key.type == 10){
+                pressureslist1.push(key.value);
+              }
+              else if(key.type == 11){
+                pressureslist2.push(key.value);
+              }
               humanReadableDate = convertUnixTimestampToHumanReadable(key.dateofmeasurement);
               dateslist.push(humanReadableDate)
+              differ++;
              });
-            drawchart2(pressureslist, dateslist);
+             var flipped_pressureslist = pressureslist.reverse();
+             var flipped_pressureslist1 = pressureslist1.reverse();
+             var flipped_pressureslist2 = pressureslist2.reverse();
+             var flipped_dateslist = dateslist.reverse();
+            drawchart2(flipped_pressureslist,flipped_pressureslist1,flipped_pressureslist2, flipped_dateslist);
             document.getElementById("loader1").style.visibility = "hidden";
             
           }
@@ -1137,12 +1153,12 @@
   const year = date.getFullYear();
   const month = ('0' + (date.getMonth() + 1)).slice(-2); // Months are zero-indexed, so we add 1
   const day = ('0' + date.getDate()).slice(-2);
-  const hours = ('0' + date.getHours()).slice(-2);
-  const minutes = ('0' + date.getMinutes()).slice(-2);
-  const seconds = ('0' + date.getSeconds()).slice(-2);
+  // const hours = ('0' + date.getHours()).slice(-2);
+  // const minutes = ('0' + date.getMinutes()).slice(-2);
+  // const seconds = ('0' + date.getSeconds()).slice(-2);
 
   // Construct the human-readable date string
-  const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  const formattedDate = `${year}-${month}-${day}`;
 
   return formattedDate;
 }
@@ -1291,15 +1307,35 @@
 
         ],
         datasets: [{
-          label: "Blood Pressure",
+          label: "Diastolic",
           data: [
           ],
           borderWidth: 4,
           borderColor: "#B2EA47",
-          fill: {
-            target: "origin",
-            above: "#D6FFDA1D", // Area will be red above the origin
-          },
+          // fill: {
+          //   target: "origin",
+          //   above: "#D6FFDA1D", // Area will be red above the origin
+          // },
+        },{
+          label: "Systolic",
+          data: [
+          ],
+          borderWidth: 4,
+          borderColor: "red",
+          // fill: {
+          //   target: "origin",
+          //   above: "red", // Area will be red above the origin
+          // },
+        },{
+          label: "Heart Rate",
+          data: [
+          ],
+          borderWidth: 4,
+          borderColor: "blue",
+          // fill: {
+          //   target: "origin",
+          //   above: "blue", // Area will be red above the origin
+          // },
         }, ],
       },
       options: {
@@ -1354,13 +1390,17 @@
       },
     });
 
-          function drawchart2(pressures, dates) {
+          function drawchart2(pressures,pressure1, pressure2, dates) {
             pressureschart.data.labels = [];
             pressureschart.data.datasets[0].data = [];
+            pressureschart.data.datasets[1].data = [];
+            pressureschart.data.datasets[2].data = [];
             pressureschart.update();
           for (i = 0; i < pressures.length; i++) {
             pressureschart.data.labels.push(dates[i]);
             pressureschart.data.datasets[0].data.push(pressures[i]);
+            pressureschart.data.datasets[1].data.push(pressure1[i]);
+            pressureschart.data.datasets[2].data.push(pressure2[i]);
           }
           pressureschart.update();
           // console.log(weightchart.data.datasets[0].data);
